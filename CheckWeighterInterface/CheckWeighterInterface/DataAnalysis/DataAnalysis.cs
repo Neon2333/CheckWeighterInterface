@@ -18,7 +18,6 @@ namespace CheckWeighterInterface.DataAnalysis
         private TimeDomainAnalysis timeDomainAnalysis1;
         private FrequencyDomainAnalysis frequencyDomainAnalysis1;
 
-
         public DataAnalysis()
         {
             InitializeComponent();

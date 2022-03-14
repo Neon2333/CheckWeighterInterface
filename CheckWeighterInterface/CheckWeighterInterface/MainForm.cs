@@ -15,22 +15,23 @@ namespace CheckWeighterInterface
 {
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
-        //DataTable dtBrand = new DataTable("dtBrand");
-
         DateTime now = new DateTime();
 
         private StatusMonitor.StatusMonitor statusMonitor1;
         private DataAnalysis.DataAnalysis dataAnalysis1;
         private ExcelExport.ExcelExport excelExport1;
+        private ParameterConfig.ParameterConfig paraConfig1;
         private SystemConfig.SystemConfig systemConfig1;
 
 
         private CommonControl.ConfirmationBox confirmationBox_applicationClose;
 
-        enum modulePage { statusMonitor = 0, dataAnalysis, exportExcel, sysConfig};
-        private NavigationPage[] modulePages = new NavigationPage[4];
+        enum modulePage { statusMonitor = 0, dataAnalysis, exportExcel, paraConfig, sysConfig};     
+        private NavigationPage[] modulePages = new NavigationPage[5];
 
         enum DataAnalysisPage { timeDomainAnalysis = 0, frequencyDomainAnalysis};
+        enum ParaConfigPage { benchmarkConfig = 0, algorithmConfig};
+        enum SysConfigPage { brandManagement = 0, authorityManagement};
 
         public MainForm()
         {
@@ -58,8 +59,6 @@ namespace CheckWeighterInterface
 
             _loadModules(); 
             _initPages();
-
-
         }
 
         private void _loadModules()
@@ -85,6 +84,13 @@ namespace CheckWeighterInterface
             this.excelExport1.Size = new System.Drawing.Size(1024, 617);
             this.excelExport1.TabIndex = 2;
             this.navigationPage_exportExcel.Controls.Add(excelExport1);
+            //paraConfig
+            paraConfig1 = new ParameterConfig.ParameterConfig();
+            this.paraConfig1.Location = new System.Drawing.Point(0, 0);
+            this.paraConfig1.Name = "statusMonitor2";
+            this.paraConfig1.Size = new System.Drawing.Size(1024, 617);
+            this.paraConfig1.TabIndex = 2;
+            this.navigationPage_paraConfig.Controls.Add(paraConfig1);
             //systemConfig
             systemConfig1 = new SystemConfig.SystemConfig();
             this.systemConfig1.Location = new System.Drawing.Point(0, 0);
@@ -100,7 +106,8 @@ namespace CheckWeighterInterface
             modulePages[0] = navigationPage_statusMonitor;
             modulePages[1] = navigationPage_dataAnalysis;
             modulePages[2] = navigationPage_exportExcel;
-            modulePages[3] = navigationPage_sysConfig;
+            modulePages[3] = navigationPage_paraConfig;
+            modulePages[4] = navigationPage_sysConfig;
         }
 
         private void showCloseConfirmBox(string title, string typeConfirmationBox)
@@ -137,16 +144,9 @@ namespace CheckWeighterInterface
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.statusMonitor];
         }
 
-       
-
         private void tileBarItem_exportExcel_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.exportExcel];
-        }
-
-        private void tileBarItem_sysConfig_ItemClick(object sender, TileItemEventArgs e)
-        {
-            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
         }
 
         private void pictureEdit_CETC_DoubleClick(object sender, EventArgs e)
@@ -162,10 +162,30 @@ namespace CheckWeighterInterface
             this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_dataAnalysis);
         }
 
+        private void tileBarItem_paraConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_paraConfig);
+        }
+
+        private void tileBarItem_sysConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_sysConfig);
+        }
+
         /**
        **********************************************点击二级子菜单按钮后，子菜单按钮隐藏***********************************************************
        */
         private void tileBar_dataAnalysis_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.HideDropDownWindow(false);
+        }
+
+        private void tileBar_paraConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.HideDropDownWindow(false);
+        }
+
+        private void tileBar_sysConfig_ItemClick(object sender, TileItemEventArgs e)
         {
             this.tileBar_mainMenu.HideDropDownWindow(false);
         }
@@ -183,7 +203,32 @@ namespace CheckWeighterInterface
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.dataAnalysis];
             this.dataAnalysis1.selectedFramePage = (int)DataAnalysisPage.frequencyDomainAnalysis;
-
         }
+
+        private void tileBarItem_benchmarkConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.paraConfig];
+            this.paraConfig1.selectedFramePage = (int)ParaConfigPage.benchmarkConfig;
+        }
+
+        private void tileBarItem_algorithmConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.paraConfig];
+            this.paraConfig1.selectedFramePage = (int)ParaConfigPage.algorithmConfig;
+        }
+
+        private void tileBarItem_brandManagement_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
+            this.systemConfig1.selectedFramePage = (int)SysConfigPage.brandManagement;
+        }
+
+        private void tileBarItem_authorityManagement_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
+            this.systemConfig1.selectedFramePage = (int)SysConfigPage.authorityManagement;
+        }
+
+        
     }
 }

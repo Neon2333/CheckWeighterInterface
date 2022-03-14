@@ -15,7 +15,7 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -154,6 +154,24 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MySQL\MySQLHelper.cs" />
+    <Compile Include="ParameterConfig\AlgorithmConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParameterConfig\AlgorithmConfig.Designer.cs">
+      <DependentUpon>AlgorithmConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParameterConfig\BenchmarkConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParameterConfig\BenchmarkConfig.Designer.cs">
+      <DependentUpon>BenchmarkConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParameterConfig\ParameterConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ParameterConfig\ParameterConfig.Designer.cs">
+      <DependentUpon>ParameterConfig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusMonitor\StatusMonitor.cs">
@@ -162,11 +180,23 @@
     <Compile Include="StatusMonitor\StatusMonitor.Designer.cs">
       <DependentUpon>StatusMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemConfig\AuthorityManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemConfig\AuthorityManagement.Designer.cs">
+      <DependentUpon>AuthorityManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemConfig\BrandInfoBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SystemConfig\BrandInfoBox.Designer.cs">
       <DependentUpon>BrandInfoBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfig\BrandConfig.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemConfig\BrandConfig.Designer.cs">
+      <DependentUpon>BrandConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="SystemConfig\SystemConfig.cs">
       <SubType>UserControl</SubType>
@@ -204,6 +234,15 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ParameterConfig\AlgorithmConfig.resx">
+      <DependentUpon>AlgorithmConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParameterConfig\BenchmarkConfig.resx">
+      <DependentUpon>BenchmarkConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParameterConfig\ParameterConfig.resx">
+      <DependentUpon>ParameterConfig.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -218,8 +257,14 @@
     <EmbeddedResource Include="StatusMonitor\StatusMonitor.resx">
       <DependentUpon>StatusMonitor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfig\AuthorityManagement.resx">
+      <DependentUpon>AuthorityManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemConfig\BrandInfoBox.resx">
       <DependentUpon>BrandInfoBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemConfig\BrandConfig.resx">
+      <DependentUpon>BrandConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SystemConfig\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>

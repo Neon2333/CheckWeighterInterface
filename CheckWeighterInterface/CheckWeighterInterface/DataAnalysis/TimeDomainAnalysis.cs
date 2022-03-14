@@ -25,7 +25,7 @@ namespace CheckWeighterInterface.DataAnalysis
         {
             InitializeComponent();
             initTimeDomainAnalysis();
-            SystemConfig.SystemConfig.brandChangedReInitTimeDomainAnalysis += reInitTimeDomainAnalysis;
+            SystemConfig.BrandConfig.brandChangedReInitTimeDomainAnalysis += reInitTimeDomainAnalysis;
         }
 
         private void reInitTimeDomainAnalysis(object sender, EventArgs e)

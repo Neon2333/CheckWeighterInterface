@@ -83,7 +83,7 @@ namespace CheckWeighterInterface.ExcelExport
             bindDataGridControl();
             setAxisXMinMaxPoint(8, 12);  //设定散点图横轴区间范围
             setGearIntervalAxisXPoint(0);   //设定散点图横轴分辨率
-            SystemConfig.SystemConfig.brandChangedReInitExcelExport += reInitExcelExport;
+            SystemConfig.BrandConfig.brandChangedReInitExcelExport += reInitExcelExport;
         }
 
 

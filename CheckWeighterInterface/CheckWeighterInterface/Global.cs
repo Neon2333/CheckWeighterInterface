@@ -19,9 +19,6 @@ namespace CheckWeighterInterface
         //public static event BrandChangedReinit brandChangedReInitExcelExport;
         //public static event BrandChangedReinit brandChangedReInitSystemConfig;
 
-        
-
-
         //状态参数
         public struct Status{
            public string brand;                         //品牌
