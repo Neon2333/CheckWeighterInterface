@@ -21,7 +21,7 @@ namespace CheckWeighterInterface
         private DataAnalysis.DataAnalysis dataAnalysis1;
         private ExcelExport.ExcelExport excelExport1;
         private ParameterConfig.ParameterConfig paraConfig1;
-        private SystemConfig.SystemConfig systemConfig1;
+        private SystemManagement.SystemManagement systemManagement1;
 
 
         private CommonControl.ConfirmationBox confirmationBox_applicationClose;
@@ -92,12 +92,12 @@ namespace CheckWeighterInterface
             this.paraConfig1.TabIndex = 2;
             this.navigationPage_paraConfig.Controls.Add(paraConfig1);
             //systemConfig
-            systemConfig1 = new SystemConfig.SystemConfig();
-            this.systemConfig1.Location = new System.Drawing.Point(0, 0);
-            this.systemConfig1.Name = "statusMonitor2";
-            this.systemConfig1.Size = new System.Drawing.Size(1024, 617);
-            this.systemConfig1.TabIndex = 3;
-            this.navigationPage_sysConfig.Controls.Add(systemConfig1);
+            systemManagement1 = new SystemManagement.SystemManagement();
+            this.systemManagement1.Location = new System.Drawing.Point(0, 0);
+            this.systemManagement1.Name = "statusMonitor2";
+            this.systemManagement1.Size = new System.Drawing.Size(1024, 617);
+            this.systemManagement1.TabIndex = 3;
+            this.navigationPage_sysConfig.Controls.Add(systemManagement1);
 
         }
 
@@ -169,7 +169,7 @@ namespace CheckWeighterInterface
 
         private void tileBarItem_sysConfig_ItemClick(object sender, TileItemEventArgs e)
         {
-            this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_sysConfig);
+            this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_sysManagement);
         }
 
         /**
@@ -220,13 +220,13 @@ namespace CheckWeighterInterface
         private void tileBarItem_brandManagement_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
-            this.systemConfig1.selectedFramePage = (int)SysConfigPage.brandManagement;
+            this.systemManagement1.selectedFramePage = (int)SysConfigPage.brandManagement;
         }
 
         private void tileBarItem_authorityManagement_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
-            this.systemConfig1.selectedFramePage = (int)SysConfigPage.authorityManagement;
+            this.systemManagement1.selectedFramePage = (int)SysConfigPage.authorityManagement;
         }
 
         

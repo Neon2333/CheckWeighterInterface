@@ -180,29 +180,53 @@
     <Compile Include="StatusMonitor\StatusMonitor.Designer.cs">
       <DependentUpon>StatusMonitor.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemConfig\AuthorityManagement.cs">
+    <Compile Include="SystemManagement\CalibrationCorrection.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemConfig\AuthorityManagement.Designer.cs">
-      <DependentUpon>AuthorityManagement.cs</DependentUpon>
+    <Compile Include="SystemManagement\CalibrationCorrection.Designer.cs">
+      <DependentUpon>CalibrationCorrection.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemConfig\BrandInfoBox.cs">
+    <Compile Include="SystemManagement\BrandInfoBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemConfig\BrandInfoBox.Designer.cs">
+    <Compile Include="SystemManagement\BrandInfoBox.Designer.cs">
       <DependentUpon>BrandInfoBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemConfig\BrandConfig.cs">
+    <Compile Include="SystemManagement\BrandManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemConfig\BrandConfig.Designer.cs">
-      <DependentUpon>BrandConfig.cs</DependentUpon>
+    <Compile Include="SystemManagement\BrandManagement.Designer.cs">
+      <DependentUpon>BrandManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="SystemConfig\SystemConfig.cs">
+    <Compile Include="SystemManagement\SystemConfig.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SystemConfig\SystemConfig.Designer.cs">
+    <Compile Include="SystemManagement\SystemConfig.Designer.cs">
       <DependentUpon>SystemConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemManagement\SystemManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemManagement\SystemManagement.Designer.cs">
+      <DependentUpon>SystemManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemTest\RealTimeCurve.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemTest\RealTimeCurve.Designer.cs">
+      <DependentUpon>RealTimeCurve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemTest\SignalTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemTest\SignalTest.Designer.cs">
+      <DependentUpon>SignalTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemTest\SystemTest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SystemTest\SystemTest.Designer.cs">
+      <DependentUpon>SystemTest.cs</DependentUpon>
     </Compile>
     <Compile Include="test\test.cs">
       <SubType>Form</SubType>
@@ -257,17 +281,29 @@
     <EmbeddedResource Include="StatusMonitor\StatusMonitor.resx">
       <DependentUpon>StatusMonitor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemConfig\AuthorityManagement.resx">
-      <DependentUpon>AuthorityManagement.cs</DependentUpon>
+    <EmbeddedResource Include="SystemManagement\CalibrationCorrection.resx">
+      <DependentUpon>CalibrationCorrection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemConfig\BrandInfoBox.resx">
+    <EmbeddedResource Include="SystemManagement\BrandInfoBox.resx">
       <DependentUpon>BrandInfoBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemConfig\BrandConfig.resx">
-      <DependentUpon>BrandConfig.cs</DependentUpon>
+    <EmbeddedResource Include="SystemManagement\BrandManagement.resx">
+      <DependentUpon>BrandManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SystemConfig\SystemConfig.resx">
+    <EmbeddedResource Include="SystemManagement\SystemConfig.resx">
       <DependentUpon>SystemConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemManagement\SystemManagement.resx">
+      <DependentUpon>SystemManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemTest\RealTimeCurve.resx">
+      <DependentUpon>RealTimeCurve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemTest\SignalTest.resx">
+      <DependentUpon>SignalTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemTest\SystemTest.resx">
+      <DependentUpon>SystemTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="test\test.resx">
       <DependentUpon>test.cs</DependentUpon>

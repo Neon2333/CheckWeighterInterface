@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    public partial class BrandConfig : DevExpress.XtraEditors.XtraUserControl
+    public partial class BrandManagement : DevExpress.XtraEditors.XtraUserControl
     {
         public delegate void BrandChangedReinit(object sender, EventArgs e);
         public static event BrandChangedReinit brandChangedReInitStatusMonitor;
@@ -40,7 +40,7 @@ namespace CheckWeighterInterface.SystemConfig
         private CommonControl.ConfirmationBox confirmationBox;
         private CommonControl.InformationBox infoBox_successOrFail;
 
-        public BrandConfig()
+        public BrandManagement()
         {
             InitializeComponent();
             initSystemConfig();

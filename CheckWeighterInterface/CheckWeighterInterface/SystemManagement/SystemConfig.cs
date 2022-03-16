@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    public partial class AuthorityManagement : DevExpress.XtraEditors.XtraUserControl
+    public partial class SystemConfig : DevExpress.XtraEditors.XtraUserControl
     {
-        public AuthorityManagement()
+        public SystemConfig()
         {
             InitializeComponent();
         }

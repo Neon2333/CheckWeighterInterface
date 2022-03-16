@@ -1,7 +1,7 @@
 ﻿
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    partial class SystemConfig
+    partial class SystemManagement
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,7 +31,8 @@ namespace CheckWeighterInterface.SystemConfig
         {
             this.navigationFrame_sysConfig = new DevExpress.XtraBars.Navigation.NavigationFrame();
             this.navigationPage_brandManagement = new DevExpress.XtraBars.Navigation.NavigationPage();
-            this.navigationPage_authorityManagement = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage_calibrationCorrection = new DevExpress.XtraBars.Navigation.NavigationPage();
+            this.navigationPage_sysConfig = new DevExpress.XtraBars.Navigation.NavigationPage();
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame_sysConfig)).BeginInit();
             this.navigationFrame_sysConfig.SuspendLayout();
             this.SuspendLayout();
@@ -39,13 +40,15 @@ namespace CheckWeighterInterface.SystemConfig
             // navigationFrame_sysConfig
             // 
             this.navigationFrame_sysConfig.Controls.Add(this.navigationPage_brandManagement);
-            this.navigationFrame_sysConfig.Controls.Add(this.navigationPage_authorityManagement);
+            this.navigationFrame_sysConfig.Controls.Add(this.navigationPage_calibrationCorrection);
+            this.navigationFrame_sysConfig.Controls.Add(this.navigationPage_sysConfig);
             this.navigationFrame_sysConfig.Location = new System.Drawing.Point(0, 0);
             this.navigationFrame_sysConfig.Name = "navigationFrame_sysConfig";
             this.navigationFrame_sysConfig.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPage_brandManagement,
-            this.navigationPage_authorityManagement});
-            this.navigationFrame_sysConfig.SelectedPage = this.navigationPage_authorityManagement;
+            this.navigationPage_calibrationCorrection,
+            this.navigationPage_sysConfig});
+            this.navigationFrame_sysConfig.SelectedPage = this.navigationPage_calibrationCorrection;
             this.navigationFrame_sysConfig.Size = new System.Drawing.Size(1024, 617);
             this.navigationFrame_sysConfig.TabIndex = 0;
             this.navigationFrame_sysConfig.Text = "navigationFrame1";
@@ -56,17 +59,22 @@ namespace CheckWeighterInterface.SystemConfig
             this.navigationPage_brandManagement.Name = "navigationPage_brandManagement";
             this.navigationPage_brandManagement.Size = new System.Drawing.Size(1024, 617);
             // 
-            // navigationPage_authorityManagement
+            // navigationPage_calibrationCorrection
             // 
-            this.navigationPage_authorityManagement.Name = "navigationPage_authorityManagement";
-            this.navigationPage_authorityManagement.Size = new System.Drawing.Size(1024, 617);
+            this.navigationPage_calibrationCorrection.Name = "navigationPage_calibrationCorrection";
+            this.navigationPage_calibrationCorrection.Size = new System.Drawing.Size(1024, 617);
             // 
-            // SystemConfig
+            // navigationPage_sysConfig
+            // 
+            this.navigationPage_sysConfig.Name = "navigationPage_sysConfig";
+            this.navigationPage_sysConfig.Size = new System.Drawing.Size(1024, 617);
+            // 
+            // SystemManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.navigationFrame_sysConfig);
-            this.Name = "SystemConfig";
+            this.Name = "SystemManagement";
             this.Size = new System.Drawing.Size(1024, 617);
             ((System.ComponentModel.ISupportInitialize)(this.navigationFrame_sysConfig)).EndInit();
             this.navigationFrame_sysConfig.ResumeLayout(false);
@@ -78,6 +86,7 @@ namespace CheckWeighterInterface.SystemConfig
 
         private DevExpress.XtraBars.Navigation.NavigationFrame navigationFrame_sysConfig;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPage_brandManagement;
-        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage_authorityManagement;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage_calibrationCorrection;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPage_sysConfig;
     }
 }

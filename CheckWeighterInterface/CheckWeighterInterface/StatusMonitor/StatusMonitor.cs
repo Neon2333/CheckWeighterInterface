@@ -54,7 +54,7 @@ namespace CheckWeighterInterface.StatusMonitor
         {
             InitializeComponent();
             initStatusMonitor();
-            SystemConfig.BrandConfig.brandChangedReInitStatusMonitor += reInitStatusMonitor;
+            SystemManagement.BrandManagement.brandChangedReInitStatusMonitor += reInitStatusMonitor;
         }
 
 

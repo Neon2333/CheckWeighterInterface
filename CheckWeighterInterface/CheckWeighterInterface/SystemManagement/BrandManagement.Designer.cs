@@ -1,7 +1,7 @@
 ﻿
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    partial class BrandConfig
+    partial class BrandManagement
     {
         /// <summary> 
         /// Required designer variable.
@@ -54,7 +54,7 @@ namespace CheckWeighterInterface.SystemConfig
             this.tileViewColumn_Status = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_DateTime = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.panelControl_brandListLeft = new DevExpress.XtraEditors.PanelControl();
-            this.brandInfoBox1 = new CheckWeighterInterface.SystemConfig.BrandInfoBox();
+            this.brandInfoBox1 = new CheckWeighterInterface.SystemManagement.BrandInfoBox();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.labelControl_curBrand = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton_copyBrand = new DevExpress.XtraEditors.SimpleButton();
@@ -501,13 +501,13 @@ namespace CheckWeighterInterface.SystemConfig
             this.labelControl_NO.TabIndex = 20;
             this.labelControl_NO.Text = "NO";
             // 
-            // SystemConfig
+            // SystemManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelControl_brandListRight);
             this.Controls.Add(this.panelControl_brandListLeft);
-            this.Name = "SystemConfig";
+            this.Name = "SystemManagement";
             this.Size = new System.Drawing.Size(1024, 617);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_brandListLeft)).EndInit();
             this.panelControl_brandListLeft.ResumeLayout(false);

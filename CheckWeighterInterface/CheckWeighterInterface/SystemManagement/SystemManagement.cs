@@ -10,15 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    public partial class SystemConfig : DevExpress.XtraEditors.XtraUserControl
+    public partial class SystemManagement : DevExpress.XtraEditors.XtraUserControl
     {
-        private NavigationPage[] systemConfigPages = new NavigationPage[2];
-        private BrandConfig brandConfig1;
-        private AuthorityManagement authorityManagement1;
+        private NavigationPage[] systemManagementPages = new NavigationPage[3];
+        private BrandManagement brandConfig1;
+        private CalibrationCorrection authorityManagement1;
+        private SystemConfig systemConfig1;
 
-        public SystemConfig()
+        public SystemManagement()
         {
             InitializeComponent();
             initSystemConfig();
@@ -33,25 +34,33 @@ namespace CheckWeighterInterface.SystemConfig
         private void loadPages()
         {
             //brandManagement
-            this.brandConfig1 = new BrandConfig();
+            this.brandConfig1 = new BrandManagement();
             this.navigationPage_brandManagement.Controls.Add(this.brandConfig1);
             this.brandConfig1.Location = new System.Drawing.Point(0, 0);
             this.brandConfig1.Name = "brandManagement1";
             this.brandConfig1.Size = new System.Drawing.Size(1024, 617);
             this.brandConfig1.TabIndex = 0;
-            //authorityManagement
-            this.authorityManagement1 = new AuthorityManagement();
-            this.navigationPage_authorityManagement.Controls.Add(this.authorityManagement1);
+            //calibrationCorrection
+            this.authorityManagement1 = new CalibrationCorrection();
+            this.navigationPage_calibrationCorrection.Controls.Add(this.authorityManagement1);
             this.authorityManagement1.Location = new System.Drawing.Point(0, 0);
             this.authorityManagement1.Name = "authorityManagement1";
             this.authorityManagement1.Size = new System.Drawing.Size(1024, 617);
             this.authorityManagement1.TabIndex = 1;
+            //systemConfig
+            systemConfig1 = new SystemConfig();
+            this.navigationPage_sysConfig.Controls.Add(this.systemConfig1);
+            this.authorityManagement1.Location = new System.Drawing.Point(0, 0);
+            this.authorityManagement1.Name = "authorityManagement1";
+            this.authorityManagement1.Size = new System.Drawing.Size(1024, 617);
+            this.authorityManagement1.TabIndex = 2;
         }
 
         private void initSystemConfigPages()
         {
-            systemConfigPages[0] = navigationPage_brandManagement;
-            systemConfigPages[1] = navigationPage_authorityManagement;
+            systemManagementPages[0] = navigationPage_brandManagement;
+            systemManagementPages[1] = navigationPage_calibrationCorrection;
+            systemManagementPages[2] = navigationPage_sysConfig;
         }
         public Boolean frameVisible
         {
@@ -70,9 +79,9 @@ namespace CheckWeighterInterface.SystemConfig
             get
             {
                 //return (NavigationPage)this.navigationFrame_statusMonitor.SelectedPage; //SelectedPage是InavigationPage，时NavigationPage的父类
-                for (int i = 0; i < systemConfigPages.Length; i++)
+                for (int i = 0; i < systemManagementPages.Length; i++)
                 {
-                    if (this.navigationFrame_sysConfig.SelectedPage == systemConfigPages[i])
+                    if (this.navigationFrame_sysConfig.SelectedPage == systemManagementPages[i])
                     {
                         return i;
                     }
@@ -81,13 +90,15 @@ namespace CheckWeighterInterface.SystemConfig
             }
             set
             {
-                this.navigationFrame_sysConfig.SelectedPage = systemConfigPages[value];
+                this.navigationFrame_sysConfig.SelectedPage = systemManagementPages[value];
             }
         }
 
         public void setSelectedFramePage(int pageIndex)
         {
-            this.navigationFrame_sysConfig.SelectedPage = systemConfigPages[pageIndex];
+            this.navigationFrame_sysConfig.SelectedPage = systemManagementPages[pageIndex];
         }
+
+
     }
 }

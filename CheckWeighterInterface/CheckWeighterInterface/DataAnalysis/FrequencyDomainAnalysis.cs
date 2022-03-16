@@ -44,7 +44,7 @@ namespace CheckWeighterInterface.DataAnalysis
         {
             InitializeComponent();
             initFrequencyDomainAnalysis();
-            SystemConfig.BrandConfig.brandChangedReInitFrequencyDomainAnalysis += reInitFrequencyDomainAnalysis;
+            SystemManagement.BrandManagement.brandChangedReInitFrequencyDomainAnalysis += reInitFrequencyDomainAnalysis;
 
         }
 

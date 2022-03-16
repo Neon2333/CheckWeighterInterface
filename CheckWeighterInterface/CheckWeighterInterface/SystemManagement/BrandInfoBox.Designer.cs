@@ -1,5 +1,5 @@
 ﻿
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
     partial class BrandInfoBox
     {

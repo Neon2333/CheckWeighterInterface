@@ -1,7 +1,7 @@
 ﻿
-namespace CheckWeighterInterface.SystemConfig
+namespace CheckWeighterInterface.SystemManagement
 {
-    partial class AuthorityManagement
+    partial class CalibrationCorrection
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,14 +38,14 @@ namespace CheckWeighterInterface.SystemConfig
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "权限设置";
+            this.labelControl1.Text = "标定校正";
             // 
-            // AuthorityManagement
+            // CalibrationCorrection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.labelControl1);
-            this.Name = "AuthorityManagement";
+            this.Name = "CalibrationCorrection";
             this.Size = new System.Drawing.Size(1024, 617);
             this.ResumeLayout(false);
             this.PerformLayout();
