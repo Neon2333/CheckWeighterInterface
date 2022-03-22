@@ -682,6 +682,7 @@ namespace CheckWeighterInterface
             // 
             // navigationPage_statusMonitor
             // 
+            this.navigationPage_statusMonitor.Caption = "navigationPage_statusMonitor";
             this.navigationPage_statusMonitor.Controls.Add(this.tileBarDropDownContainer_sysTest);
             this.navigationPage_statusMonitor.Controls.Add(this.tileBarDropDownContainer_sysConfig);
             this.navigationPage_statusMonitor.Controls.Add(this.tileBarDropDownContainer_paraConfig);

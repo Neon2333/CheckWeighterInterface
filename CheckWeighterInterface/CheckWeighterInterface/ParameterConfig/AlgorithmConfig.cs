@@ -17,5 +17,16 @@ namespace CheckWeighterInterface.ParameterConfig
         {
             InitializeComponent();
         }
+
+        private void labelControl1_Click(object sender, EventArgs e)
+        {
+            int[] a = { 0, 2, 4, 5, 9 };
+            Global.FilteringFunc ff = new Global.FilteringFunc();
+            int b = ff.medianFiltering(5, a);
+            
+
+        }
+
+
     }
 }

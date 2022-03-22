@@ -42,6 +42,7 @@ namespace CheckWeighterInterface.ParameterConfig
             this.labelControl1.Size = new System.Drawing.Size(172, 113);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "算法设置";
+            this.labelControl1.Click += new System.EventHandler(this.labelControl1_Click);
             // 
             // AlgorithmConfig
             // 
