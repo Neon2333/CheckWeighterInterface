@@ -206,7 +206,6 @@ namespace CheckWeighterInterface
                 return this.recursionAverageFiltering(N, valTemp);
             }
 
-
             //一阶滞后滤波
             /**取a=0~1本次滤波结果=（1-a)*本次采样值+a*上次滤波结果*/
             public int firstOrderLagFiltering(int valPre, int valCur, int a)
@@ -215,7 +214,6 @@ namespace CheckWeighterInterface
                     throw new ArgumentException();
                 return (100 - a) * valPre + a * valCur;
             }
-
 
             //加权递推平均滤波法
             /**是对递推平均滤波法的改进，即不同时刻的数据加以不同的权通常是，越接近现时刻的数据，权取得越大。给予新采样值的权系数越大，则灵敏度越高，但信号平滑度越低*/

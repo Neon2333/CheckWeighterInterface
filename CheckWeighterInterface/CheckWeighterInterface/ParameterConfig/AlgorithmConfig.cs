@@ -22,8 +22,19 @@ namespace CheckWeighterInterface.ParameterConfig
         {
             int[] a = { 0, 2, 4, 5, 9 };
             Global.FilteringFunc ff = new Global.FilteringFunc();
+            int cur = ff.amplitudeLimitingFiltering(a[0], a[1], 2);
             int b = ff.medianFiltering(5, a);
-            
+            int c = ff.digitalAverageFiltering(5, a);
+
+            Global.FilteringFunc ff1 = new Global.FilteringFunc();
+            for (int i = 0; i < 3; i++)
+            {
+                int d = ff1.recursionAverageFiltering(3, a[i]);
+            }
+
+            int f = ff1.recursionAverageFiltering(3, a[3]);
+            f = ff1.recursionAverageFiltering(3, a[4]);
+
 
         }
 

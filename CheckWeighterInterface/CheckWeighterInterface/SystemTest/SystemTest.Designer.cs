@@ -49,6 +49,7 @@ namespace CheckWeighterInterface.SystemTest
             this.navigationFrame_sysTest.Size = new System.Drawing.Size(1024, 617);
             this.navigationFrame_sysTest.TabIndex = 0;
             this.navigationFrame_sysTest.Text = "navigationFrame1";
+            this.navigationFrame_sysTest.TransitionAnimationProperties.FrameInterval = 3000;
             // 
             // navigationPage_signalTest
             // 
@@ -57,6 +58,7 @@ namespace CheckWeighterInterface.SystemTest
             // 
             // navigationPage_realTimeCurve
             // 
+            this.navigationPage_realTimeCurve.Caption = "navigationPage_realTimeCurve";
             this.navigationPage_realTimeCurve.Name = "navigationPage_realTimeCurve";
             this.navigationPage_realTimeCurve.Size = new System.Drawing.Size(1024, 617);
             // 

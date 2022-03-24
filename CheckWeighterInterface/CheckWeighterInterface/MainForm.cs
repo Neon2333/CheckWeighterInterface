@@ -22,16 +22,17 @@ namespace CheckWeighterInterface
         private ExcelExport.ExcelExport excelExport1;
         private ParameterConfig.ParameterConfig paraConfig1;
         private SystemManagement.SystemManagement systemManagement1;
-
+        private SystemTest.SystemTest systemTest1;
 
         private CommonControl.ConfirmationBox confirmationBox_applicationClose;
 
-        enum modulePage { statusMonitor = 0, dataAnalysis, exportExcel, paraConfig, sysConfig};     
-        private NavigationPage[] modulePages = new NavigationPage[5];
+        enum modulePage { statusMonitor = 0, dataAnalysis, exportExcel, paraConfig, sysConfig, sysTest};  
+        private NavigationPage[] modulePages = new NavigationPage[6];
 
         enum DataAnalysisPage { timeDomainAnalysis = 0, frequencyDomainAnalysis};
         enum ParaConfigPage { benchmarkConfig = 0, algorithmConfig};
-        enum SysConfigPage { brandManagement = 0, authorityManagement};
+        enum SysManagementPage { brandManagement = 0, calibrationCorrection, systemConfig};
+        enum SysTestPage { signalTest = 0, realTimeCurve};
 
         public MainForm()
         {
@@ -98,6 +99,13 @@ namespace CheckWeighterInterface
             this.systemManagement1.Size = new System.Drawing.Size(1024, 617);
             this.systemManagement1.TabIndex = 3;
             this.navigationPage_sysConfig.Controls.Add(systemManagement1);
+            //systemTest
+            systemTest1 = new SystemTest.SystemTest();
+            this.systemTest1.Location = new System.Drawing.Point(0, 0);
+            this.systemTest1.Name = "statusMonitor2";
+            this.systemTest1.Size = new System.Drawing.Size(1024, 617);
+            this.systemTest1.TabIndex = 3;
+            this.navigationPage_sysTest.Controls.Add(systemTest1);
 
         }
 
@@ -108,6 +116,7 @@ namespace CheckWeighterInterface
             modulePages[2] = navigationPage_exportExcel;
             modulePages[3] = navigationPage_paraConfig;
             modulePages[4] = navigationPage_sysConfig;
+            modulePages[5] = navigationPage_sysTest;
         }
 
         private void showCloseConfirmBox(string title, string typeConfirmationBox)
@@ -172,6 +181,11 @@ namespace CheckWeighterInterface
             this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_sysManagement);
         }
 
+        private void tileBarItem_sysTest_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.ShowDropDown(this.tileBarItem_sysTest);
+        }
+
         /**
        **********************************************点击二级子菜单按钮后，子菜单按钮隐藏***********************************************************
        */
@@ -186,6 +200,11 @@ namespace CheckWeighterInterface
         }
 
         private void tileBar_sysConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.tileBar_mainMenu.HideDropDownWindow(false);
+        }
+
+        private void tileBar_sysTest_ItemClick(object sender, TileItemEventArgs e)
         {
             this.tileBar_mainMenu.HideDropDownWindow(false);
         }
@@ -205,30 +224,47 @@ namespace CheckWeighterInterface
             this.dataAnalysis1.selectedFramePage = (int)DataAnalysisPage.frequencyDomainAnalysis;
         }
 
-        private void tileBarItem_benchmarkConfig_ItemClick(object sender, TileItemEventArgs e)
+        private void tileBarItem_paraConfig_benchmarkConfig_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.paraConfig];
             this.paraConfig1.selectedFramePage = (int)ParaConfigPage.benchmarkConfig;
         }
 
-        private void tileBarItem_algorithmConfig_ItemClick(object sender, TileItemEventArgs e)
+        private void tileBarItem_paraConfig_algorithmConfig_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.paraConfig];
             this.paraConfig1.selectedFramePage = (int)ParaConfigPage.algorithmConfig;
         }
 
-        private void tileBarItem_brandManagement_ItemClick(object sender, TileItemEventArgs e)
+        private void tileBarItem_sysManagement_brandManagement_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
-            this.systemManagement1.selectedFramePage = (int)SysConfigPage.brandManagement;
+            this.systemManagement1.selectedFramePage = (int)SysManagementPage.brandManagement;
         }
 
-        private void tileBarItem_authorityManagement_ItemClick(object sender, TileItemEventArgs e)
+        private void tileBarItem_sysManagement_calibrationCorrection_ItemClick(object sender, TileItemEventArgs e)
         {
             this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
-            this.systemManagement1.selectedFramePage = (int)SysConfigPage.authorityManagement;
+            this.systemManagement1.selectedFramePage = (int)SysManagementPage.calibrationCorrection;
         }
 
-        
+        private void tileBarItem_sysManagement_sysConfig_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysConfig];
+            this.systemManagement1.selectedFramePage = (int)SysManagementPage.systemConfig;
+        }
+
+        private void tileBarItem_sysTest_signalTest_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysTest];
+            this.systemTest1.selectedFramePage = (int)SysTestPage.signalTest;
+        }
+
+        private void tileBarItem_sysTest_realTimeCurve_ItemClick(object sender, TileItemEventArgs e)
+        {
+            this.navigationFrame_mainForm.SelectedPage = modulePages[(int)modulePage.sysTest];
+            this.systemTest1.selectedFramePage = (int)SysTestPage.realTimeCurve;
+        }
+
     }
 }
