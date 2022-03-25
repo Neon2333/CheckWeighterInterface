@@ -21,12 +21,12 @@ namespace CheckWeighterInterface.ParameterConfig
         private void labelControl1_Click(object sender, EventArgs e)
         {
             int[] a = { 0, 2, 4, 5, 9 };
-            Global.FilteringFunc ff = new Global.FilteringFunc();
+            FilteringAlgorithm ff = new FilteringAlgorithm();
             int cur = ff.amplitudeLimitingFiltering(a[0], a[1], 2);
             int b = ff.medianFiltering(5, a);
             int c = ff.digitalAverageFiltering(5, a);
 
-            Global.FilteringFunc ff1 = new Global.FilteringFunc();
+            FilteringAlgorithm ff1 = new FilteringAlgorithm();
             for (int i = 0; i < 3; i++)
             {
                 int d = ff1.recursionAverageFiltering(3, a[i]);

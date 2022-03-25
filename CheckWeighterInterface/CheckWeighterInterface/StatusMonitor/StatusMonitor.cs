@@ -18,12 +18,12 @@ namespace CheckWeighterInterface.StatusMonitor
         private DataTable dtBrand = new DataTable("tableBrand");
 
         public static DataTable dtLine = new DataTable("tableLine");    //折线图数据源，只显示200个点
-        private DataTable dtPie = new DataTable("tablePie");            //饼图数据源，只要不更换brand就一直累计
-        private DataTable dtPoint = new DataTable("tablePoint");        //散点图数据源，只要不更换brand就一直累计
+        private static DataTable dtPie = new DataTable("tablePie");            //饼图数据源，只要不更换brand就一直累计
+        private static DataTable dtPoint = new DataTable("tablePoint");        //散点图数据源，只要不更换brand就一直累计
         private double lastOverWeght = 0.0D;
         private double lastUnderWeight = 0.0D;
 
-        Dictionary<int, int> weightAndIndexGramDtPoint = new Dictionary<int, int>();    //(weight, totalDtPoint)
+        private Dictionary<int, int> weightAndIndexGramDtPoint = new Dictionary<int, int>();    //(weight, totalDtPoint)
         private int totalDtPoint = 0;       //dtPoint中存的点的个数（行数，重量不同才会增加一行）
         //散点图横轴坐标边缘
         private Int32[] minXRangePoint = { 0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000 };
@@ -55,45 +55,6 @@ namespace CheckWeighterInterface.StatusMonitor
             InitializeComponent();
             initStatusMonitor();
             SystemManagement.BrandManagement.brandChangedReInitStatusMonitor += reInitStatusMonitor;
-        }
-
-
-        //初始化StatusMonitor
-        private void initStatusMonitor()
-        {
-            //数据库中无品牌时不刷新实时图表
-            string cmdInitDtBrand = "SELECT * FROM brand;";
-            Global.mysqlHelper1._queryTableMySQL(cmdInitDtBrand, ref dtBrand);
-            if (dtBrand.Rows.Count == 0)
-            {
-                timer_detectOnce.Enabled = false;
-            }
-            else
-            {
-                timer_detectOnce.Enabled = true;
-
-                Global.curStatus.brand = dtBrand.Rows[0]["name"].ToString();
-                Global.curStatus.countDetection = 0;
-                Global.curStatus.countOverWeight = 0;
-                Global.curStatus.countUnderWeight = 0;
-                Global.curStatus.lastOverWeight = 0.0D;
-                Global.curStatus.lastUnderWeight = 0.0D;
-                Global.curStatus.maxWeightInHistory = 0.0D;
-                Global.curStatus.minWeightInHistory = 20.0D;
-
-                Global.overWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["upperLimit"]);
-                Global.underWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["lowerLimit"]);
-
-                initDatatable();
-                bindLineData();
-                bindPieData();
-
-                setAxisXMinMaxPoint(minPointXLeft, minPointXRight);  //设定散点图横轴区间范围
-                setGearIntervalAxisXPoint(0);   //设定散点图横轴分辨率
-                bindPointData();
-                labelControl_status.Parent = this.chartControl_line;
-                labelControl_curWeightVal.Parent = this.chartControl_line;
-            }
         }
 
         //当前品牌发生改变时，刷新页面函数
@@ -136,8 +97,75 @@ namespace CheckWeighterInterface.StatusMonitor
             {
                 timer_detectOnce.Enabled = false;
             }
+        }
 
-            
+        //初始化StatusMonitor
+        private void initStatusMonitor()
+        {
+            //数据库中无品牌时不刷新实时图表
+            string cmdInitDtBrand = "SELECT * FROM brand;";
+            Global.mysqlHelper1._queryTableMySQL(cmdInitDtBrand, ref dtBrand);
+            if (dtBrand.Rows.Count == 0)
+            {
+                timer_detectOnce.Enabled = false;
+            }
+            else
+            {
+                timer_detectOnce.Enabled = true;
+
+                Global.curStatus.brand = dtBrand.Rows[0]["name"].ToString();
+                Global.curStatus.countDetection = 0;
+                Global.curStatus.countOverWeight = 0;
+                Global.curStatus.countUnderWeight = 0;
+                Global.curStatus.lastOverWeight = 0.0D;
+                Global.curStatus.lastUnderWeight = 0.0D;
+                Global.curStatus.maxWeightInHistory = 0.0D;
+                Global.curStatus.minWeightInHistory = 20.0D;
+
+                Global.overWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["upperLimit"]);
+                Global.underWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["lowerLimit"]);
+
+                initDatatable();
+                bindLineData();
+                bindPieData();
+
+                setAxisXMinMaxPoint(minPointXLeft, minPointXRight);  //设定散点图横轴区间范围
+                setGearIntervalAxisXPoint(0);   //设定散点图横轴分辨率
+                bindPointData();
+                labelControl_status.Parent = this.chartControl_line;
+                labelControl_curWeightVal.Parent = this.chartControl_line;
+            }
+        }
+
+        //刷新当前页面
+        public void refreshStatusMonitor(object sender, EventArgs e)
+        {
+            labelControl_brandVal.Text = Global.curStatus.brand;
+            if (Global.curStatus.brand != "")
+            {
+                getCurWeight();                             //获取当前重量和显示
+                updateMinWeightAndMaxWeight();              //刷新最值和显示
+                updateLastOverWeightAndLastUnderWeight();   //刷新欠重/超重的重量、数值和显示
+                updateChartLineData();                      //刷新折线图
+                updateChartPieData();                       //刷新饼图
+                updateChartPointData();                     //刷新点图
+                insertCurStatusIntoMySQL();                 //插入MySQL
+            }
+            else
+            {
+                dtLine.Rows.Clear();
+                dtPie.Rows.Clear();
+                dtPoint.Rows.Clear();
+                labelControl_lastOverWeightVal.Text = "";
+                labelControl_lastUnderWeightVal.Text = "";
+                labelControl_detectionCountVal.Text = "0";
+                labelControl_overWeightCountVal.Text = "";
+                labelControl_underWeightCountVal.Text = "";
+                labelControl_maxWeightInHistory.Text = "";
+                labelControl_minWeightInHistory.Text = "";
+                labelControl_curWeightVal.Text = "";
+                labelControl_status.Text = "";
+            }
         }
 
         //初始化数据源DataTable
@@ -275,7 +303,7 @@ namespace CheckWeighterInterface.StatusMonitor
         }
 
         //刷新折线图数据源
-        private void updateChartLineData()
+        public void updateChartLineData()
         {
             //点总数未到200时直接添加，超过200时添加一个点：删掉原有第1行，在最后添加一行
             if(Global.curStatus.countDetection <= 200)
@@ -301,7 +329,7 @@ namespace CheckWeighterInterface.StatusMonitor
         }
 
         //刷新Pie图数据源，Pie图绑定数值，自动显示占比
-        private void updateChartPieData()
+        public void updateChartPieData()
         {
             if (dtPie.Rows.Count == 0)
             {
@@ -329,7 +357,7 @@ namespace CheckWeighterInterface.StatusMonitor
         }
 
         //刷新Point图数据源
-        private void updateChartPointData()
+        public void updateChartPointData()
         {
             int indexDtPointTemp = 0;
             int weightGram = weightIntervalProcess(Global.curStatus.curWeight);
@@ -439,35 +467,10 @@ namespace CheckWeighterInterface.StatusMonitor
             }
         }
 
-        //主循环
+        //定时器刷新页面
         private void timer_detectOnce_Tick(object sender, EventArgs e)
         {
-            labelControl_brandVal.Text = Global.curStatus.brand;
-            if(Global.curStatus.brand != "")
-            {
-                getCurWeight();                             //获取当前重量和显示
-                updateMinWeightAndMaxWeight();              //刷新最值和显示
-                updateLastOverWeightAndLastUnderWeight();   //刷新欠重/超重的重量、数值和显示
-                updateChartLineData();                      //刷新折线图
-                updateChartPieData();                       //刷新饼图
-                updateChartPointData();                     //刷新点图
-                insertCurStatusIntoMySQL();                 //插入MySQL
-            }
-            else
-            {
-                dtLine.Rows.Clear();
-                dtPie.Rows.Clear();
-                dtPoint.Rows.Clear();
-                labelControl_lastOverWeightVal.Text = "";
-                labelControl_lastUnderWeightVal.Text = "";
-                labelControl_detectionCountVal.Text = "0";
-                labelControl_overWeightCountVal.Text = "";
-                labelControl_underWeightCountVal.Text = "";
-                labelControl_maxWeightInHistory.Text = "";
-                labelControl_minWeightInHistory.Text = "";
-                labelControl_curWeightVal.Text = "";
-                labelControl_status.Text = "";
-            }
+            refreshStatusMonitor(sender, e);
         }
 
         private void labelControl_status_Click(object sender, EventArgs e)
