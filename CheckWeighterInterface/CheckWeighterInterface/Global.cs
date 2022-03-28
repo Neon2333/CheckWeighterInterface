@@ -32,12 +32,10 @@ namespace CheckWeighterInterface
            public double maxWeightInHistory;            //最大值
            public double minWeightInHistory;            //最小值
         };
-        public static Status curStatus = new Status();      //当前状态
+        public static Status curStatus = new Status();     //当前状态
          
         public static double underWeightThreshold;         //欠重阈值（设定值为初始值）
         public static double overWeightThreshold;          //超重阈值（设定值为初始值）
-
-
 
         public static void initMySQL()
         {
@@ -71,8 +69,20 @@ namespace CheckWeighterInterface
             }
         }
 
+        //StatusMonitor
+        public static bool enableRefreshStatusMonitor = true;                              //StatusMonitor页面刷新使能标志
+        public static DataTable dtBrand = new DataTable("tableBrand");                     //品牌表
+        public static DataTable dtLineStatusMonitor = new DataTable("tableLine");          //折线图数据源，只显示200个点
+        public static DataTable dtPieStatusMonitor = new DataTable("tablePie");            //饼图数据源，只要不更换brand就一直累计
+        public static DataTable dtPointStatusMonitor = new DataTable("tablePoint");        //散点图数据源，只要不更换brand就一直累计
 
-        
+        //RealTimeCurve
+        public static bool enableReFreshRealTimeCurve = true;                                   //RealTimeCurve页面刷新使能标志
+        public static DataTable dtSensorRealTimeData = new DataTable("dtSensorRealTimeData");   //传感器实时数据dt
+        public static double sensorRealTimeDataPeak;                                            //传感器实时数据峰值
+        public static double sensorRealTimeDataValley;                                          //传感器实时数据谷值
+        public static double sensorRealTimeDataAvg;                                             //传感器实时数据平均值
+
 
 
 

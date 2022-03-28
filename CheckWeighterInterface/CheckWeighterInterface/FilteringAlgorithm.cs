@@ -35,7 +35,7 @@ namespace CheckWeighterInterface
             else
             {
                 this.quickSort(valArr, 0, N - 1);
-                return valArr[N >> 1];
+                return valArr[N >> 1];  
             }
         }
 

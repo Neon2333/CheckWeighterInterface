@@ -15,11 +15,6 @@ namespace CheckWeighterInterface.StatusMonitor
 {
     public partial class StatusMonitor : DevExpress.XtraEditors.XtraUserControl
     {
-        private DataTable dtBrand = new DataTable("tableBrand");
-
-        public static DataTable dtLine = new DataTable("tableLine");    //折线图数据源，只显示200个点
-        private static DataTable dtPie = new DataTable("tablePie");            //饼图数据源，只要不更换brand就一直累计
-        private static DataTable dtPoint = new DataTable("tablePoint");        //散点图数据源，只要不更换brand就一直累计
         private double lastOverWeght = 0.0D;
         private double lastUnderWeight = 0.0D;
 
@@ -77,9 +72,9 @@ namespace CheckWeighterInterface.StatusMonitor
                 Global.curStatus.minWeightInHistory = 20.0D;
 
                 //initDatatable();
-                dtLine.Rows.Clear();
-                dtPie.Rows.Clear();
-                dtPoint.Rows.Clear();
+                Global.dtLineStatusMonitor.Rows.Clear();
+                Global.dtPieStatusMonitor.Rows.Clear();
+                Global.dtPointStatusMonitor.Rows.Clear();
 
                 initDatatable();
                 bindLineData();
@@ -104,8 +99,8 @@ namespace CheckWeighterInterface.StatusMonitor
         {
             //数据库中无品牌时不刷新实时图表
             string cmdInitDtBrand = "SELECT * FROM brand;";
-            Global.mysqlHelper1._queryTableMySQL(cmdInitDtBrand, ref dtBrand);
-            if (dtBrand.Rows.Count == 0)
+            Global.mysqlHelper1._queryTableMySQL(cmdInitDtBrand, ref Global.dtBrand);
+            if (Global.dtBrand.Rows.Count == 0)
             {
                 timer_detectOnce.Enabled = false;
             }
@@ -113,7 +108,7 @@ namespace CheckWeighterInterface.StatusMonitor
             {
                 timer_detectOnce.Enabled = true;
 
-                Global.curStatus.brand = dtBrand.Rows[0]["name"].ToString();
+                Global.curStatus.brand = Global.dtBrand.Rows[0]["name"].ToString();
                 Global.curStatus.countDetection = 0;
                 Global.curStatus.countOverWeight = 0;
                 Global.curStatus.countUnderWeight = 0;
@@ -122,8 +117,8 @@ namespace CheckWeighterInterface.StatusMonitor
                 Global.curStatus.maxWeightInHistory = 0.0D;
                 Global.curStatus.minWeightInHistory = 20.0D;
 
-                Global.overWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["upperLimit"]);
-                Global.underWeightThreshold = Convert.ToDouble(dtBrand.Rows[0]["lowerLimit"]);
+                Global.overWeightThreshold = Convert.ToDouble(Global.dtBrand.Rows[0]["upperLimit"]);
+                Global.underWeightThreshold = Convert.ToDouble(Global.dtBrand.Rows[0]["lowerLimit"]);
 
                 initDatatable();
                 bindLineData();
@@ -140,31 +135,34 @@ namespace CheckWeighterInterface.StatusMonitor
         //刷新当前页面
         public void refreshStatusMonitor(object sender, EventArgs e)
         {
-            labelControl_brandVal.Text = Global.curStatus.brand;
-            if (Global.curStatus.brand != "")
+            if (Global.enableRefreshStatusMonitor)
             {
-                getCurWeight();                             //获取当前重量和显示
-                updateMinWeightAndMaxWeight();              //刷新最值和显示
-                updateLastOverWeightAndLastUnderWeight();   //刷新欠重/超重的重量、数值和显示
-                updateChartLineData();                      //刷新折线图
-                updateChartPieData();                       //刷新饼图
-                updateChartPointData();                     //刷新点图
-                insertCurStatusIntoMySQL();                 //插入MySQL
-            }
-            else
-            {
-                dtLine.Rows.Clear();
-                dtPie.Rows.Clear();
-                dtPoint.Rows.Clear();
-                labelControl_lastOverWeightVal.Text = "";
-                labelControl_lastUnderWeightVal.Text = "";
-                labelControl_detectionCountVal.Text = "0";
-                labelControl_overWeightCountVal.Text = "";
-                labelControl_underWeightCountVal.Text = "";
-                labelControl_maxWeightInHistory.Text = "";
-                labelControl_minWeightInHistory.Text = "";
-                labelControl_curWeightVal.Text = "";
-                labelControl_status.Text = "";
+                labelControl_brandVal.Text = Global.curStatus.brand;
+                if (Global.curStatus.brand != "")
+                {
+                    getCurWeight();                             //获取当前重量和显示
+                    updateMinWeightAndMaxWeight();              //刷新最值和显示
+                    updateLastOverWeightAndLastUnderWeight();   //刷新欠重/超重的重量、数值和显示
+                    updateChartLineData();                      //刷新折线图
+                    updateChartPieData();                       //刷新饼图
+                    updateChartPointData();                     //刷新点图
+                    insertCurStatusIntoMySQL();                 //插入MySQL
+                }
+                else
+                {
+                    Global.dtLineStatusMonitor.Rows.Clear();
+                    Global.dtPieStatusMonitor.Rows.Clear();
+                    Global.dtPointStatusMonitor.Rows.Clear();
+                    labelControl_lastOverWeightVal.Text = "";
+                    labelControl_lastUnderWeightVal.Text = "";
+                    labelControl_detectionCountVal.Text = "0";
+                    labelControl_overWeightCountVal.Text = "";
+                    labelControl_underWeightCountVal.Text = "";
+                    labelControl_maxWeightInHistory.Text = "";
+                    labelControl_minWeightInHistory.Text = "";
+                    labelControl_curWeightVal.Text = "";
+                    labelControl_status.Text = "";
+                }
             }
         }
 
@@ -172,29 +170,29 @@ namespace CheckWeighterInterface.StatusMonitor
         private void initDatatable()
         {
             //添加一次称重数据
-            if (dtLine.Columns.Count == 0)
+            if (Global.dtLineStatusMonitor.Columns.Count == 0)
             {
-                dtLine.Columns.Add("countDetection", typeof(Int32));        //称重计数
-                dtLine.Columns.Add("currentWeight", typeof(double));        //当前重量
+                Global.dtLineStatusMonitor.Columns.Add("countDetection", typeof(Int32));        //称重计数
+                Global.dtLineStatusMonitor.Columns.Add("currentWeight", typeof(double));        //当前重量
             }
 
-            if (dtPie.Columns.Count == 0)
+            if (Global.dtPieStatusMonitor.Columns.Count == 0)
             {
-                dtPie.Columns.Add("status", typeof(String));                //状态：欠重、超重、正常
-                dtPie.Columns.Add("countCur", typeof(Int32));
+                Global.dtPieStatusMonitor.Columns.Add("status", typeof(String));                //状态：欠重、超重、正常
+                Global.dtPieStatusMonitor.Columns.Add("countCur", typeof(Int32));
             }
 
-            if(dtPoint.Columns.Count == 0)
+            if(Global.dtPointStatusMonitor.Columns.Count == 0)
             {
-                dtPoint.Columns.Add("weightSection", typeof(Int32));        //重量区间
-                dtPoint.Columns.Add("countInSection", typeof(Int32));       //计数区间
+                Global.dtPointStatusMonitor.Columns.Add("weightSection", typeof(Int32));        //重量区间
+                Global.dtPointStatusMonitor.Columns.Add("countInSection", typeof(Int32));       //计数区间
             }
         }
 
         //绑定折线图数据源，以及图表相关设置
         private void bindLineData()
         {
-            this.chartControl_line.Series[0].DataSource = dtLine;      //绑定Datatable
+            this.chartControl_line.Series[0].DataSource = Global.dtLineStatusMonitor;      //绑定Datatable
             this.chartControl_line.Series[0].ArgumentScaleType = ScaleType.Numerical;   //设定Argument的类型
             this.chartControl_line.Series[0].ArgumentDataMember = "countDetection";       //设定Argument的字段名
             this.chartControl_line.Series[0].ValueScaleType = ScaleType.Numerical;  //设定Value的类型
@@ -204,7 +202,7 @@ namespace CheckWeighterInterface.StatusMonitor
         //绑定饼图数据源，以及图表相关设置
         private void bindPieData()
         {
-            this.chartControl_pie.Series[0].DataSource = dtPie;
+            this.chartControl_pie.Series[0].DataSource = Global.dtPieStatusMonitor;
             this.chartControl_pie.Series[0].ArgumentDataMember = "status";
             this.chartControl_pie.Series[0].ArgumentScaleType = ScaleType.Auto;
             this.chartControl_pie.Series[0].ValueDataMembers.AddRange(new string[] { "countCur" });
@@ -215,7 +213,7 @@ namespace CheckWeighterInterface.StatusMonitor
         //绑定点图数据源，以及图表相关设置
         private void bindPointData()
         {
-            this.chartControl_point.Series[0].DataSource = dtPoint;
+            this.chartControl_point.Series[0].DataSource = Global.dtPointStatusMonitor;
             this.chartControl_point.Series[0].ArgumentScaleType = ScaleType.Auto;
             this.chartControl_point.Series[0].ArgumentDataMember = "weightSection";
             this.chartControl_point.Series[0].ValueScaleType = ScaleType.Numerical;
@@ -308,22 +306,22 @@ namespace CheckWeighterInterface.StatusMonitor
             //点总数未到200时直接添加，超过200时添加一个点：删掉原有第1行，在最后添加一行
             if(Global.curStatus.countDetection <= 200)
             {
-                DataRow drCurWeight = dtLine.NewRow();
+                DataRow drCurWeight = Global.dtLineStatusMonitor.NewRow();
                 drCurWeight["countDetection"] = Global.curStatus.countDetection;
                 drCurWeight["currentWeight"] = Global.curStatus.curWeight;
-                dtLine.Rows.Add(drCurWeight);
+                Global.dtLineStatusMonitor.Rows.Add(drCurWeight);
             }
             else
             {
-                dtLine.Rows.RemoveAt(0);
-                DataRow drCurWeight = dtLine.NewRow();
+                Global.dtLineStatusMonitor.Rows.RemoveAt(0);
+                DataRow drCurWeight = Global.dtLineStatusMonitor.NewRow();
                 drCurWeight["countDetection"] = Global.curStatus.countDetection;
                 drCurWeight["currentWeight"] = Global.curStatus.curWeight;
-                dtLine.Rows.Add(drCurWeight);
+                Global.dtLineStatusMonitor.Rows.Add(drCurWeight);
 
                 for(int i = 0; i < 200; i++)
                 {
-                    dtLine.Rows[i]["countDetection"] = (i + 1).ToString();
+                    Global.dtLineStatusMonitor.Rows[i]["countDetection"] = (i + 1).ToString();
                 }
             }
         }
@@ -331,28 +329,28 @@ namespace CheckWeighterInterface.StatusMonitor
         //刷新Pie图数据源，Pie图绑定数值，自动显示占比
         public void updateChartPieData()
         {
-            if (dtPie.Rows.Count == 0)
+            if (Global.dtPieStatusMonitor.Rows.Count == 0)
             {
-                DataRow drCountUnderWeight = dtPie.NewRow();
+                DataRow drCountUnderWeight = Global.dtPieStatusMonitor.NewRow();
                 drCountUnderWeight["status"] = "欠重";
                 drCountUnderWeight["countCur"] = Global.curStatus.countUnderWeight;
-                dtPie.Rows.Add(drCountUnderWeight);
+                Global.dtPieStatusMonitor.Rows.Add(drCountUnderWeight);
 
-                DataRow drCountOverWeight = dtPie.NewRow();
+                DataRow drCountOverWeight = Global.dtPieStatusMonitor.NewRow();
                 drCountOverWeight["status"] = "超重";
                 drCountOverWeight["countCur"] = Global.curStatus.countOverWeight;
-                dtPie.Rows.Add(drCountOverWeight);
+                Global.dtPieStatusMonitor.Rows.Add(drCountOverWeight);
 
-                DataRow drCountNormal = dtPie.NewRow();
+                DataRow drCountNormal = Global.dtPieStatusMonitor.NewRow();
                 drCountNormal["status"] = "正常";
                 drCountNormal["countCur"] = Global.curStatus.countDetection - Global.curStatus.countOverWeight - Global.curStatus.countUnderWeight;
-                dtPie.Rows.Add(drCountNormal);
+                Global.dtPieStatusMonitor.Rows.Add(drCountNormal);
             }
             else
             {
-                dtPie.Rows[0]["countCur"] = Global.curStatus.countUnderWeight;
-                dtPie.Rows[1]["countCur"] = Global.curStatus.countOverWeight;
-                dtPie.Rows[2]["countCur"] = Global.curStatus.countDetection - Global.curStatus.countOverWeight - Global.curStatus.countUnderWeight;
+                Global.dtPieStatusMonitor.Rows[0]["countCur"] = Global.curStatus.countUnderWeight;
+                Global.dtPieStatusMonitor.Rows[1]["countCur"] = Global.curStatus.countOverWeight;
+                Global.dtPieStatusMonitor.Rows[2]["countCur"] = Global.curStatus.countDetection - Global.curStatus.countOverWeight - Global.curStatus.countUnderWeight;
             }
         }
 
@@ -364,17 +362,17 @@ namespace CheckWeighterInterface.StatusMonitor
             //int weightGram = Convert.ToInt32(Global.curStatus.curWeight);
             if (weightAndIndexGramDtPoint.ContainsKey(weightGram) == false)
             {
-                DataRow dr = dtPoint.NewRow();
+                DataRow dr = Global.dtPointStatusMonitor.NewRow();
                 dr["weightSection"] = weightGram;
                 dr["countInSection"] = 1;
-                dtPoint.Rows.Add(dr);
+                Global.dtPointStatusMonitor.Rows.Add(dr);
                 weightAndIndexGramDtPoint.Add(weightGram, totalDtPoint);
                 totalDtPoint++;
             }
             else
             {
                 indexDtPointTemp = weightAndIndexGramDtPoint[weightGram];
-                dtPoint.Rows[indexDtPointTemp]["countInSection"] = Convert.ToInt32(dtPoint.Rows[indexDtPointTemp]["countInSection"]) + 1;
+                Global.dtPointStatusMonitor.Rows[indexDtPointTemp]["countInSection"] = Convert.ToInt32(Global.dtPointStatusMonitor.Rows[indexDtPointTemp]["countInSection"]) + 1;
             }
         }
 
@@ -475,7 +473,9 @@ namespace CheckWeighterInterface.StatusMonitor
 
         private void labelControl_status_Click(object sender, EventArgs e)
         {
-            this.timer_detectOnce.Enabled = !this.timer_detectOnce.Enabled;
+            //this.timer_detectOnce.Enabled = !this.timer_detectOnce.Enabled;
+            Global.enableRefreshStatusMonitor = !Global.enableRefreshStatusMonitor;
+            Global.enableReFreshRealTimeCurve = !Global.enableReFreshRealTimeCurve;
         }
 
         private void chartControl_line_DoubleClick(object sender, EventArgs e)
