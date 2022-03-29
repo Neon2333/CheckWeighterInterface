@@ -187,13 +187,14 @@ namespace CheckWeighterInterface.SystemTest
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
-
-            
         }
 
         //重置坐标轴WholeRange
         private void simpleButton_resetAxisRange_Click(object sender, EventArgs e)
         {
+            this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
+            this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
+
             //横轴重置为Auto，0~xMax
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.Auto = true;
 
@@ -214,7 +215,6 @@ namespace CheckWeighterInterface.SystemTest
         private void zoomTrackBarControl_xWholeRange_ValueChanged(object sender, EventArgs e)
         {
             double xWholeRangeZoom = (double)(zoomTrackBarControl_xWholeRangeZoom.Value) / 100;
-            //xMinWholeRange = xMinWholeRangeSpin * xWholeRangeZoom;
             xMaxWholeRange = xMinWholeRange + (xMaxWholeRangeSpin - xMinWholeRange) * xWholeRangeZoom;
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
@@ -224,8 +224,7 @@ namespace CheckWeighterInterface.SystemTest
         private void zoomTrackBarControl_yWholeRangeZoom_ValueChanged(object sender, EventArgs e)
         {
             double yWholeRangeZoom = (double)(zoomTrackBarControl_yWholeRangeZoom.Value) / 100;
-            //yMinWholeRange = yMinWholeRangeSpin * yWholeRangeZoom;
-            yMaxWholeRange = (yMaxWholeRangeSpin - yMinWholeRange) * yWholeRangeZoom;
+            yMaxWholeRange = yMinWholeRange + (yMaxWholeRangeSpin - yMinWholeRange) * yWholeRangeZoom;
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
             this.labelControl_yWholeRangeZoom.Text = "× " + yWholeRangeZoom.ToString();
