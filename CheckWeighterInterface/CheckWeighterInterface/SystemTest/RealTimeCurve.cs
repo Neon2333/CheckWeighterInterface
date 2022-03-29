@@ -47,6 +47,7 @@ namespace CheckWeighterInterface.SystemTest
             {
                 updateSensorRealTimeData();
                 updatePeakValleyAvg();
+                updatePeakValleyAvgLabel();
             }
 
         }
@@ -119,6 +120,13 @@ namespace CheckWeighterInterface.SystemTest
             diagram1.AxisY.ConstantLines.Add(clYAvg);
         }
 
+        private void updatePeakValleyAvgLabel()
+        {
+            this.labelControl_peakValueVal.Text = Global.sensorRealTimeDataPeak.ToString("N3");
+            this.labelControl_valleyValueVal.Text = Global.sensorRealTimeDataValley.ToString("N3");
+            this.labelControl_averageValueVal.Text = Global.sensorRealTimeDataAvg.ToString("N3");
+        }
+
         private void timer_getDataOnceFromSensor_Tick(object sender, EventArgs e)
         {
             refreshRealTimeCurve();
@@ -133,45 +141,24 @@ namespace CheckWeighterInterface.SystemTest
             double yMinWholeRange = 0.0D;
             double yMaxWholeRange = 0.0D;
 
-            if (this.textEdit_setXMinVal.Text == "")
+            //xMin==0,xMax==0
+            if (this.spinEdit_setXMinVal.Text == "0" && this.spinEdit_setXMaxVal.Text == "0")
             {
-                xMinWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.MinValue);
-                this.textEdit_setXMinVal.Text = xMinWholeRange.ToString();
-            }
-            else
-            {
-                xMinWholeRange = Convert.ToDouble(this.textEdit_setXMinVal.Text);
+                MessageBox.Show("请输入合法的范围");
+                return;
             }
 
-            if (this.textEdit_setXMaxVal.Text == "")
+            //yMin==0,yMax==0
+            if (this.spinEdit_setYMinVal.Text == "0" && this.spinEdit_setYMinVal.Text == "0")
             {
-                xMaxWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.MaxValue);
-                this.textEdit_setXMaxVal.Text = xMaxWholeRange.ToString();
-            }
-            else
-            {
-                xMaxWholeRange = Convert.ToDouble(this.textEdit_setXMaxVal.Text);
+                MessageBox.Show("请输入合法的范围");
+                return;
             }
 
-            if (this.textEdit_setYMinVal.Text == "")
-            {
-                yMinWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.MinValue);
-                this.textEdit_setYMinVal.Text = yMinWholeRange.ToString();
-            }
-            else
-            {
-                yMinWholeRange = Convert.ToDouble(this.textEdit_setYMinVal.Text);
-            }
-
-            if (this.textEdit_setYMaxVal.Text == "")
-            {
-                yMaxWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.MaxValue);
-                this.textEdit_setYMaxVal.Text = yMaxWholeRange.ToString();
-            }
-            else
-            {
-                yMaxWholeRange = Convert.ToDouble(this.textEdit_setYMaxVal.Text);
-            }
+            xMinWholeRange = Convert.ToDouble(this.spinEdit_setXMinVal.Text);
+            xMaxWholeRange = Convert.ToDouble(this.spinEdit_setXMaxVal.Text);
+            yMinWholeRange = Convert.ToDouble(this.spinEdit_setYMinVal.Text);
+            yMaxWholeRange = Convert.ToDouble(this.spinEdit_setYMaxVal.Text);
 
             if (xMinWholeRange < 0 || xMaxWholeRange <= xMinWholeRange || yMinWholeRange < 0 || yMaxWholeRange <= yMinWholeRange)
             {
@@ -181,6 +168,74 @@ namespace CheckWeighterInterface.SystemTest
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
+
+            /*2个都未输入时报错，只输入一个时使用当前坐标轴的min/max作为未输入的参数的值*/
+            ////xMin==0,xMax==0
+            //if (this.spinEdit_setXMinVal.Text == "0" && this.spinEdit_setXMaxVal.Text == "0")
+            //{
+            //    MessageBox.Show("请输入合法的范围");
+            //    return;
+            //}
+
+            //if (this.spinEdit_setXMinVal.Text == "0")
+            //{
+            //    //xMin==0,xMax!=0
+            //    xMinWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.MinValue);
+            //    this.spinEdit_setXMinVal.Text = xMinWholeRange.ToString();
+
+            //    xMaxWholeRange = Convert.ToDouble(this.spinEdit_setXMaxVal.Text);
+            //}
+            //else
+            //{
+            //    if (this.spinEdit_setXMaxVal.Text == "0")
+            //    {
+            //        //xMin!=0,xMax==0
+            //        xMinWholeRange = Convert.ToDouble(this.spinEdit_setXMinVal.Text);
+
+            //        xMaxWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.MaxValue);
+            //        this.spinEdit_setXMaxVal.Text = xMaxWholeRange.ToString();
+            //    }
+            //    else
+            //    {
+            //        //xMin!=0,xMax!=0
+
+            //        xMinWholeRange = Convert.ToDouble(this.spinEdit_setXMinVal.Text);
+            //        xMaxWholeRange = Convert.ToDouble(this.spinEdit_setXMaxVal.Text);
+            //    }
+            //}
+
+            ////yMin==0,yMax==0
+            //if (this.spinEdit_setYMinVal.Text == "0" && this.spinEdit_setYMaxVal.Text == "0")
+            //{
+            //    MessageBox.Show("请输入合法的范围");
+            //    return;
+            //}
+
+            //if (this.spinEdit_setYMinVal.Text == "0")
+            //{
+            //    //yMin==0,yMax!=0
+            //    yMinWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.MinValue);
+            //    this.spinEdit_setYMinVal.Text = yMinWholeRange.ToString();
+
+            //    yMaxWholeRange = Convert.ToDouble(this.spinEdit_setYMaxVal.Text);
+            //}
+            //else
+            //{
+            //    if (this.spinEdit_setYMaxVal.Text == "0")
+            //    {
+            //        //yMin!=0,yMax==0
+            //        yMinWholeRange = Convert.ToDouble(this.spinEdit_setYMinVal.Text);
+
+            //        yMaxWholeRange = (double)(((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.MaxValue);
+            //        this.spinEdit_setYMaxVal.Text = xMaxWholeRange.ToString();
+            //    }
+            //    else
+            //    {
+            //        //yMin!=0,yMax!=0
+            //        yMinWholeRange = Convert.ToDouble(this.spinEdit_setYMinVal.Text);
+            //        yMaxWholeRange = Convert.ToDouble(this.spinEdit_setYMaxVal.Text);
+            //    }
+            //}
         }
 
         //重置坐标轴WholeRange
@@ -192,11 +247,6 @@ namespace CheckWeighterInterface.SystemTest
             double k = 0.2;
             double delta = Global.sensorRealTimeDataPeak - Global.sensorRealTimeDataValley;
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(Global.sensorRealTimeDataValley - k * delta, Global.sensorRealTimeDataPeak + k * delta);
-
-            this.textEdit_setXMinVal.Text = "";
-            this.textEdit_setXMaxVal.Text = "";
-            this.textEdit_setYMinVal.Text = "";
-            this.textEdit_setYMaxVal.Text = "";
         }
 
         private void zoomTrackBarControl_zoomSensorData_ValueChanged(object sender, EventArgs e)
