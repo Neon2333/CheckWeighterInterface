@@ -15,16 +15,24 @@ namespace CheckWeighterInterface.SystemTest
 {
     public partial class RealTimeCurve : DevExpress.XtraEditors.XtraUserControl
     {
-        //实际坐标轴范围
+        //修改：坐标轴范围WholeRange
         private double xMinWholeRange = 0.0D;
         private double xMaxWholeRange = 0.0D;
         private double yMinWholeRange = 0.0D;
         private double yMaxWholeRange = 0.0D;
-        //spinEdit显示的坐标轴范围
+        //修改：spinEdit显示的坐标轴范围
         private double xMinWholeRangeSpin = 0.0D;
         private double xMaxWholeRangeSpin = 0.0D;
         private double yMinWholeRangeSpin = 0.0D;
         private double yMaxWholeRangeSpin = 0.0D;
+        //坐标轴显示的范围VisualRange
+        private double xMinVisualRange = 0.0D;
+        private double xMaxVisualRange = 0.0D;
+        private double yMinVisualRange = 0.0D;
+        private double yMaxVisualRange = 0.0D;
+
+        private bool flagXVisualRangeZoomModify = false;        //zoomTrackBarControl_xVisualRangeZoom的value是否被修改过
+        private bool flagYVisualRangeZoomModify = false;
 
 
         public RealTimeCurve()
@@ -114,7 +122,9 @@ namespace CheckWeighterInterface.SystemTest
         private void updateConstantPeakValleyAvgLine()
         {
             XYDiagram diagram1 = ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram));
-            diagram1.AxisY.ConstantLines.Clear();
+            diagram1.AxisY.ConstantLines.Clear();   //清除上次绘制曲线
+
+            diagram1.AxisY.ConstantLines.Add(new ConstantLine("Y=0", 0));
 
             ConstantLine clYPeak = new ConstantLine("峰值：" + Global.sensorRealTimeDataPeak.ToString("N3"), Global.sensorRealTimeDataPeak);
             ConstantLine clYAvg = new ConstantLine("平均值：" + Global.sensorRealTimeDataAvg.ToString("N3"), Global.sensorRealTimeDataAvg);
@@ -138,17 +148,11 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_averageValueVal.Text = Global.sensorRealTimeDataAvg.ToString("N3");
         }
 
-        private void timer_getDataOnceFromSensor_Tick(object sender, EventArgs e)
-        {
-            refreshRealTimeCurve();
-        }
-
         //修改坐标轴WholeRange
         private void simpleButton_modifyAxisRange_Click(object sender, EventArgs e)
         {
             int dataLen = Global.dtSensorRealTimeData.Rows.Count;
             
-
             //xMin==0,xMax==0
             if (this.spinEdit_setXMinVal.Text == "0" && this.spinEdit_setXMaxVal.Text == "0")
             {
@@ -157,7 +161,7 @@ namespace CheckWeighterInterface.SystemTest
             }
 
             //yMin==0,yMax==0
-            if (this.spinEdit_setYMinVal.Text == "0" && this.spinEdit_setYMinVal.Text == "0")
+            if (this.spinEdit_setYMinVal.Text == "0" && this.spinEdit_setYMaxVal.Text == "0")
             {
                 MessageBox.Show("请输入合法的范围");
                 return;
@@ -168,7 +172,7 @@ namespace CheckWeighterInterface.SystemTest
             yMinWholeRangeSpin = Convert.ToDouble(this.spinEdit_setYMinVal.Text);
             yMaxWholeRangeSpin = Convert.ToDouble(this.spinEdit_setYMaxVal.Text);
 
-            if (xMinWholeRangeSpin < 0 || xMaxWholeRangeSpin <= xMinWholeRangeSpin || yMinWholeRangeSpin < 0 || yMaxWholeRangeSpin <= yMinWholeRangeSpin)
+            if (xMinWholeRangeSpin < 0 || xMaxWholeRangeSpin <= xMinWholeRangeSpin || yMaxWholeRangeSpin <= yMinWholeRangeSpin)
             {
                 MessageBox.Show("请输入合法的范围");
                 return;
@@ -192,7 +196,9 @@ namespace CheckWeighterInterface.SystemTest
         //重置坐标轴WholeRange
         private void simpleButton_resetAxisRange_Click(object sender, EventArgs e)
         {
+            this.zoomTrackBarControl_xWholeRangeZoom.Value = 100;
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
+            this.zoomTrackBarControl_yWholeRangeZoom.Value = 100;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
 
             //横轴重置为Auto，0~xMax
@@ -205,20 +211,13 @@ namespace CheckWeighterInterface.SystemTest
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(Global.sensorRealTimeDataValley - k * delta, Global.sensorRealTimeDataPeak + k * delta);
         }
 
-        //private void zoomTrackBarControl_zoomSensorData_ValueChanged(object sender, EventArgs e)
-        //{
-        //    XYDiagram diagram1 = ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram));
-        //    diagram1.AxisX.VisualRange.MinValue = (double)diagram1.AxisX.WholeRange.MinValue * (zoomTrackBarControl_zoomSensorData.Value / 100);
-        //    diagram1.AxisX.VisualRange.MaxValue = (double)diagram1.AxisX.WholeRange.MaxValue * (zoomTrackBarControl_zoomSensorData.Value / 100);
-        //}
-
         private void zoomTrackBarControl_xWholeRange_ValueChanged(object sender, EventArgs e)
         {
             double xWholeRangeZoom = (double)(zoomTrackBarControl_xWholeRangeZoom.Value) / 100;
             xMaxWholeRange = xMinWholeRange + (xMaxWholeRangeSpin - xMinWholeRange) * xWholeRangeZoom;
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
-            this.labelControl_xWholeRangeZoom.Text = "× " + xWholeRangeZoom.ToString();
+            this.labelControl_xWholeRangeZoom.Text = "X×" + xWholeRangeZoom.ToString();
         }
 
         private void zoomTrackBarControl_yWholeRangeZoom_ValueChanged(object sender, EventArgs e)
@@ -227,7 +226,7 @@ namespace CheckWeighterInterface.SystemTest
             yMaxWholeRange = yMinWholeRange + (yMaxWholeRangeSpin - yMinWholeRange) * yWholeRangeZoom;
 
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
-            this.labelControl_yWholeRangeZoom.Text = "× " + yWholeRangeZoom.ToString();
+            this.labelControl_yWholeRangeZoom.Text = "Y×" + yWholeRangeZoom.ToString();
         }
 
         private void spinEdit_setXMinVal_ValueChanged(object sender, EventArgs e)
@@ -257,6 +256,69 @@ namespace CheckWeighterInterface.SystemTest
 
         }
 
-       
+        private void zoomTrackBarControl_xVisualRange_ValueChanged(object sender, EventArgs e)
+        {
+            XYDiagram diagram1 = ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram));
+
+            double xMinWholeRangeTemp = (double)diagram1.AxisX.WholeRange.MinValue;
+            double xMaxWholeRangeTemp = (double)diagram1.AxisX.WholeRange.MaxValue;
+
+            if (flagXVisualRangeZoomModify == false)
+            {
+                xMinVisualRange = xMinWholeRangeTemp;
+                xMaxVisualRange = xMaxWholeRangeTemp;
+                flagXVisualRangeZoomModify = true;
+            }
+
+            if (zoomTrackBarControl_xVisualRangeZoom.Value == 1)
+            {
+                //放大倍数为1时，VisualRange==WholeRange
+                xMinVisualRange = xMinWholeRangeTemp;
+                xMaxVisualRange = xMaxWholeRangeTemp;
+            }
+
+            double valueTemp = (double)(zoomTrackBarControl_xVisualRangeZoom.Value);
+            double xVisualRangeZoom = 1.0D / valueTemp;
+            xMinVisualRange = xMinWholeRangeTemp * xVisualRangeZoom;
+            xMaxVisualRange = xMaxWholeRangeTemp * xVisualRangeZoom;
+
+            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.VisualRange.SetMinMaxValues(xMinVisualRange, xMaxVisualRange);
+            this.labelControl_xVisualRangeZoom.Text = "×" + valueTemp.ToString();
+        }
+
+        private void zoomTrackBarControl_yVisualRange_ValueChanged(object sender, EventArgs e)
+        {
+            XYDiagram diagram1 = ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram));
+
+            double yMinWholeRangeTemp = (double)diagram1.AxisY.WholeRange.MinValue;
+            double yMaxWholeRangeTemp = (double)diagram1.AxisY.WholeRange.MaxValue;
+
+            if (flagYVisualRangeZoomModify == false)
+            {
+                xMinVisualRange = yMinWholeRangeTemp;
+                xMaxVisualRange = yMaxWholeRangeTemp;
+                flagYVisualRangeZoomModify = true;
+            }
+
+            if (zoomTrackBarControl_yVisualRangeZoom.Value == 1)
+            {
+                //放大倍数为1时，VisualRange==WholeRange
+                yMinVisualRange = yMinWholeRangeTemp;
+                yMaxVisualRange = yMaxWholeRangeTemp;
+            }
+
+            double valueTemp = (double)(zoomTrackBarControl_yVisualRangeZoom.Value);
+            double yVisualRangeZoom = 1.0D / valueTemp;
+            yMaxVisualRange = yMaxWholeRangeTemp * yVisualRangeZoom;
+
+            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.VisualRange.SetMinMaxValues(yMinVisualRange, yMaxVisualRange);
+            this.labelControl_yVisualRangeZoom.Text = "×" + valueTemp.ToString();
+        }
+
+        private void timer_getDataOnceFromSensor_Tick(object sender, EventArgs e)
+        {
+            refreshRealTimeCurve();
+        }
+
     }
 }
