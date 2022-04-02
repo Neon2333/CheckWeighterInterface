@@ -15,6 +15,9 @@ namespace CheckWeighterInterface.SystemTest
 {
     public partial class RealTimeCurve : DevExpress.XtraEditors.XtraUserControl
     {
+        private CommonControl.NumberKeyboard numberKeyboard1;
+        private CommonControl.InformationBox informationBox1;
+
         //修改：坐标轴范围WholeRange
         private double xMinWholeRange = 0.0D;
         private double xMaxWholeRange = 0.0D;
@@ -25,17 +28,14 @@ namespace CheckWeighterInterface.SystemTest
         private double xMaxWholeRangeSpin = 0.0D;
         private double yMinWholeRangeSpin = 0.0D;
         private double yMaxWholeRangeSpin = 0.0D;
+        enum ModifyAxisRangeType { xMin = 0, xMax = 1, yMin = 2, yMax = 3};
+        int modifyAxisRangeTypeCurrent;     //当前小键盘修改的是哪个spinEdit
         //重置：
         private double yMaxWholeRangeReset = 0.5D;
         //坐标轴范围倍率数组
         private double[] wholeRangeZoomArr = new double[101];
         //坐标轴缩放倍率数组
         private double[] visualRangeZoomArr = new double[101];
-
-
-
-
-
 
         public RealTimeCurve()
         {
@@ -152,23 +152,23 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_averageValueVal.Text = Global.sensorRealTimeDataAvg.ToString("N3");
         }
 
-        //修改坐标轴WholeRange
-        private void simpleButton_modifyAxisRange_Click(object sender, EventArgs e)
+        //设置手动模式
+        private bool setManualMode()
         {
             int dataLen = Global.dtSensorRealTimeData.Rows.Count;
-            
+
             //xMin==0,xMax==0
             if (this.spinEdit_setXMinVal.Text == "0" && this.spinEdit_setXMaxVal.Text == "0")
             {
-                MessageBox.Show("请输入合法的范围");
-                return;
+                Global.showInforMationBox(this, informationBox1, "请输入合法的范围", 337, 100);
+                return false;
             }
 
             //yMin==0,yMax==0
             if (this.spinEdit_setYMinVal.Text == "0" && this.spinEdit_setYMaxVal.Text == "0")
             {
-                MessageBox.Show("请输入合法的范围");
-                return;
+                Global.showInforMationBox(this, informationBox1, "请输入合法的范围", 337, 100);
+                return false;
             }
 
             xMinWholeRangeSpin = Convert.ToDouble(this.spinEdit_setXMinVal.Text);
@@ -176,10 +176,11 @@ namespace CheckWeighterInterface.SystemTest
             yMinWholeRangeSpin = Convert.ToDouble(this.spinEdit_setYMinVal.Text);
             yMaxWholeRangeSpin = Convert.ToDouble(this.spinEdit_setYMaxVal.Text);
 
+            //键盘输入逻辑虽然保证了输入的合法性，但是点击调节spinEdit时的数值合法性无法保证
             if (xMinWholeRangeSpin < 0 || xMaxWholeRangeSpin <= xMinWholeRangeSpin || yMaxWholeRangeSpin <= yMinWholeRangeSpin)
             {
-                MessageBox.Show("请输入合法的范围");
-                return;
+                Global.showInforMationBox(this, informationBox1, "请输入合法的范围", 337, 100);
+                return false;
             }
             else
             {
@@ -203,10 +204,11 @@ namespace CheckWeighterInterface.SystemTest
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.VisualRange.Auto = true;
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.VisualRange.Auto = true;
+            return true;
         }
 
-        //重置坐标轴WholeRange，横轴自动，纵轴留yMaxWholeRangeReset*(min~max)余量
-        private void simpleButton_resetAxisRange_Click(object sender, EventArgs e)
+        //设置自动模式
+        private void setAutoMode()
         {
             this.zoomTrackBarControl_xWholeRangeZoom.Value = 50;
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
@@ -228,33 +230,103 @@ namespace CheckWeighterInterface.SystemTest
             ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.VisualRange.Auto = true;
         }
 
-        private void initWholeRangeZoomArr()
+        //切换模式
+        private void toggleSwitch_changeMode_Toggled(object sender, EventArgs e)
         {
-            for (int i = 1; i < 101; i++)
+            if(!this.toggleSwitch_changeMode.IsOn)
             {
-                wholeRangeZoomArr[i] = ((double)(i << 1) / 100.0D);
+                this.toggleSwitch_changeMode.ForeColor = Color.FromArgb(98, 98, 255);
+                this.simpleButton_modifyAxisRange.Enabled = false;
+                setAutoMode();
             }
-            wholeRangeZoomArr[0] = wholeRangeZoomArr[1];    //倍率为0时无意义，令其同1
+            else
+            {
+                this.toggleSwitch_changeMode.ForeColor = Color.FromArgb(23, 156, 255);
+                if (setManualMode())
+                {
+                    this.simpleButton_modifyAxisRange.Enabled = true;
+                }
+                else
+                {
+                    this.toggleSwitch_changeMode.IsOn = false;
+                }
+            }
         }
 
-        private void zoomTrackBarControl_xWholeRange_ValueChanged(object sender, EventArgs e)
+        //手动模式修改参数
+        private void simpleButton_modifyAxisRange_Click(object sender, EventArgs e)
         {
-            int valueTemp = zoomTrackBarControl_xWholeRangeZoom.Value;
-            double xWholeRangeZoom = wholeRangeZoomArr[valueTemp];
-            xMaxWholeRange = xMinWholeRange + (xMaxWholeRangeSpin - xMinWholeRange) * xWholeRangeZoom;
-
-            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
-            this.labelControl_xWholeRangeZoom.Text = "X×" + xWholeRangeZoom.ToString();
+            setManualMode();
         }
 
-        private void zoomTrackBarControl_yWholeRangeZoom_ValueChanged(object sender, EventArgs e)
+        private void spinEdit_setXMinVal_DoubleClick(object sender, EventArgs e)
         {
-            int valueTemp = zoomTrackBarControl_yWholeRangeZoom.Value;
-            double yWholeRangeZoom = wholeRangeZoomArr[valueTemp];
-            yMaxWholeRange = yMinWholeRange + (yMaxWholeRangeSpin - yMinWholeRange) * yWholeRangeZoom;
+            modifyAxisRangeTypeCurrent = 0;
+            createNumberKeyboard("设定横轴范围最小值", -999999.0D, Convert.ToDouble(this.spinEdit_setXMaxVal.Text));
+            this.numberKeyboard1.Visible = true;
+        }
 
-            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
-            this.labelControl_yWholeRangeZoom.Text = "Y×" + yWholeRangeZoom.ToString();
+        private void spinEdit_setXMaxVal_DoubleClick(object sender, EventArgs e)
+        {
+            modifyAxisRangeTypeCurrent = 1;
+            createNumberKeyboard("设定横轴范围最大值", Convert.ToDouble(this.spinEdit_setXMinVal.Text), 999999.0D);
+            this.numberKeyboard1.Visible = true;
+        }
+
+        private void spinEdit_setYMinVal_DoubleClick(object sender, EventArgs e)
+        {
+            modifyAxisRangeTypeCurrent = 2;
+            createNumberKeyboard("设定纵轴范围最小值", -999999.0D, Convert.ToDouble(this.spinEdit_setYMaxVal.Text));
+            this.numberKeyboard1.Visible = true;
+        }
+
+        private void spinEdit_setYMaxVal_DoubleClick(object sender, EventArgs e)
+        {
+            modifyAxisRangeTypeCurrent = 3;
+            createNumberKeyboard("设定纵轴范围最大值", Convert.ToDouble(this.spinEdit_setYMinVal.Text), 999999.0D);
+            this.numberKeyboard1.Visible = true;
+        }
+
+        //小键盘刷新(重新创建对象)
+        private void createNumberKeyboard(string title, double min, double max)
+        {
+            if (this.numberKeyboard1 != null)
+            {
+                this.numberKeyboard1.Visible = false;
+            }
+            this.numberKeyboard1 = new CommonControl.NumberKeyboard(min, max);
+            this.numberKeyboard1.Appearance.BackColor = System.Drawing.Color.White;
+            this.numberKeyboard1.Appearance.Options.UseBackColor = true;
+            this.numberKeyboard1.Location = new System.Drawing.Point(276, 3);
+            this.numberKeyboard1.Name = "numberKeyboard1";
+            this.numberKeyboard1.Size = new System.Drawing.Size(350, 600);
+            this.numberKeyboard1.TabIndex = 28;
+            this.numberKeyboard1.title = title;
+            this.numberKeyboard1.outOfRangeType = CommonControl.NumberKeyboard.OutOfRangeType.minMaxIllegal;    //设定输入值取最值非法
+            this.Controls.Add(this.numberKeyboard1);
+            this.numberKeyboard1.BringToFront();
+            this.numberKeyboard1.Visible = false;
+            this.numberKeyboard1.NumberKeyboardEnterClicked += new CheckWeighterInterface.CommonControl.NumberKeyboard.SimpleButtonEnterClickHanlder(this.numberKeyboard1_NumberKeyboardEnterClicked);
+        }
+
+        //小键盘Enter响应
+        private void numberKeyboard1_NumberKeyboardEnterClicked(object sender, EventArgs e)
+        {
+            switch (modifyAxisRangeTypeCurrent)
+            {
+                case 0:
+                    this.spinEdit_setXMinVal.Text = this.numberKeyboard1.result.ToString();
+                    break;
+                case 1:
+                    this.spinEdit_setXMaxVal.Text = this.numberKeyboard1.result.ToString();
+                    break;
+                case 2:
+                    this.spinEdit_setYMinVal.Text = this.numberKeyboard1.result.ToString();
+                    break;
+                case 3:
+                    this.spinEdit_setYMaxVal.Text = this.numberKeyboard1.result.ToString();
+                    break;
+            }
         }
 
         private void spinEdit_setXMinVal_ValueChanged(object sender, EventArgs e)
@@ -287,6 +359,35 @@ namespace CheckWeighterInterface.SystemTest
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
             this.zoomTrackBarControl_yVisualRangeZoom.Enabled = false;
+        }
+
+        private void initWholeRangeZoomArr()
+        {
+            for (int i = 1; i < 101; i++)
+            {
+                wholeRangeZoomArr[i] = ((double)(i << 1) / 100.0D);
+            }
+            wholeRangeZoomArr[0] = wholeRangeZoomArr[1];    //倍率为0时无意义，令其同1
+        }
+
+        private void zoomTrackBarControl_xWholeRange_ValueChanged(object sender, EventArgs e)
+        {
+            int valueTemp = zoomTrackBarControl_xWholeRangeZoom.Value;
+            double xWholeRangeZoom = wholeRangeZoomArr[valueTemp];
+            xMaxWholeRange = xMinWholeRange + (xMaxWholeRangeSpin - xMinWholeRange) * xWholeRangeZoom;
+
+            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisX.WholeRange.SetMinMaxValues(xMinWholeRange, xMaxWholeRange);
+            this.labelControl_xWholeRangeZoom.Text = "X×" + xWholeRangeZoom.ToString();
+        }
+
+        private void zoomTrackBarControl_yWholeRangeZoom_ValueChanged(object sender, EventArgs e)
+        {
+            int valueTemp = zoomTrackBarControl_yWholeRangeZoom.Value;
+            double yWholeRangeZoom = wholeRangeZoomArr[valueTemp];
+            yMaxWholeRange = yMinWholeRange + (yMaxWholeRangeSpin - yMinWholeRange) * yWholeRangeZoom;
+
+            ((XYDiagram)(chartControl_weighterSensorRealTimeData.Diagram)).AxisY.WholeRange.SetMinMaxValues(yMinWholeRange, yMaxWholeRange);
+            this.labelControl_yWholeRangeZoom.Text = "Y×" + yWholeRangeZoom.ToString();
         }
 
         //初始化坐标轴缩放时的倍率数组，避免实时计算提高速度
@@ -357,6 +458,8 @@ namespace CheckWeighterInterface.SystemTest
         {
             refreshRealTimeCurve();
         }
+
+        
 
     }
 }

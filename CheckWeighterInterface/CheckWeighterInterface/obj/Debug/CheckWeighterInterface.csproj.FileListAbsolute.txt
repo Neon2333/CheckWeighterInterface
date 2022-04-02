@@ -395,3 +395,4 @@ D:\WorkSpace\EI41\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInt
 D:\WorkSpace\EI41\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.csproj.CopyComplete
 D:\WorkSpace\EI41\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.exe
 D:\WorkSpace\EI41\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.pdb
+D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.CommonControl.NumberKeyboard.resources

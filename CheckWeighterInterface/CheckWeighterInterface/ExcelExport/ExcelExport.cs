@@ -25,7 +25,7 @@ namespace CheckWeighterInterface.ExcelExport
 {
     public partial class ExcelExport : DevExpress.XtraEditors.XtraUserControl
     {
-        private CommonControl.ConfirmationBox confirmationBox_invalidTime;
+        private CommonControl.InformationBox informationBox1;
         
         int exportExcelFileNameIndex = 1;
 
@@ -498,41 +498,13 @@ namespace CheckWeighterInterface.ExcelExport
                 wk.Write(filestream);   //通过流filestream将表wk写入文件
                 filestream.Close(); //关闭文件流filestream
                 wk.Close(); //关闭Excel表对象wk
-                showCloseConfirmBox("Excel导出成功..", "info");
+                Global.showInforMationBox(this, informationBox1, "Excel导出成功...", 337, 100);
             }
             else if (drs == DialogResult.Cancel)
             {
                 folderDlg.Dispose();
             }
 
-        }
-
-        private void showCloseConfirmBox(string title, string typeConfirmationBox)
-        {
-            if (this.confirmationBox_invalidTime != null)
-                this.confirmationBox_invalidTime.Dispose();
-
-            this.confirmationBox_invalidTime = new CommonControl.ConfirmationBox();
-            this.confirmationBox_invalidTime.Appearance.BackColor = System.Drawing.Color.White;
-            this.confirmationBox_invalidTime.Appearance.Options.UseBackColor = true;
-            this.confirmationBox_invalidTime.Name = "confirmationBox_invalidTime";
-            this.confirmationBox_invalidTime.Size = new System.Drawing.Size(350, 150);
-            this.confirmationBox_invalidTime.Location = new Point(337, 100);
-            this.confirmationBox_invalidTime.TabIndex = 29;
-            this.confirmationBox_invalidTime.titleConfirmationBox = title;
-            this.confirmationBox_invalidTime.ConfirmationBoxOKClicked += new CommonControl.ConfirmationBox.SimpleButtonOKClickHanlder(this.confirmationBox_applicationRestart_closeOK);
-            this.confirmationBox_invalidTime.ConfirmationBoxCancelClicked += new CommonControl.ConfirmationBox.SimpleButtonCancelClickHanlder(this.confirmationBox_applicationRestart_closeCancel);
-            this.Controls.Add(this.confirmationBox_invalidTime);
-            this.confirmationBox_invalidTime.Visible = true;
-            this.confirmationBox_invalidTime.BringToFront();
-        }
-
-        private void confirmationBox_applicationRestart_closeOK(object sender, EventArgs e)
-        {
-        }
-
-        private void confirmationBox_applicationRestart_closeCancel(object sender, EventArgs e)
-        {
         }
 
         private void simpleButton_startTimeModify_Click(object sender, EventArgs e)
@@ -577,7 +549,8 @@ namespace CheckWeighterInterface.ExcelExport
         {
             if (_timeInterValIllegal() == true)
             {
-                showCloseConfirmBox("无效时间区间，请重新选择...", "info");
+                //showInforMationBox("无效时间区间，请重新选择...");
+                Global.showInforMationBox(this, informationBox1, "无效时间区间，请重新选择...", 337, 100);
             }
             else
             {
@@ -596,8 +569,10 @@ namespace CheckWeighterInterface.ExcelExport
             }
             else
             {
-                showCloseConfirmBox("请至少勾选一项需要导出的数据类型..", "info");
+                //showInforMationBox("请至少勾选一项数据类型...");
+                Global.showInforMationBox(this, informationBox1, "请至少勾选一项数据类型...", 337, 100);
             }
         }
+
     }
 }

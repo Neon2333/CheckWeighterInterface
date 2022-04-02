@@ -122,6 +122,12 @@
     <Compile Include="CommonControl\InformationBox.designer.cs">
       <DependentUpon>InformationBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommonControl\NumberKeyboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommonControl\NumberKeyboard.designer.cs">
+      <DependentUpon>NumberKeyboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAnalysis\DataAnalysis.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CommonControl\InformationBox.resx">
       <DependentUpon>InformationBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControl\NumberKeyboard.resx">
+      <DependentUpon>NumberKeyboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAnalysis\DataAnalysis.resx">
       <DependentUpon>DataAnalysis.cs</DependentUpon>

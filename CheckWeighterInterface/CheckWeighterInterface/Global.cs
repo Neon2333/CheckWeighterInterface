@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,10 @@ namespace CheckWeighterInterface
 {
     class Global
     {
+        /******************************************************系统设置*********************************************************************/
         public static MySQL.MySQLHelper mysqlHelper1 = new MySQL.MySQLHelper("localhost", "check_weighter_data_analysis", "root", "ei41");
+
+
 
         //public delegate void BrandChangedReinit(object sender, EventArgs e);
         //public static event BrandChangedReinit brandChangedReInitStatusMonitor;
@@ -18,6 +23,8 @@ namespace CheckWeighterInterface
         //public static event BrandChangedReinit brandChangedReInitFrequencyDomainAnalysis;
         //public static event BrandChangedReinit brandChangedReInitExcelExport;
         //public static event BrandChangedReinit brandChangedReInitSystemConfig;
+
+        /******************************************************全局参数********************************************************************/
 
         //状态参数
         public struct Status{
@@ -37,6 +44,11 @@ namespace CheckWeighterInterface
         public static double underWeightThreshold;         //欠重阈值（设定值为初始值）
         public static double overWeightThreshold;          //超重阈值（设定值为初始值）
 
+
+
+        /******************************************************全局方法************************************************************************/
+        
+        //初始化数据库
         public static void initMySQL()
         {
             if (!mysqlHelper1._connectMySQL())
@@ -60,6 +72,7 @@ namespace CheckWeighterInterface
             Global.mysqlHelper1._queryTableMySQL(cmdQueryLineHistoryMySQL, ref dt);
         }
 
+        //DataTable序号重排
         public static void reorderDt(ref DataTable dt, string colNOName)
         {
             int lenDt = dt.Rows.Count;
@@ -68,6 +81,27 @@ namespace CheckWeighterInterface
                 dt.Rows[i][colNOName] = (i + 1).ToString();
             }
         }
+
+        //显示informationBox
+        public static void showInforMationBox(XtraUserControl xx, CommonControl.InformationBox informationBox, string title, int locX, int locY)
+        {
+            if (informationBox != null)
+                informationBox.Dispose();
+
+            informationBox = new CommonControl.InformationBox();
+            informationBox.Appearance.BackColor = System.Drawing.Color.White;
+            informationBox.Appearance.Options.UseBackColor = true;
+            informationBox.Name = "confirmationBox_invalidTime";
+            informationBox.Size = new System.Drawing.Size(350, 150);
+            informationBox.Location = new Point(locX, locY);
+            informationBox.TabIndex = 29;
+            informationBox.infoTitle = title;
+            xx.Controls.Add(informationBox);
+            informationBox.Visible = true;
+            informationBox.BringToFront();
+        }
+
+        /******************************************************每个页面***************************************************************************/
 
         //StatusMonitor
         public static bool enableRefreshStatusMonitor = true;                              //StatusMonitor页面刷新使能标志
