@@ -54,7 +54,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileViewColumn_Status = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_DateTime = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.panelControl_brandListLeft = new DevExpress.XtraEditors.PanelControl();
-            this.brandInfoBox1 = new CheckWeighterInterface.SystemManagement.BrandInfoBox();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
             this.labelControl_curBrand = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton_copyBrand = new DevExpress.XtraEditors.SimpleButton();
@@ -122,7 +121,6 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             // panelControl_brandListLeft
             // 
-            this.panelControl_brandListLeft.Controls.Add(this.brandInfoBox1);
             this.panelControl_brandListLeft.Controls.Add(this.separatorControl1);
             this.panelControl_brandListLeft.Controls.Add(this.labelControl_curBrand);
             this.panelControl_brandListLeft.Controls.Add(this.simpleButton_copyBrand);
@@ -133,22 +131,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.panelControl_brandListLeft.Name = "panelControl_brandListLeft";
             this.panelControl_brandListLeft.Size = new System.Drawing.Size(298, 611);
             this.panelControl_brandListLeft.TabIndex = 0;
-            // 
-            // brandInfoBox1
-            // 
-            this.brandInfoBox1.Appearance.BackColor = System.Drawing.Color.White;
-            this.brandInfoBox1.Appearance.Options.UseBackColor = true;
-            this.brandInfoBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.brandInfoBox1.brandName = "";
-            this.brandInfoBox1.Location = new System.Drawing.Point(3, 336);
-            this.brandInfoBox1.Name = "brandInfoBox1";
-            this.brandInfoBox1.Size = new System.Drawing.Size(292, 270);
-            this.brandInfoBox1.standardWeight = "";
-            this.brandInfoBox1.TabIndex = 29;
-            this.brandInfoBox1.title = "";
-            this.brandInfoBox1.Visible = false;
-            this.brandInfoBox1.weightLowerLimit = "";
-            this.brandInfoBox1.weightUpperLimit = "";
             // 
             // separatorControl1
             // 
@@ -543,6 +525,5 @@ namespace CheckWeighterInterface.SystemManagement
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn_Status;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn_DateTime;
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
-        private BrandInfoBox brandInfoBox1;
     }
 }

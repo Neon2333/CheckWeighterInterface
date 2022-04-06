@@ -34,9 +34,11 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             // labelControl1
             // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(251, 146);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(48, 14);
+            this.labelControl1.Size = new System.Drawing.Size(84, 28);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "标定校正";
             // 

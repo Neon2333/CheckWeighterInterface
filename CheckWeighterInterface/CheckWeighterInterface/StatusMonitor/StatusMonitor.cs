@@ -30,7 +30,6 @@ namespace CheckWeighterInterface.StatusMonitor
         public Int32 minPointXLeft = 9;     
         public Int32 minPointXRight = 13;
 
-
         //散点图横轴分辨率档位
         private Int32[] intervalAxisXPoint = {10, 20, 50, 100};     //散点图横轴分辨率
         private Int32 gearIntervalAxisXPoint = 0;                    //散点图横轴档位
@@ -368,6 +367,11 @@ namespace CheckWeighterInterface.StatusMonitor
                 Global.dtPointStatusMonitor.Rows.Add(dr);
                 weightAndIndexGramDtPoint.Add(weightGram, totalDtPoint);
                 totalDtPoint++;
+                
+                //if(weightGram == minPointXLeft * 1000)
+                //{
+
+                //}
             }
             else
             {

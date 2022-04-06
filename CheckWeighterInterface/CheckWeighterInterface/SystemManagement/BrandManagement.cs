@@ -13,6 +13,8 @@ namespace CheckWeighterInterface.SystemManagement
 {
     public partial class BrandManagement : DevExpress.XtraEditors.XtraUserControl
     {
+        private BrandInfoBox brandInfoBox1;
+
         public delegate void BrandChangedReinit(object sender, EventArgs e);
         public static event BrandChangedReinit brandChangedReInitStatusMonitor;
         public static event BrandChangedReinit brandChangedReInitTimeDomainAnalysis;
@@ -43,15 +45,16 @@ namespace CheckWeighterInterface.SystemManagement
         public BrandManagement()
         {
             InitializeComponent();
-            initSystemConfig();
+            initBrandManagement();
         }
         //private void reInitSystemConfig(object sender, EventArgs e)
         //{
         //    initSystemConfig();
         //}
 
-        private void initSystemConfig()
+        private void initBrandManagement()
         {
+            initBrandInfoBox();
             initDtBrand();
             bindDtBrand();
 
@@ -66,6 +69,26 @@ namespace CheckWeighterInterface.SystemManagement
             //brandChangedReInitSystemConfig += reInitSystemConfig;
         }
 
+        private void initBrandInfoBox()
+        {
+            this.brandInfoBox1 = new CheckWeighterInterface.SystemManagement.BrandInfoBox();
+           
+            this.brandInfoBox1.Appearance.BackColor = System.Drawing.Color.White;
+            this.brandInfoBox1.Appearance.Options.UseBackColor = true;
+            this.brandInfoBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.brandInfoBox1.brandName = "";
+            this.brandInfoBox1.Location = new System.Drawing.Point(3, 336);
+            this.brandInfoBox1.Name = "brandInfoBox1";
+            this.brandInfoBox1.Size = new System.Drawing.Size(292, 270);
+            this.brandInfoBox1.standardWeight = "";
+            this.brandInfoBox1.TabIndex = 29;
+            this.brandInfoBox1.title = "";
+            this.brandInfoBox1.Visible = false;
+            this.brandInfoBox1.weightLowerLimit = "";
+            this.brandInfoBox1.weightUpperLimit = "";
+
+            this.panelControl_brandListLeft.Controls.Add(this.brandInfoBox1);
+        }
 
         private void initDtBrand()
         {
