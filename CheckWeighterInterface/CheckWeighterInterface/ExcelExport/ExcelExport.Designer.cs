@@ -415,7 +415,7 @@ namespace CheckWeighterInterface.ExcelExport
             this.gridControl_weightList.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_weightList.MainView = this.tileView1;
             this.gridControl_weightList.Name = "gridControl_weightList";
-            this.gridControl_weightList.Size = new System.Drawing.Size(708, 523);
+            this.gridControl_weightList.Size = new System.Drawing.Size(708, 525);
             this.gridControl_weightList.TabIndex = 20;
             this.gridControl_weightList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});

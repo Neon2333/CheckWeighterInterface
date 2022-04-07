@@ -395,3 +395,4 @@ D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterfac
 D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.csproj.CoreCompileInputs.cache
 D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.exe
 D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.pdb
+D:\WorkSpace\CheckWeighterInterface\CheckWeighterInterface\CheckWeighterInterface\obj\Debug\CheckWeighterInterface.csproj.AssemblyReference.cache

@@ -28,8 +28,8 @@ namespace CheckWeighterInterface.SystemTest
         private double xMaxWholeRangeSpin = 0.0D;
         private double yMinWholeRangeSpin = 0.0D;
         private double yMaxWholeRangeSpin = 0.0D;
-        enum ModifyAxisRangeType { xMin = 0, xMax = 1, yMin = 2, yMax = 3};
-        int modifyAxisRangeTypeCurrent;     //当前小键盘修改的是哪个spinEdit
+        private enum ModifyAxisRangeType { xMin = 0, xMax = 1, yMin = 2, yMax = 3};
+        private int modifyAxisRangeTypeCurrent;     //当前小键盘修改的是哪个spinEdit
         //重置：
         private double yMaxWholeRangeReset = 0.5D;
         //坐标轴范围倍率数组

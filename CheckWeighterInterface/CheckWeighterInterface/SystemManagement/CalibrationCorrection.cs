@@ -13,9 +13,202 @@ namespace CheckWeighterInterface.SystemManagement
 {
     public partial class CalibrationCorrection : DevExpress.XtraEditors.XtraUserControl
     {
+        private int[] selectRowCurrentGridControl = { 0 };      //记录GridControl被选中的行的index
+        
+        private CommonControl.NumberKeyboard numberKeyboard1;
+        
+        private int calibrationSectionCount = 0;    //标定段数
+
+        private enum CalibrationMode { singleSectionCalibration = 0, multiSectionCalibration};         
+        private CalibrationMode curCalibrationMode = CalibrationMode.singleSectionCalibration;         //标定模式，默认：单段
+
+        private DataTable dtCalibrationDataSensorValAndWeight = new DataTable("calibrationData");     
+        private double[] calibrationDataGradient;    //标定数据列表：各段斜率
+
+        private enum ModifySensorValueOrCalibrationWeight { curModifySensorValue = 0, curModifyCalibrationWeight};     
+        private ModifySensorValueOrCalibrationWeight curModifyValueType;        //数字小键盘当前修改的是哪个参数     
+
+
         public CalibrationCorrection()
         {
             InitializeComponent();
+            initCalibrationCorrection();
+        }
+
+        private void initCalibrationCorrection()
+        {
+            //初始化为单段模式
+            if(dtCalibrationDataSensorValAndWeight.Columns.Count == 0)
+            {
+                dtCalibrationDataSensorValAndWeight.Columns.Add("NO", typeof(Int16));
+                dtCalibrationDataSensorValAndWeight.Columns.Add("sensorValue", typeof(Int64));
+                dtCalibrationDataSensorValAndWeight.Columns.Add("calibrationWeight", typeof(double));
+            }
+            DataRow dr1 = dtCalibrationDataSensorValAndWeight.NewRow();
+            dr1["NO"] = 1;
+            dr1["sensorValue"] = 0;
+            dr1["calibrationWeight"] = 0.0D;
+            dtCalibrationDataSensorValAndWeight.Rows.Add(dr1);
+            DataRow dr2 = dtCalibrationDataSensorValAndWeight.NewRow();
+            dr2["NO"] = 2;
+            dr2["sensorValue"] = 0;
+            dr2["calibrationWeight"] = 0.0D;
+            dtCalibrationDataSensorValAndWeight.Rows.Add(dr2);
+
+            calibrationDataGradient = new double[1];
+
+            this.gridControl_calibrationDataList.DataSource = dtCalibrationDataSensorValAndWeight;
+        }
+
+        //
+        private void allocateCapacityCalibrationData(int countSection)
+        {
+            dtCalibrationDataSensorValAndWeight.Rows.Clear();
+            //端点数=段数+1
+            for(int i = 0; i < countSection + 1; i++)
+            {
+                DataRow dr = dtCalibrationDataSensorValAndWeight.NewRow();
+                dr["NO"] = i + 1;
+                dr["sensorValue"] = 0;
+                dr["calibrationWeight"] = 0.0D;
+                dtCalibrationDataSensorValAndWeight.Rows.Add(dr);
+            }
+        }
+
+        //在DataSource刷新的情况下，保持GridControl选中行不变
+        private void keepSelectRowUnchangeWhenDataSourceRefresh()
+        {
+            if (selectRowCurrentGridControl.Length == 1)
+            {
+                if (selectRowCurrentGridControl[0] < this.tileView1.DataRowCount)
+                    this.tileView1.FocusedRowHandle = selectRowCurrentGridControl[0];     //在DataSource发生改变后，手动修改被选中的row
+                else
+                {
+                    this.tileView1.FocusedRowHandle = 0;
+                    selectRowCurrentGridControl[0] = 0;
+                }
+            }
+        }
+
+        //修改模式
+        private void toggleSwitch_changeCalibrationMode_Toggled(object sender, EventArgs e)
+        {
+            if (this.toggleSwitch_changeCalibrationMode.IsOn == false)
+            {
+                //单段模式
+                curCalibrationMode = CalibrationMode.singleSectionCalibration;
+                this.labelControl_calibrationMode2.Text = "单段模式";
+
+                this.spinEdit_countSection.Properties.MinValue = 1;
+                this.spinEdit_countSection.Value = 1;   //触发spinEdit_countCalibrationSection_ValueChanged，修改calibrationSectionCount
+                allocateCapacityCalibrationData(calibrationSectionCount);       //段数修改，则grid行数修改
+                this.spinEdit_countSection.Enabled = false; 
+                this.simpleButton_confirmCountSection.Enabled = false;
+                this.simpleButton_changeSensorValue.Enabled = true;
+                this.simpleButton_doCalibration.Enabled = true;
+            }
+            else
+            {
+                //多段模式
+                curCalibrationMode = CalibrationMode.multiSectionCalibration;
+                this.labelControl_calibrationMode2.Text = "多段模式";
+
+                this.spinEdit_countSection.Properties.MinValue = 2;
+                this.spinEdit_countSection.Value = 2;
+                allocateCapacityCalibrationData(calibrationSectionCount);
+                this.spinEdit_countSection.Enabled = true;
+                this.simpleButton_confirmCountSection.Enabled = true;
+                this.simpleButton_changeSensorValue.Enabled = true;
+                this.simpleButton_doCalibration.Enabled = true;
+            }
+        }
+        
+        private void spinEdit_countCalibrationSection_ValueChanged(object sender, EventArgs e)
+        {
+            int spinValTemp = Convert.ToInt32(this.spinEdit_countSection.Value);
+            calibrationSectionCount = spinValTemp;
+        }
+
+        //确认修改段数
+        private void simpleButton_confirmCountSection_Click(object sender, EventArgs e)
+        {
+            allocateCapacityCalibrationData(calibrationSectionCount);     
+        }
+
+    
+
+        //修改标定值
+        private void simpleButton_changeSensorValue_Click(object sender, EventArgs e)
+        {
+            if(dtCalibrationDataSensorValAndWeight.Rows.Count != 0)
+            {
+                curModifyValueType = ModifySensorValueOrCalibrationWeight.curModifySensorValue;
+                createNumberKeyboard("输入传感器值", -999999.0D, 999999.0D);
+                this.numberKeyboard1.Visible = true;
+            }
+        }
+
+        private void simpleButton_changeCalibrationWeight_Click(object sender, EventArgs e)
+        {
+            if (dtCalibrationDataSensorValAndWeight.Rows.Count != 0)
+            {
+                curModifyValueType = ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight;
+                createNumberKeyboard("输入传感器值", -999999.0D, 999999.0D);
+                this.numberKeyboard1.Visible = true;
+            }
+
+        }
+
+        //标定
+        private void simpleButton_doCalibration_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //创建数字小键盘对象
+        private void createNumberKeyboard(string title, double min, double max)
+        {
+            if (this.numberKeyboard1 != null)
+            {
+                this.numberKeyboard1.Visible = false;
+            }
+            this.numberKeyboard1 = new CommonControl.NumberKeyboard(min, max);
+            this.numberKeyboard1.Appearance.BackColor = System.Drawing.Color.White;
+            this.numberKeyboard1.Appearance.Options.UseBackColor = true;
+            this.numberKeyboard1.Location = new System.Drawing.Point(310, 3);
+            this.numberKeyboard1.Name = "numberKeyboard1";
+            this.numberKeyboard1.Size = new System.Drawing.Size(350, 600);
+            this.numberKeyboard1.TabIndex = 28;
+            this.numberKeyboard1.title = title;
+            this.numberKeyboard1.outOfRangeType = CommonControl.NumberKeyboard.OutOfRangeType.minMaxIllegal;    //设定输入值取最值非法
+            this.Controls.Add(this.numberKeyboard1);
+            this.numberKeyboard1.BringToFront();
+            this.numberKeyboard1.Visible = false;
+            this.numberKeyboard1.NumberKeyboardEnterClicked += new CheckWeighterInterface.CommonControl.NumberKeyboard.SimpleButtonEnterClickHanlder(this.numberKeyboard1_NumberKeyboardEnterClicked);
+        }
+
+        //小键盘Enter响应
+        private void numberKeyboard1_NumberKeyboardEnterClicked(object sender, EventArgs e)
+        {
+            int selIndexTemp = selectRowCurrentGridControl[0];
+            if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
+            {
+                dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = Convert.ToInt64(this.numberKeyboard1.result);
+            }
+            else if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
+            {
+                dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
+            }
+        }
+
+        private void gridControl_calibrationDataList_Click(object sender, EventArgs e)
+        {
+            if (((DataTable)this.gridControl_calibrationDataList.DataSource).Rows.Count > 0)
+                selectRowCurrentGridControl = this.tileView1.GetSelectedRows();  //手动记录被按下按钮
+            if (selectRowCurrentGridControl.Length > 1)
+            {
+                MessageBox.Show("当前选中超过一行");
+            }
         }
     }
 }

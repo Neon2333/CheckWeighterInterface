@@ -367,11 +367,6 @@ namespace CheckWeighterInterface.StatusMonitor
                 Global.dtPointStatusMonitor.Rows.Add(dr);
                 weightAndIndexGramDtPoint.Add(weightGram, totalDtPoint);
                 totalDtPoint++;
-                
-                //if(weightGram == minPointXLeft * 1000)
-                //{
-
-                //}
             }
             else
             {
