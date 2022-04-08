@@ -153,12 +153,6 @@
       <DependentUpon>ExcelExport.cs</DependentUpon>
     </Compile>
     <Compile Include="FilteringAlgorithm.cs" />
-    <Compile Include="FreshData_Timer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FreshData_Timer.Designer.cs">
-      <DependentUpon>FreshData_Timer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

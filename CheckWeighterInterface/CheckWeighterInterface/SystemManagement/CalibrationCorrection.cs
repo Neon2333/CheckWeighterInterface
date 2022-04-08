@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.XtraCharts;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,13 +18,12 @@ namespace CheckWeighterInterface.SystemManagement
         
         private CommonControl.NumberKeyboard numberKeyboard1;
         
-        private int calibrationSectionCount = 0;    //标定段数
+        private int calibrationSectionCount = 1;    //标定段数
 
         private enum CalibrationMode { singleSectionCalibration = 0, multiSectionCalibration};         
         private CalibrationMode curCalibrationMode = CalibrationMode.singleSectionCalibration;         //标定模式，默认：单段
 
-        private DataTable dtCalibrationDataSensorValAndWeight = new DataTable("calibrationData");     
-        private double[] calibrationDataGradient;    //标定数据列表：各段斜率
+        private DataTable dtCalibrationDataSensorValAndWeight = new DataTable("calibrationData");      //各端点的传感器值和重量
 
         private enum ModifySensorValueOrCalibrationWeight { curModifySensorValue = 0, curModifyCalibrationWeight};     
         private ModifySensorValueOrCalibrationWeight curModifyValueType;        //数字小键盘当前修改的是哪个参数     
@@ -41,7 +41,7 @@ namespace CheckWeighterInterface.SystemManagement
             if(dtCalibrationDataSensorValAndWeight.Columns.Count == 0)
             {
                 dtCalibrationDataSensorValAndWeight.Columns.Add("NO", typeof(Int16));
-                dtCalibrationDataSensorValAndWeight.Columns.Add("sensorValue", typeof(Int64));
+                dtCalibrationDataSensorValAndWeight.Columns.Add("sensorValue", typeof(double));      //传感器值为Int还是double？
                 dtCalibrationDataSensorValAndWeight.Columns.Add("calibrationWeight", typeof(double));
             }
             DataRow dr1 = dtCalibrationDataSensorValAndWeight.NewRow();
@@ -55,15 +55,34 @@ namespace CheckWeighterInterface.SystemManagement
             dr2["calibrationWeight"] = 0.0D;
             dtCalibrationDataSensorValAndWeight.Rows.Add(dr2);
 
-            calibrationDataGradient = new double[1];
+            Global.calibrationDataGradient = new double[1];
 
             this.gridControl_calibrationDataList.DataSource = dtCalibrationDataSensorValAndWeight;
+
+            ChartLineSettings();
         }
 
-        //
+        private void ChartLineSettings()
+        {
+            this.chartControl_calibrationGradient.Series[0].ArgumentScaleType = ScaleType.Numerical;   
+            this.chartControl_calibrationGradient.Series[0].ArgumentDataMember = "sensorValue";       
+            this.chartControl_calibrationGradient.Series[0].ValueScaleType = ScaleType.Numerical;  
+            this.chartControl_calibrationGradient.Series[0].ValueDataMembers.AddRange(new string[] { "calibrationWeight" });
+            this.chartControl_calibrationGradient.Series[0].LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;                
+            this.chartControl_calibrationGradient.Series[0].Label.ResolveOverlappingMode = ResolveOverlappingMode.JustifyAllAroundPoint;	
+            this.chartControl_calibrationGradient.Series[0].Label.TextPattern = "({V1:F1}, {V2:F1})";
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisXScrolling = true;   
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisYScrolling = true;
+
+        }
+
+        //根据给定的段数，给记录数据的datatable和arr分配空间，默认值为0
         private void allocateCapacityCalibrationData(int countSection)
         {
+            clearChartLineCalibrationGradient();
+
             dtCalibrationDataSensorValAndWeight.Rows.Clear();
+
             //端点数=段数+1
             for(int i = 0; i < countSection + 1; i++)
             {
@@ -73,6 +92,8 @@ namespace CheckWeighterInterface.SystemManagement
                 dr["calibrationWeight"] = 0.0D;
                 dtCalibrationDataSensorValAndWeight.Rows.Add(dr);
             }
+
+            Global.calibrationDataGradient = new double[countSection];
         }
 
         //在DataSource刷新的情况下，保持GridControl选中行不变
@@ -114,7 +135,7 @@ namespace CheckWeighterInterface.SystemManagement
                 this.labelControl_calibrationMode2.Text = "多段模式";
 
                 this.spinEdit_countSection.Properties.MinValue = 2;
-                this.spinEdit_countSection.Value = 2;
+                this.spinEdit_countSection.Value = 2;       //最少2段
                 allocateCapacityCalibrationData(calibrationSectionCount);
                 this.spinEdit_countSection.Enabled = true;
                 this.simpleButton_confirmCountSection.Enabled = true;
@@ -135,12 +156,10 @@ namespace CheckWeighterInterface.SystemManagement
             allocateCapacityCalibrationData(calibrationSectionCount);     
         }
 
-    
-
         //修改标定值
         private void simpleButton_changeSensorValue_Click(object sender, EventArgs e)
         {
-            if(dtCalibrationDataSensorValAndWeight.Rows.Count != 0)
+            if (dtCalibrationDataSensorValAndWeight.Rows.Count != 0)
             {
                 curModifyValueType = ModifySensorValueOrCalibrationWeight.curModifySensorValue;
                 createNumberKeyboard("输入传感器值", -999999.0D, 999999.0D);
@@ -156,12 +175,6 @@ namespace CheckWeighterInterface.SystemManagement
                 createNumberKeyboard("输入传感器值", -999999.0D, 999999.0D);
                 this.numberKeyboard1.Visible = true;
             }
-
-        }
-
-        //标定
-        private void simpleButton_doCalibration_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -193,11 +206,13 @@ namespace CheckWeighterInterface.SystemManagement
             int selIndexTemp = selectRowCurrentGridControl[0];
             if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
             {
-                dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = Convert.ToInt64(this.numberKeyboard1.result);
+                dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;
+                clearChartLineCalibrationGradient();
             }
             else if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
+                clearChartLineCalibrationGradient();
             }
         }
 
@@ -210,5 +225,69 @@ namespace CheckWeighterInterface.SystemManagement
                 MessageBox.Show("当前选中超过一行");
             }
         }
+
+        //标定
+        private void simpleButton_doCalibration_Click(object sender, EventArgs e)
+        {
+            double delta1 = 0.0D;
+            double delta2 = 0.0D;
+            for(int i = 0; i < calibrationSectionCount; i++)
+            {
+                delta1 = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i + 1]["calibrationWeight"]) - Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
+                delta2 = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i + 1]["sensorValue"]) - Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
+                Global.calibrationDataGradient[i] = delta1 / delta2;
+            }
+
+            refreshChartLineCalibrationGradient();  
+        }
+
+        //斜率不显示
+        private void clearChartLineCalibrationGradient()
+        {
+            this.chartControl_calibrationGradient.Series[0].DataSource = null;
+        }
+
+        //显示新的斜率点
+        private void refreshChartLineCalibrationGradient()
+        {
+            this.chartControl_calibrationGradient.Series[0].DataSource = dtCalibrationDataSensorValAndWeight;
+
+            double sensorValueMin = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[0]["sensorValue"]);
+            double calibrationWeightMin = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[0]["calibrationWeight"]);
+            double sensorValueMax = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[0]["sensorValue"]);
+            double calibrationWeightMax = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[0]["calibrationWeight"]);
+
+            for (int i = 1; i < calibrationSectionCount + 1; i++)
+            {
+                if(Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]) < sensorValueMin)
+                {
+                    sensorValueMin = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
+                }
+                else if(Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]) > sensorValueMax)
+                {
+                    sensorValueMax = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
+                }
+
+                if (Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]) < calibrationWeightMin)
+                {
+                    calibrationWeightMin = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
+                }
+                else if (Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]) > calibrationWeightMax)
+                {
+                    calibrationWeightMax = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
+                }
+            }
+
+
+            double deltaX = sensorValueMax - sensorValueMin;
+            double deltaY = calibrationWeightMax - calibrationWeightMin;
+            double k = 0.2;
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisX.WholeRange.SetMinMaxValues(sensorValueMin - k * deltaX, sensorValueMax + k * deltaX);
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisY.WholeRange.SetMinMaxValues(calibrationWeightMin - k * deltaY, calibrationWeightMax + k * deltaY);
+        }
+
+
+
+
     }
 }

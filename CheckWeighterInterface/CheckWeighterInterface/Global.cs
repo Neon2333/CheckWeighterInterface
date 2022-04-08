@@ -101,6 +101,8 @@ namespace CheckWeighterInterface
             informationBox.BringToFront();
         }
 
+        
+
         /******************************************************每个页面***************************************************************************/
 
         //StatusMonitor
@@ -116,6 +118,9 @@ namespace CheckWeighterInterface
         public static double sensorRealTimeDataPeak;                                            //传感器实时数据峰值
         public static double sensorRealTimeDataValley;                                          //传感器实时数据谷值
         public static double sensorRealTimeDataAvg;                                             //传感器实时数据平均值
+
+        //CalibrationCorrection
+        public static double[] calibrationDataGradient;    //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
 
 
 

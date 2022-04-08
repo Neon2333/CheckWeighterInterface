@@ -354,6 +354,8 @@ namespace CheckWeighterInterface.SystemTest
             this.simpleButton_modifyAxisRange.AppearancePressed.Options.UseFont = true;
             this.simpleButton_modifyAxisRange.Enabled = false;
             this.simpleButton_modifyAxisRange.Location = new System.Drawing.Point(135, 292);
+            this.simpleButton_modifyAxisRange.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_modifyAxisRange.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_modifyAxisRange.Name = "simpleButton_modifyAxisRange";
             this.simpleButton_modifyAxisRange.Size = new System.Drawing.Size(126, 49);
             this.simpleButton_modifyAxisRange.TabIndex = 39;

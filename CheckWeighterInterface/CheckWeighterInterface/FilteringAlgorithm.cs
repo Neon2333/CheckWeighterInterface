@@ -111,6 +111,7 @@ namespace CheckWeighterInterface
             if (valArr.Length != N)
                 throw new ArgumentException();
 
+            //求max和min算法待优化
             int sum = 0;
             int minIndex = 0;
             int maxIndex = N - 1;
