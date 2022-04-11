@@ -101,6 +101,25 @@ namespace CheckWeighterInterface
             informationBox.BringToFront();
         }
 
+        //向DataTable中添加行
+        //countParams：列数。cols列名数组。paras参数值数组。
+        public static bool dtRowAdd(ref DataTable dt, int countParams, string[] cols, object[] paras)
+        {
+            bool flag = true;
+            if(!(countParams == dt.Columns.Count && countParams == cols.Length && countParams == paras.Length))
+            {
+                flag = false;
+            }
+
+            DataRow drTemp = dt.NewRow();
+            for(int i = 0; i < countParams; i++)
+            {
+                drTemp[cols[i]] = paras[i];
+            }
+            dt.Rows.Add(drTemp);
+            return flag;
+        }
+
         /******************************************************各个页面***************************************************************************/
 
         //StatusMonitor

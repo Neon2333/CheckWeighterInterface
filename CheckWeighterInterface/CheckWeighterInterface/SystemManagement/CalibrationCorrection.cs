@@ -44,16 +44,22 @@ namespace CheckWeighterInterface.SystemManagement
                 dtCalibrationDataSensorValAndWeight.Columns.Add("sensorValue", typeof(double));      //传感器值为Int还是double？
                 dtCalibrationDataSensorValAndWeight.Columns.Add("calibrationWeight", typeof(double));
             }
-            DataRow dr1 = dtCalibrationDataSensorValAndWeight.NewRow();
-            dr1["NO"] = 1;
-            dr1["sensorValue"] = Double.NaN;
-            dr1["calibrationWeight"] = Double.NaN;
-            dtCalibrationDataSensorValAndWeight.Rows.Add(dr1);
-            DataRow dr2 = dtCalibrationDataSensorValAndWeight.NewRow();
-            dr2["NO"] = 2;
-            dr2["sensorValue"] = Double.NaN;
-            dr2["calibrationWeight"] = Double.NaN;
-            dtCalibrationDataSensorValAndWeight.Rows.Add(dr2);
+            //DataRow dr1 = dtCalibrationDataSensorValAndWeight.NewRow();
+            //dr1["NO"] = 1;
+            //dr1["sensorValue"] = Double.NaN;
+            //dr1["calibrationWeight"] = Double.NaN;
+            //dtCalibrationDataSensorValAndWeight.Rows.Add(dr1);
+            //DataRow dr2 = dtCalibrationDataSensorValAndWeight.NewRow();
+            //dr2["NO"] = 2;
+            //dr2["sensorValue"] = Double.NaN;
+            //dr2["calibrationWeight"] = Double.NaN;
+            //dtCalibrationDataSensorValAndWeight.Rows.Add(dr2);
+            string[] cols = { "NO", "sensorValue", "calibrationWeight" };
+            object[] paras1 = { 1, Double.NaN, Double.NaN };
+            object[] paras2 = { 2, Double.NaN, Double.NaN };
+            Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, cols, paras1);
+            Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, cols, paras2);
+
             this.gridControl_calibrationDataList.DataSource = dtCalibrationDataSensorValAndWeight;
 
 
@@ -260,11 +266,14 @@ namespace CheckWeighterInterface.SystemManagement
                 delta1 = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i + 1]["calibrationWeight"]) - Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
                 delta2 = Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i + 1]["sensorValue"]) - Convert.ToDouble(dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
                 //Global.calibrationDataGradient[i] = delta1 / delta2;
-                Global.dtCalibrationGradient.Rows[i]["NO"] = i + 1;
-                Global.dtCalibrationGradient.Rows[i]["gradient"] = delta1 / delta2;
+                DataRow dr = Global.dtCalibrationGradient.NewRow();
+                dr["NO"] = i + 1;
+                dr["gradient"] = delta1 / delta2;
+                Global.dtCalibrationGradient.Rows.Add(dr);
             }
 
             refreshChartLineCalibrationGradient();
+            refreshGridCalibrationGradient();
         }
 
         //标定点折线图不显示
@@ -317,6 +326,12 @@ namespace CheckWeighterInterface.SystemManagement
         {
             this.gridControl_calibrationGradient.DataSource = null;
         }
+
+        private void refreshGridCalibrationGradient()
+        {
+            this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
+        }
+
 
 
     }
