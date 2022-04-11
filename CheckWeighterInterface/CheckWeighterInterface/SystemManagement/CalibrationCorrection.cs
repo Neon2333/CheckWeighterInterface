@@ -69,8 +69,9 @@ namespace CheckWeighterInterface.SystemManagement
             this.chartControl_calibrationGradient.Series[0].ValueScaleType = ScaleType.Numerical;  
             this.chartControl_calibrationGradient.Series[0].ValueDataMembers.AddRange(new string[] { "calibrationWeight" });
             this.chartControl_calibrationGradient.Series[0].LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;                
-            this.chartControl_calibrationGradient.Series[0].Label.ResolveOverlappingMode = ResolveOverlappingMode.JustifyAllAroundPoint;	
-            this.chartControl_calibrationGradient.Series[0].Label.TextPattern = "({V1:F1}, {V2:F1})";
+            this.chartControl_calibrationGradient.Series[0].Label.ResolveOverlappingMode = ResolveOverlappingMode.JustifyAllAroundPoint;
+            //this.chartControl_calibrationGradient.Series[0].Label.TextPattern = "({V1:F1}, {V2:F1})";
+            this.chartControl_calibrationGradient.Series[0].Label.TextPattern = "{A}:{V:F3}";
             ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisXScrolling = true;   
             ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisYScrolling = true;
 

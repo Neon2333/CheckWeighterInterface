@@ -30,6 +30,10 @@ namespace CheckWeighterInterface.SystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
@@ -41,10 +45,6 @@ namespace CheckWeighterInterface.SystemManagement
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             this.tileViewColumn_NO = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_sensorValue = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_calibrationWeight = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -60,25 +60,25 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_calibrationMode2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_countSection = new DevExpress.XtraEditors.LabelControl();
             this.panelControl_right = new DevExpress.XtraEditors.PanelControl();
+            this.chartControl_calibrationGradient = new DevExpress.XtraCharts.ChartControl();
             this.labelControl_NO = new DevExpress.XtraEditors.LabelControl();
             this.gridControl_calibrationDataList = new DevExpress.XtraGrid.GridControl();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.labelControl_calibrationWeight = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_sensorValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_weightList = new DevExpress.XtraEditors.LabelControl();
-            this.chartControl_calibrationGradient = new DevExpress.XtraCharts.ChartControl();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeCalibrationMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_left)).BeginInit();
             this.panelControl_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_countSection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_right)).BeginInit();
             this.panelControl_right.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumn_NO
@@ -119,7 +119,7 @@ namespace CheckWeighterInterface.SystemManagement
             this.toggleSwitch_changeCalibrationMode.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.toggleSwitch_changeCalibrationMode.Properties.OffText = "单段标定";
             this.toggleSwitch_changeCalibrationMode.Properties.OnText = "多段标定";
-            this.toggleSwitch_changeCalibrationMode.Size = new System.Drawing.Size(287, 79);
+            this.toggleSwitch_changeCalibrationMode.Size = new System.Drawing.Size(144, 79);
             this.toggleSwitch_changeCalibrationMode.TabIndex = 59;
             this.toggleSwitch_changeCalibrationMode.Toggled += new System.EventHandler(this.toggleSwitch_changeCalibrationMode_Toggled);
             // 
@@ -309,6 +309,49 @@ namespace CheckWeighterInterface.SystemManagement
             this.panelControl_right.Size = new System.Drawing.Size(714, 611);
             this.panelControl_right.TabIndex = 68;
             // 
+            // chartControl_calibrationGradient
+            // 
+            xyDiagram3.AxisX.GridLines.Visible = true;
+            xyDiagram3.AxisX.Interlaced = true;
+            xyDiagram3.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram3.AxisX.Title.Text = "传感器值";
+            xyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisX.WholeRange.EndSideMargin = 0.1D;
+            xyDiagram3.AxisX.WholeRange.StartSideMargin = 0.1D;
+            xyDiagram3.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram3.AxisY.MinorCount = 3;
+            xyDiagram3.AxisY.Title.Text = "当前重量 KG";
+            xyDiagram3.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram3.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram3.EnableAxisXScrolling = true;
+            xyDiagram3.EnableAxisXZooming = true;
+            xyDiagram3.EnableAxisYScrolling = true;
+            xyDiagram3.EnableAxisYZooming = true;
+            this.chartControl_calibrationGradient.Diagram = xyDiagram3;
+            this.chartControl_calibrationGradient.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartControl_calibrationGradient.Legend.Name = "Default Legend";
+            this.chartControl_calibrationGradient.Location = new System.Drawing.Point(3, 325);
+            this.chartControl_calibrationGradient.Name = "chartControl_calibrationGradient";
+            series3.Name = "标定点";
+            lineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            lineSeriesView3.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
+            lineSeriesView3.LineMarkerOptions.Size = 5;
+            lineSeriesView3.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series3.View = lineSeriesView3;
+            this.chartControl_calibrationGradient.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series3};
+            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(708, 283);
+            this.chartControl_calibrationGradient.TabIndex = 72;
+            chartTitle3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle3.Text = "标定点示意图";
+            this.chartControl_calibrationGradient.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle3});
+            // 
             // labelControl_NO
             // 
             this.labelControl_NO.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -483,49 +526,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_weightList.TabIndex = 67;
             this.labelControl_weightList.Text = "标定数据列表";
             // 
-            // chartControl_calibrationGradient
-            // 
-            xyDiagram1.AxisX.GridLines.Visible = true;
-            xyDiagram1.AxisX.Interlaced = true;
-            xyDiagram1.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram1.AxisX.Title.Text = "称重数量";
-            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0.1D;
-            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0.1D;
-            xyDiagram1.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram1.AxisY.MinorCount = 3;
-            xyDiagram1.AxisY.Title.Text = "当前重量 KG";
-            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram1.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram1.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram1.EnableAxisXScrolling = true;
-            xyDiagram1.EnableAxisXZooming = true;
-            xyDiagram1.EnableAxisYScrolling = true;
-            xyDiagram1.EnableAxisYZooming = true;
-            this.chartControl_calibrationGradient.Diagram = xyDiagram1;
-            this.chartControl_calibrationGradient.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartControl_calibrationGradient.Legend.Name = "Default Legend";
-            this.chartControl_calibrationGradient.Location = new System.Drawing.Point(3, 325);
-            this.chartControl_calibrationGradient.Name = "chartControl_calibrationGradient";
-            series1.Name = "标定点";
-            lineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            lineSeriesView1.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
-            lineSeriesView1.LineMarkerOptions.Size = 5;
-            lineSeriesView1.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series1.View = lineSeriesView1;
-            this.chartControl_calibrationGradient.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
-            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(708, 283);
-            this.chartControl_calibrationGradient.TabIndex = 72;
-            chartTitle1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle1.Text = "标定点示意图";
-            this.chartControl_calibrationGradient.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1});
-            // 
             // CalibrationCorrection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -540,12 +540,12 @@ namespace CheckWeighterInterface.SystemManagement
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_countSection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_right)).EndInit();
             this.panelControl_right.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).EndInit();
             this.ResumeLayout(false);
 
         }
