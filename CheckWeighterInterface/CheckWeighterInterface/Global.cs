@@ -101,9 +101,7 @@ namespace CheckWeighterInterface
             informationBox.BringToFront();
         }
 
-        
-
-        /******************************************************每个页面***************************************************************************/
+        /******************************************************各个页面***************************************************************************/
 
         //StatusMonitor
         public static bool enableRefreshStatusMonitor = true;                              //StatusMonitor页面刷新使能标志
@@ -120,8 +118,8 @@ namespace CheckWeighterInterface
         public static double sensorRealTimeDataAvg;                                             //传感器实时数据平均值
 
         //CalibrationCorrection
-        public static double[] calibrationDataGradient;    //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
-
+        //public static double[] calibrationDataGradient;    //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
+        public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");
 
 
 

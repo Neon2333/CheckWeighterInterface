@@ -30,21 +30,28 @@ namespace CheckWeighterInterface.SystemManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition6 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition7 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition8 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             this.tileViewColumn_NO = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_sensorValue = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_calibrationWeight = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -61,12 +68,18 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_countSection = new DevExpress.XtraEditors.LabelControl();
             this.panelControl_right = new DevExpress.XtraEditors.PanelControl();
             this.chartControl_calibrationGradient = new DevExpress.XtraCharts.ChartControl();
-            this.labelControl_NO = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl_NOCalibration = new DevExpress.XtraEditors.LabelControl();
             this.gridControl_calibrationDataList = new DevExpress.XtraGrid.GridControl();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.labelControl_calibrationWeight = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_sensorValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_weightList = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl_NOGradient = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl_gradient = new DevExpress.XtraEditors.LabelControl();
+            this.gridControl_calibrationGradient = new DevExpress.XtraGrid.GridControl();
+            this.tileView2 = new DevExpress.XtraGrid.Views.Tile.TileView();
+            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeCalibrationMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_left)).BeginInit();
             this.panelControl_left.SuspendLayout();
@@ -74,11 +87,13 @@ namespace CheckWeighterInterface.SystemManagement
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_right)).BeginInit();
             this.panelControl_right.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationDataList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationGradient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumn_NO
@@ -298,8 +313,11 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             // panelControl_right
             // 
+            this.panelControl_right.Controls.Add(this.gridControl_calibrationGradient);
+            this.panelControl_right.Controls.Add(this.labelControl_gradient);
+            this.panelControl_right.Controls.Add(this.labelControl_NOGradient);
             this.panelControl_right.Controls.Add(this.chartControl_calibrationGradient);
-            this.panelControl_right.Controls.Add(this.labelControl_NO);
+            this.panelControl_right.Controls.Add(this.labelControl_NOCalibration);
             this.panelControl_right.Controls.Add(this.gridControl_calibrationDataList);
             this.panelControl_right.Controls.Add(this.labelControl_calibrationWeight);
             this.panelControl_right.Controls.Add(this.labelControl_sensorValue);
@@ -311,66 +329,66 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             // chartControl_calibrationGradient
             // 
-            xyDiagram3.AxisX.GridLines.Visible = true;
-            xyDiagram3.AxisX.Interlaced = true;
-            xyDiagram3.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram3.AxisX.Title.Text = "传感器值";
-            xyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram3.AxisX.WholeRange.EndSideMargin = 0.1D;
-            xyDiagram3.AxisX.WholeRange.StartSideMargin = 0.1D;
-            xyDiagram3.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram3.AxisY.MinorCount = 3;
-            xyDiagram3.AxisY.Title.Text = "当前重量 KG";
-            xyDiagram3.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram3.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram3.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram3.EnableAxisXScrolling = true;
-            xyDiagram3.EnableAxisXZooming = true;
-            xyDiagram3.EnableAxisYScrolling = true;
-            xyDiagram3.EnableAxisYZooming = true;
-            this.chartControl_calibrationGradient.Diagram = xyDiagram3;
+            xyDiagram1.AxisX.GridLines.Visible = true;
+            xyDiagram1.AxisX.Interlaced = true;
+            xyDiagram1.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisX.Title.Text = "传感器值";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0.1D;
+            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0.1D;
+            xyDiagram1.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram1.AxisY.MinorCount = 3;
+            xyDiagram1.AxisY.Title.Text = "当前重量 KG";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram1.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.EnableAxisXScrolling = true;
+            xyDiagram1.EnableAxisXZooming = true;
+            xyDiagram1.EnableAxisYScrolling = true;
+            xyDiagram1.EnableAxisYZooming = true;
+            this.chartControl_calibrationGradient.Diagram = xyDiagram1;
             this.chartControl_calibrationGradient.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_calibrationGradient.Legend.Name = "Default Legend";
             this.chartControl_calibrationGradient.Location = new System.Drawing.Point(3, 325);
             this.chartControl_calibrationGradient.Name = "chartControl_calibrationGradient";
-            series3.Name = "标定点";
-            lineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            lineSeriesView3.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
-            lineSeriesView3.LineMarkerOptions.Size = 5;
-            lineSeriesView3.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series3.View = lineSeriesView3;
+            series1.Name = "标定点";
+            lineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            lineSeriesView1.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
+            lineSeriesView1.LineMarkerOptions.Size = 3;
+            lineSeriesView1.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series1.View = lineSeriesView1;
             this.chartControl_calibrationGradient.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series3};
-            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(708, 283);
+        series1};
+            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(470, 283);
             this.chartControl_calibrationGradient.TabIndex = 72;
-            chartTitle3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle3.Text = "标定点示意图";
+            chartTitle1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle1.Text = "标定点示意图";
             this.chartControl_calibrationGradient.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle3});
+            chartTitle1});
             // 
-            // labelControl_NO
+            // labelControl_NOCalibration
             // 
-            this.labelControl_NO.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelControl_NO.Appearance.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl_NO.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl_NO.Appearance.Options.UseBackColor = true;
-            this.labelControl_NO.Appearance.Options.UseFont = true;
-            this.labelControl_NO.Appearance.Options.UseForeColor = true;
-            this.labelControl_NO.Appearance.Options.UseTextOptions = true;
-            this.labelControl_NO.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl_NO.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_NO.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_NO.Location = new System.Drawing.Point(3, 53);
-            this.labelControl_NO.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
-            this.labelControl_NO.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.labelControl_NO.Name = "labelControl_NO";
-            this.labelControl_NO.Size = new System.Drawing.Size(157, 30);
-            this.labelControl_NO.TabIndex = 71;
-            this.labelControl_NO.Text = "序号";
+            this.labelControl_NOCalibration.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelControl_NOCalibration.Appearance.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl_NOCalibration.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl_NOCalibration.Appearance.Options.UseBackColor = true;
+            this.labelControl_NOCalibration.Appearance.Options.UseFont = true;
+            this.labelControl_NOCalibration.Appearance.Options.UseForeColor = true;
+            this.labelControl_NOCalibration.Appearance.Options.UseTextOptions = true;
+            this.labelControl_NOCalibration.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl_NOCalibration.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl_NOCalibration.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl_NOCalibration.Location = new System.Drawing.Point(3, 53);
+            this.labelControl_NOCalibration.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
+            this.labelControl_NOCalibration.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.labelControl_NOCalibration.Name = "labelControl_NOCalibration";
+            this.labelControl_NOCalibration.Size = new System.Drawing.Size(157, 30);
+            this.labelControl_NOCalibration.TabIndex = 71;
+            this.labelControl_NOCalibration.Text = "序号";
             // 
             // gridControl_calibrationDataList
             // 
@@ -414,57 +432,57 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
             this.tileView1.OptionsTiles.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollButtons;
-            tableColumnDefinition1.Length.Value = 150D;
-            tableColumnDefinition2.Length.Value = 2D;
-            tableColumnDefinition3.Length.Value = 277D;
-            tableColumnDefinition4.Length.Value = 2D;
-            tableColumnDefinition5.Length.Value = 278D;
-            this.tileView1.TileColumns.Add(tableColumnDefinition1);
-            this.tileView1.TileColumns.Add(tableColumnDefinition2);
-            this.tileView1.TileColumns.Add(tableColumnDefinition3);
+            tableColumnDefinition4.Length.Value = 150D;
+            tableColumnDefinition5.Length.Value = 2D;
+            tableColumnDefinition6.Length.Value = 277D;
+            tableColumnDefinition7.Length.Value = 2D;
+            tableColumnDefinition8.Length.Value = 278D;
             this.tileView1.TileColumns.Add(tableColumnDefinition4);
             this.tileView1.TileColumns.Add(tableColumnDefinition5);
-            this.tileView1.TileRows.Add(tableRowDefinition1);
-            tileViewItemElement1.Column = this.tileViewColumn_NO;
-            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement1.Text = "tileViewColumn_NO";
-            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.Column = this.tileViewColumn_sensorValue;
-            tileViewItemElement2.ColumnIndex = 2;
-            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement2.Text = "tileViewColumn_sensorValue";
-            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.Column = this.tileViewColumn_calibrationWeight;
-            tileViewItemElement3.ColumnIndex = 4;
-            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement3.Text = "tileViewColumn_calibrationWeight";
-            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.Appearance.Normal.BackColor = System.Drawing.Color.White;
-            tileViewItemElement4.Appearance.Normal.Options.UseBackColor = true;
-            tileViewItemElement4.ColumnIndex = 1;
+            this.tileView1.TileColumns.Add(tableColumnDefinition6);
+            this.tileView1.TileColumns.Add(tableColumnDefinition7);
+            this.tileView1.TileColumns.Add(tableColumnDefinition8);
+            this.tileView1.TileRows.Add(tableRowDefinition2);
+            tileViewItemElement4.Column = this.tileViewColumn_NO;
             tileViewItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement4.StretchVertical = true;
-            tileViewItemElement4.Text = "tileElement_splitLine1";
+            tileViewItemElement4.Text = "tileViewColumn_NO";
             tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement4.Width = 1;
-            tileViewItemElement5.Appearance.Normal.BackColor = System.Drawing.Color.White;
-            tileViewItemElement5.Appearance.Normal.Options.UseBackColor = true;
-            tileViewItemElement5.ColumnIndex = 3;
+            tileViewItemElement5.Column = this.tileViewColumn_sensorValue;
+            tileViewItemElement5.ColumnIndex = 2;
             tileViewItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            tileViewItemElement5.StretchVertical = true;
-            tileViewItemElement5.Text = "tileElement_splitLine2";
+            tileViewItemElement5.Text = "tileViewColumn_sensorValue";
             tileViewItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement5.Width = 1;
-            this.tileView1.TileTemplate.Add(tileViewItemElement1);
-            this.tileView1.TileTemplate.Add(tileViewItemElement2);
-            this.tileView1.TileTemplate.Add(tileViewItemElement3);
+            tileViewItemElement6.Column = this.tileViewColumn_calibrationWeight;
+            tileViewItemElement6.ColumnIndex = 4;
+            tileViewItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement6.Text = "tileViewColumn_calibrationWeight";
+            tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement7.Appearance.Normal.BackColor = System.Drawing.Color.White;
+            tileViewItemElement7.Appearance.Normal.Options.UseBackColor = true;
+            tileViewItemElement7.ColumnIndex = 1;
+            tileViewItemElement7.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement7.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement7.StretchVertical = true;
+            tileViewItemElement7.Text = "tileElement_splitLine1";
+            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement7.Width = 1;
+            tileViewItemElement8.Appearance.Normal.BackColor = System.Drawing.Color.White;
+            tileViewItemElement8.Appearance.Normal.Options.UseBackColor = true;
+            tileViewItemElement8.ColumnIndex = 3;
+            tileViewItemElement8.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement8.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement8.StretchVertical = true;
+            tileViewItemElement8.Text = "tileElement_splitLine2";
+            tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement8.Width = 1;
             this.tileView1.TileTemplate.Add(tileViewItemElement4);
             this.tileView1.TileTemplate.Add(tileViewItemElement5);
+            this.tileView1.TileTemplate.Add(tileViewItemElement6);
+            this.tileView1.TileTemplate.Add(tileViewItemElement7);
+            this.tileView1.TileTemplate.Add(tileViewItemElement8);
             // 
             // labelControl_calibrationWeight
             // 
@@ -526,6 +544,133 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_weightList.TabIndex = 67;
             this.labelControl_weightList.Text = "标定数据列表";
             // 
+            // labelControl_NOGradient
+            // 
+            this.labelControl_NOGradient.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelControl_NOGradient.Appearance.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl_NOGradient.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl_NOGradient.Appearance.Options.UseBackColor = true;
+            this.labelControl_NOGradient.Appearance.Options.UseFont = true;
+            this.labelControl_NOGradient.Appearance.Options.UseForeColor = true;
+            this.labelControl_NOGradient.Appearance.Options.UseTextOptions = true;
+            this.labelControl_NOGradient.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl_NOGradient.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl_NOGradient.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl_NOGradient.Location = new System.Drawing.Point(480, 325);
+            this.labelControl_NOGradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
+            this.labelControl_NOGradient.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.labelControl_NOGradient.Name = "labelControl_NOGradient";
+            this.labelControl_NOGradient.Size = new System.Drawing.Size(101, 30);
+            this.labelControl_NOGradient.TabIndex = 73;
+            this.labelControl_NOGradient.Text = "序号";
+            // 
+            // labelControl_gradient
+            // 
+            this.labelControl_gradient.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelControl_gradient.Appearance.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl_gradient.Appearance.ForeColor = System.Drawing.Color.White;
+            this.labelControl_gradient.Appearance.Options.UseBackColor = true;
+            this.labelControl_gradient.Appearance.Options.UseFont = true;
+            this.labelControl_gradient.Appearance.Options.UseForeColor = true;
+            this.labelControl_gradient.Appearance.Options.UseTextOptions = true;
+            this.labelControl_gradient.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl_gradient.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl_gradient.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl_gradient.Location = new System.Drawing.Point(582, 325);
+            this.labelControl_gradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
+            this.labelControl_gradient.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.labelControl_gradient.Name = "labelControl_gradient";
+            this.labelControl_gradient.Size = new System.Drawing.Size(128, 30);
+            this.labelControl_gradient.TabIndex = 74;
+            this.labelControl_gradient.Text = "斜率";
+            // 
+            // gridControl_calibrationGradient
+            // 
+            this.gridControl_calibrationGradient.Location = new System.Drawing.Point(480, 355);
+            this.gridControl_calibrationGradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
+            this.gridControl_calibrationGradient.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.gridControl_calibrationGradient.MainView = this.tileView2;
+            this.gridControl_calibrationGradient.Name = "gridControl_calibrationGradient";
+            this.gridControl_calibrationGradient.Size = new System.Drawing.Size(230, 253);
+            this.gridControl_calibrationGradient.TabIndex = 75;
+            this.gridControl_calibrationGradient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.tileView2});
+            // 
+            // tileView2
+            // 
+            this.tileView2.Appearance.ItemFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tileView2.Appearance.ItemFocused.BorderColor = System.Drawing.Color.White;
+            this.tileView2.Appearance.ItemFocused.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tileView2.Appearance.ItemFocused.ForeColor = System.Drawing.Color.White;
+            this.tileView2.Appearance.ItemFocused.Options.UseBackColor = true;
+            this.tileView2.Appearance.ItemFocused.Options.UseBorderColor = true;
+            this.tileView2.Appearance.ItemFocused.Options.UseFont = true;
+            this.tileView2.Appearance.ItemFocused.Options.UseForeColor = true;
+            this.tileView2.Appearance.ItemNormal.BackColor = System.Drawing.Color.Gray;
+            this.tileView2.Appearance.ItemNormal.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tileView2.Appearance.ItemNormal.Options.UseBackColor = true;
+            this.tileView2.Appearance.ItemNormal.Options.UseFont = true;
+            this.tileView2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
+            this.tileView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.tileViewColumn1,
+            this.tileViewColumn2});
+            this.tileView2.GridControl = this.gridControl_calibrationGradient;
+            this.tileView2.Name = "tileView2";
+            this.tileView2.OptionsTiles.GroupTextPadding = new System.Windows.Forms.Padding(0, -1, -1, -1);
+            this.tileView2.OptionsTiles.IndentBetweenGroups = 0;
+            this.tileView2.OptionsTiles.IndentBetweenItems = 0;
+            this.tileView2.OptionsTiles.ItemSize = new System.Drawing.Size(708, 40);
+            this.tileView2.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
+            this.tileView2.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.tileView2.OptionsTiles.Padding = new System.Windows.Forms.Padding(0);
+            this.tileView2.OptionsTiles.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.ScrollButtons;
+            tableColumnDefinition1.Length.Value = 100D;
+            tableColumnDefinition2.Length.Value = 2D;
+            tableColumnDefinition3.Length.Value = 130D;
+            this.tileView2.TileColumns.Add(tableColumnDefinition1);
+            this.tileView2.TileColumns.Add(tableColumnDefinition2);
+            this.tileView2.TileColumns.Add(tableColumnDefinition3);
+            this.tileView2.TileRows.Add(tableRowDefinition1);
+            tileViewItemElement1.Column = this.tileViewColumn1;
+            tileViewItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement1.Text = "tileViewColumn1";
+            tileViewItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement2.Column = this.tileViewColumn2;
+            tileViewItemElement2.ColumnIndex = 2;
+            tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement2.Text = "tileViewColumn2";
+            tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.Appearance.Normal.BackColor = System.Drawing.Color.White;
+            tileViewItemElement3.Appearance.Normal.Options.UseBackColor = true;
+            tileViewItemElement3.ColumnIndex = 1;
+            tileViewItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            tileViewItemElement3.StretchVertical = true;
+            tileViewItemElement3.Text = "tileElement_splitLine1";
+            tileViewItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement3.Width = 1;
+            this.tileView2.TileTemplate.Add(tileViewItemElement1);
+            this.tileView2.TileTemplate.Add(tileViewItemElement2);
+            this.tileView2.TileTemplate.Add(tileViewItemElement3);
+            // 
+            // tileViewColumn1
+            // 
+            this.tileViewColumn1.Caption = "序号";
+            this.tileViewColumn1.FieldName = "NO";
+            this.tileViewColumn1.Name = "tileViewColumn1";
+            this.tileViewColumn1.Visible = true;
+            this.tileViewColumn1.VisibleIndex = 0;
+            // 
+            // tileViewColumn2
+            // 
+            this.tileViewColumn2.Caption = "斜率";
+            this.tileViewColumn2.FieldName = "gradient";
+            this.tileViewColumn2.Name = "tileViewColumn2";
+            this.tileViewColumn2.Visible = true;
+            this.tileViewColumn2.VisibleIndex = 1;
+            // 
             // CalibrationCorrection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -540,12 +685,14 @@ namespace CheckWeighterInterface.SystemManagement
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_countSection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_right)).EndInit();
             this.panelControl_right.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_calibrationGradient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationDataList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_calibrationGradient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,8 +718,14 @@ namespace CheckWeighterInterface.SystemManagement
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn_NO;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn_sensorValue;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn_calibrationWeight;
-        private DevExpress.XtraEditors.LabelControl labelControl_NO;
+        private DevExpress.XtraEditors.LabelControl labelControl_NOCalibration;
         private DevExpress.XtraEditors.LabelControl labelControl_calibrationMode1;
         private DevExpress.XtraCharts.ChartControl chartControl_calibrationGradient;
+        private DevExpress.XtraEditors.LabelControl labelControl_gradient;
+        private DevExpress.XtraEditors.LabelControl labelControl_NOGradient;
+        private DevExpress.XtraGrid.GridControl gridControl_calibrationGradient;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileView2;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn2;
     }
 }
