@@ -8,7 +8,7 @@ namespace CheckWeighterInterface
 {
     class FilteringAlgorithm
     {
-        //滤波算法
+        //限幅滤波
         /**如果本次值与上次值之差<=A,则本次值有效。如果本次值与上次值之差>A,则本次值无效,放弃本次值,用上次值代替本次值*/
         public int amplitudeLimitingFiltering(int valPre, int valCur, int threshold)
         {

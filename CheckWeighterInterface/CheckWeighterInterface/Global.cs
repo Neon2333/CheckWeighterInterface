@@ -28,23 +28,34 @@ namespace CheckWeighterInterface
 
         //状态参数
         public struct Status{
-           public string brand;                         //品牌
-           public double curWeight;                     //当前重量
-           public string flagOverWeightOrUnderWeight;   //超重、欠重标志字符串
-           public double lastOverWeight;                //上次超重
-           public double lastUnderWeight;               //上次欠重
-           public Int32 countDetection;                 //检测数量
-           public Int32 countOverWeight;                //超重数量
-           public Int32 countUnderWeight;               //欠重数量
-           public double maxWeightInHistory;            //最大值
-           public double minWeightInHistory;            //最小值
+           public string curBrand;                          //当前品牌
+           public double curWeight;                         //当前重量
+           public string flagOverWeightOrUnderWeight;       //超重、欠重标志字符串
+           public double lastOverWeight;                    //上次超重
+           public double lastUnderWeight;                   //上次欠重
+           public Int32 countDetection;                     //检测数量
+           public Int32 countOverWeight;                    //超重数量
+           public Int32 countUnderWeight;                   //欠重数量
+           public double maxWeightInHistory;                //最大值
+           public double minWeightInHistory;                //最小值
         };
-        public static Status curStatus = new Status();     //当前状态
-         
-        public static double underWeightThreshold;         //欠重阈值（设定值为初始值）
-        public static double overWeightThreshold;          //超重阈值（设定值为初始值）
+        public static Status curStatus = new Status();      //当前状态
+        
+        //品牌信息
+        public struct Brand
+        {
+            public string brandName;                        //品牌名
+            public double standardWeight;                   //品牌标准重量
+            public double upperLimit;                       //品牌重量上限
+            public double lowerLimit;                       //品牌重量下限
+        };
 
 
+        public static double underWeightThreshold;          //欠重阈值（设定值为初始值）
+        public static double overWeightThreshold;           //超重阈值（设定值为初始值）
+
+        
+        enum FilteringAlgorithmType { amplitudeLimitingFiltering = 0, medianFiltering, digitalAverageFiltering, medianAverageFiltering, }
 
         /******************************************************全局方法************************************************************************/
         
@@ -61,7 +72,7 @@ namespace CheckWeighterInterface
         public static void insertCurStatusMySQL()
         {
             string cmdInsertStatus = "INSERT INTO weight_history (Brand, Weight, Status, DateTime) VALUES ("
-                                     + "'" + curStatus.brand + "'" + ", " + curStatus.curWeight.ToString() + ", " + "'" + curStatus.flagOverWeightOrUnderWeight + "'" + ", CURRENT_TIMESTAMP());";
+                                     + "'" + curStatus.curBrand + "'" + ", " + curStatus.curWeight.ToString() + ", " + "'" + curStatus.flagOverWeightOrUnderWeight + "'" + ", CURRENT_TIMESTAMP());";
             bool flag = mysqlHelper1._insertMySQL(cmdInsertStatus);
         }
 
@@ -120,7 +131,7 @@ namespace CheckWeighterInterface
             return flag;
         }
 
-        /******************************************************各个页面***************************************************************************/
+        /******************************************************各个页面可能会被其他页面用到的变量***************************************************************************/
 
         //StatusMonitor
         public static bool enableRefreshStatusMonitor = true;                              //StatusMonitor页面刷新使能标志
@@ -137,8 +148,10 @@ namespace CheckWeighterInterface
         public static double sensorRealTimeDataAvg;                                             //传感器实时数据平均值
 
         //CalibrationCorrection
-        //public static double[] calibrationDataGradient;    //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
-        public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");
+        //public static double[] calibrationDataGradient;    
+        public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");      //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
+
+        //AlgorithmConfig
 
 
 

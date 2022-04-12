@@ -58,7 +58,7 @@ namespace CheckWeighterInterface.StatusMonitor
             weightAndIndexGramDtPoint.Clear();                                      //清空字典
             totalDtPoint = 0;
 
-            if (Global.curStatus.brand != "")
+            if (Global.curStatus.curBrand != "")
             {
                 timer_detectOnce.Enabled = true;
 
@@ -107,7 +107,7 @@ namespace CheckWeighterInterface.StatusMonitor
             {
                 timer_detectOnce.Enabled = true;
 
-                Global.curStatus.brand = Global.dtBrand.Rows[0]["name"].ToString();
+                Global.curStatus.curBrand = Global.dtBrand.Rows[0]["name"].ToString();
                 Global.curStatus.countDetection = 0;
                 Global.curStatus.countOverWeight = 0;
                 Global.curStatus.countUnderWeight = 0;
@@ -136,8 +136,8 @@ namespace CheckWeighterInterface.StatusMonitor
         {
             if (Global.enableRefreshStatusMonitor)
             {
-                labelControl_brandVal.Text = Global.curStatus.brand;
-                if (Global.curStatus.brand != "")
+                labelControl_brandVal.Text = Global.curStatus.curBrand;
+                if (Global.curStatus.curBrand != "")
                 {
                     getCurWeight();                             //获取当前重量和显示
                     updateMinWeightAndMaxWeight();              //刷新最值和显示

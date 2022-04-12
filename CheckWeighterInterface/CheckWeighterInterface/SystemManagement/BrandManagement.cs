@@ -28,16 +28,9 @@ namespace CheckWeighterInterface.SystemManagement
         
         private DataTable dtBrand = new DataTable("tableBrand");
 
-        struct Brand
-        {
-            public string brandName;
-            public double standardWeight;
-            public double upperLimit;
-            public double lowerLimit;
-        };
-        Brand addBrand;      //记录添加品牌信息
-        Brand delBrand;      //记录删除品牌信息
-        Brand copyBrand;      //记录复制品牌信息
+        Global.Brand addBrand;      //记录添加品牌信息
+        Global.Brand delBrand;      //记录删除品牌信息
+        Global.Brand copyBrand;     //记录复制品牌信息
 
         private CommonControl.ConfirmationBox confirmationBox;
         private CommonControl.InformationBox infoBox_successOrFail;
@@ -59,7 +52,7 @@ namespace CheckWeighterInterface.SystemManagement
             bindDtBrand();
 
             //默认品牌是表brand的第一条
-            this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.brand;
+            this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.curBrand;
 
             //DataRow drSelected = tileView1.GetDataRow(selectRow[0]);    //获取的是grid绑定的表所有列，而不仅仅是显示出来的列
             //curBrand = drSelected["name"].ToString();
@@ -227,11 +220,11 @@ namespace CheckWeighterInterface.SystemManagement
                 lockUnlockButton("lockbtn");
 
                 DataRow drSelected = tileView1.GetDataRow(selectRow[0]);    //获取的是grid绑定的表所有列，而不仅仅是显示出来的列
-                if (Global.curStatus.brand != drSelected["name"].ToString())
+                if (Global.curStatus.curBrand != drSelected["name"].ToString())
                 {
                     //切换品牌，修改当前品牌数据
-                    Global.curStatus.brand = drSelected["name"].ToString();
-                    this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.brand;
+                    Global.curStatus.curBrand = drSelected["name"].ToString();
+                    this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.curBrand;
                     Global.overWeightThreshold = Convert.ToDouble(drSelected["upperLimit"]);
                     Global.underWeightThreshold = Convert.ToDouble(drSelected["lowerLimit"]);
 
@@ -367,8 +360,8 @@ namespace CheckWeighterInterface.SystemManagement
                     selectRow[0] = 0;
                     this.tileView1.FocusedRowHandle = selectRow[0];
                     DataRow drSelected = tileView1.GetDataRow(selectRow[0]);
-                    Global.curStatus.brand = drSelected["name"].ToString();
-                    this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.brand;
+                    Global.curStatus.curBrand = drSelected["name"].ToString();
+                    this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.curBrand;
 
                     Global.underWeightThreshold = Convert.ToDouble(drSelected["lowerLimit"]);
                     Global.overWeightThreshold = Convert.ToDouble(drSelected["upperLimit"]);
@@ -430,7 +423,7 @@ namespace CheckWeighterInterface.SystemManagement
                 keepSelectRowWhenDataSourceRefresh();
 
                 //若删除的是当前选中的品牌，则切换品牌为数据库第一个。若数据库已空无法选中第一个，则令Global.curStatus.brand=""
-                if (delBrand.brandName == Global.curStatus.brand)
+                if (delBrand.brandName == Global.curStatus.curBrand)
                 {
                     if (dtBrand.Rows.Count != 0)
                     {
@@ -439,8 +432,8 @@ namespace CheckWeighterInterface.SystemManagement
                         selectRow[0] = 0;
                         this.tileView1.FocusedRowHandle = selectRow[0];
                         DataRow drSelected = tileView1.GetDataRow(selectRow[0]);
-                        Global.curStatus.brand = drSelected["name"].ToString();
-                        this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.brand;
+                        Global.curStatus.curBrand = drSelected["name"].ToString();
+                        this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.curBrand;
                         Global.overWeightThreshold = Convert.ToDouble(drSelected["upperLimit"]);
                         Global.underWeightThreshold = Convert.ToDouble(drSelected["lowerLimit"]);
 
@@ -452,8 +445,8 @@ namespace CheckWeighterInterface.SystemManagement
                     }
                     else
                     {
-                        Global.curStatus.brand = "";
-                        this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.brand;
+                        Global.curStatus.curBrand = "";
+                        this.labelControl_curBrand.Text = "当前品牌为：" + Global.curStatus.curBrand;
                     }
 
                 }
