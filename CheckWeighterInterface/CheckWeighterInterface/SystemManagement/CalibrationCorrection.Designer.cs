@@ -52,11 +52,11 @@ namespace CheckWeighterInterface.SystemManagement
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_NO = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_sensorValue = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_calibrationWeight = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.toggleSwitch_changeCalibrationMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.simpleButton_changeSensorValue = new DevExpress.XtraEditors.SimpleButton();
@@ -96,6 +96,22 @@ namespace CheckWeighterInterface.SystemManagement
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             this.SuspendLayout();
             // 
+            // tileViewColumn1
+            // 
+            this.tileViewColumn1.Caption = "序号";
+            this.tileViewColumn1.FieldName = "NO";
+            this.tileViewColumn1.Name = "tileViewColumn1";
+            this.tileViewColumn1.Visible = true;
+            this.tileViewColumn1.VisibleIndex = 0;
+            // 
+            // tileViewColumn2
+            // 
+            this.tileViewColumn2.Caption = "斜率";
+            this.tileViewColumn2.FieldName = "gradient";
+            this.tileViewColumn2.Name = "tileViewColumn2";
+            this.tileViewColumn2.Visible = true;
+            this.tileViewColumn2.VisibleIndex = 1;
+            // 
             // tileViewColumn_NO
             // 
             this.tileViewColumn_NO.Caption = "序号";
@@ -119,22 +135,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileViewColumn_calibrationWeight.Name = "tileViewColumn_calibrationWeight";
             this.tileViewColumn_calibrationWeight.Visible = true;
             this.tileViewColumn_calibrationWeight.VisibleIndex = 2;
-            // 
-            // tileViewColumn1
-            // 
-            this.tileViewColumn1.Caption = "序号";
-            this.tileViewColumn1.FieldName = "NO";
-            this.tileViewColumn1.Name = "tileViewColumn1";
-            this.tileViewColumn1.Visible = true;
-            this.tileViewColumn1.VisibleIndex = 0;
-            // 
-            // tileViewColumn2
-            // 
-            this.tileViewColumn2.Caption = "斜率";
-            this.tileViewColumn2.FieldName = "gradient";
-            this.tileViewColumn2.Name = "tileViewColumn2";
-            this.tileViewColumn2.Visible = true;
-            this.tileViewColumn2.VisibleIndex = 1;
             // 
             // toggleSwitch_changeCalibrationMode
             // 
@@ -534,7 +534,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.gridControl_calibrationDataList.TabIndex = 70;
             this.gridControl_calibrationDataList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
-            this.gridControl_calibrationDataList.Click += new System.EventHandler(this.gridControl_calibrationDataList_Click);
             // 
             // tileView1
             // 

@@ -104,6 +104,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query6Months.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query6Months.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query6Months.Location = new System.Drawing.Point(151, 234);
+            this.simpleButton_query6Months.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query6Months.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query6Months.Name = "simpleButton_query6Months";
             this.simpleButton_query6Months.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query6Months.TabIndex = 28;
@@ -118,6 +120,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query3Months.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query3Months.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query3Months.Location = new System.Drawing.Point(3, 234);
+            this.simpleButton_query3Months.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query3Months.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query3Months.Name = "simpleButton_query3Months";
             this.simpleButton_query3Months.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query3Months.TabIndex = 27;
@@ -132,6 +136,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query1Month.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query1Month.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query1Month.Location = new System.Drawing.Point(151, 199);
+            this.simpleButton_query1Month.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query1Month.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query1Month.Name = "simpleButton_query1Month";
             this.simpleButton_query1Month.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query1Month.TabIndex = 26;
@@ -146,6 +152,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query1Week.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query1Week.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query1Week.Location = new System.Drawing.Point(3, 199);
+            this.simpleButton_query1Week.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query1Week.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query1Week.Name = "simpleButton_query1Week";
             this.simpleButton_query1Week.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query1Week.TabIndex = 25;
@@ -160,7 +168,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query.Location = new System.Drawing.Point(3, 136);
-            this.simpleButton_query.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
+            this.simpleButton_query.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query.Name = "simpleButton_query";
             this.simpleButton_query.Size = new System.Drawing.Size(292, 60);
             this.simpleButton_query.TabIndex = 24;
@@ -175,6 +184,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_endTimeModify.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_endTimeModify.AppearancePressed.Options.UseFont = true;
             this.simpleButton_endTimeModify.Location = new System.Drawing.Point(210, 101);
+            this.simpleButton_endTimeModify.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_endTimeModify.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_endTimeModify.Name = "simpleButton_endTimeModify";
             this.simpleButton_endTimeModify.Size = new System.Drawing.Size(85, 32);
             this.simpleButton_endTimeModify.TabIndex = 23;
@@ -224,6 +235,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_startTimeModify.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_startTimeModify.AppearancePressed.Options.UseFont = true;
             this.simpleButton_startTimeModify.Location = new System.Drawing.Point(210, 33);
+            this.simpleButton_startTimeModify.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_startTimeModify.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_startTimeModify.Name = "simpleButton_startTimeModify";
             this.simpleButton_startTimeModify.Size = new System.Drawing.Size(85, 32);
             this.simpleButton_startTimeModify.TabIndex = 20;

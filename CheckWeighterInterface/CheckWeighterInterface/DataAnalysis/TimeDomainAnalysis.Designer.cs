@@ -29,10 +29,10 @@ namespace CheckWeighterInterface.DataAnalysis
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraCharts.XYDiagram xyDiagram10 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series10 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView10 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle10 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
             this.chartControl_line = new DevExpress.XtraCharts.ChartControl();
             this.panelControl_weightList = new DevExpress.XtraEditors.PanelControl();
             this.separatorControl1 = new DevExpress.XtraEditors.SeparatorControl();
@@ -48,9 +48,9 @@ namespace CheckWeighterInterface.DataAnalysis
             this.timeEdit_startTime = new DevExpress.XtraEditors.TimeEdit();
             this.labelControl_startTime = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_line)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).BeginInit();
             this.panelControl_weightList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).BeginInit();
@@ -60,48 +60,48 @@ namespace CheckWeighterInterface.DataAnalysis
             // 
             // chartControl_line
             // 
-            xyDiagram10.AxisX.GridLines.Visible = true;
-            xyDiagram10.AxisX.Interlaced = true;
-            xyDiagram10.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram10.AxisX.Title.Text = "称重数量";
-            xyDiagram10.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram10.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram10.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram10.AxisX.WholeRange.EndSideMargin = 0.1D;
-            xyDiagram10.AxisX.WholeRange.StartSideMargin = 0.1D;
-            xyDiagram10.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram10.AxisY.Title.Text = "当前重量 KG";
-            xyDiagram10.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram10.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram10.AxisY.WholeRange.Auto = false;
-            xyDiagram10.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram10.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram10.AxisY.WholeRange.MaxValueSerializable = "20";
-            xyDiagram10.AxisY.WholeRange.MinValueSerializable = "0";
-            xyDiagram10.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram10.EnableAxisXScrolling = true;
-            xyDiagram10.EnableAxisXZooming = true;
-            xyDiagram10.EnableAxisYScrolling = true;
-            xyDiagram10.EnableAxisYZooming = true;
-            this.chartControl_line.Diagram = xyDiagram10;
+            xyDiagram3.AxisX.GridLines.Visible = true;
+            xyDiagram3.AxisX.Interlaced = true;
+            xyDiagram3.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram3.AxisX.Title.Text = "称重数量";
+            xyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisX.WholeRange.EndSideMargin = 0.1D;
+            xyDiagram3.AxisX.WholeRange.StartSideMargin = 0.1D;
+            xyDiagram3.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram3.AxisY.Title.Text = "当前重量 KG";
+            xyDiagram3.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisY.WholeRange.Auto = false;
+            xyDiagram3.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram3.AxisY.WholeRange.MaxValueSerializable = "20";
+            xyDiagram3.AxisY.WholeRange.MinValueSerializable = "0";
+            xyDiagram3.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram3.EnableAxisXScrolling = true;
+            xyDiagram3.EnableAxisXZooming = true;
+            xyDiagram3.EnableAxisYScrolling = true;
+            xyDiagram3.EnableAxisYZooming = true;
+            this.chartControl_line.Diagram = xyDiagram3;
             this.chartControl_line.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_line.Legend.Name = "Default Legend";
             this.chartControl_line.Location = new System.Drawing.Point(307, 3);
             this.chartControl_line.Name = "chartControl_line";
-            series10.Name = "当前重量";
-            lineSeriesView10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            lineSeriesView10.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
-            lineSeriesView10.LineMarkerOptions.Size = 5;
-            lineSeriesView10.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series10.View = lineSeriesView10;
+            series3.Name = "当前重量";
+            lineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            lineSeriesView3.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
+            lineSeriesView3.LineMarkerOptions.Size = 5;
+            lineSeriesView3.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series3.View = lineSeriesView3;
             this.chartControl_line.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series10};
+        series3};
             this.chartControl_line.Size = new System.Drawing.Size(714, 611);
             this.chartControl_line.TabIndex = 3;
-            chartTitle10.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle10.Text = "重量变化曲线图";
+            chartTitle3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle3.Text = "重量变化曲线图";
             this.chartControl_line.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle10});
+            chartTitle3});
             // 
             // panelControl_weightList
             // 
@@ -140,6 +140,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query6Months.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query6Months.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query6Months.Location = new System.Drawing.Point(151, 234);
+            this.simpleButton_query6Months.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query6Months.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query6Months.Name = "simpleButton_query6Months";
             this.simpleButton_query6Months.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query6Months.TabIndex = 28;
@@ -154,6 +156,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query3Months.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query3Months.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query3Months.Location = new System.Drawing.Point(3, 234);
+            this.simpleButton_query3Months.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query3Months.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query3Months.Name = "simpleButton_query3Months";
             this.simpleButton_query3Months.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query3Months.TabIndex = 27;
@@ -168,6 +172,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query1Month.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query1Month.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query1Month.Location = new System.Drawing.Point(151, 199);
+            this.simpleButton_query1Month.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query1Month.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query1Month.Name = "simpleButton_query1Month";
             this.simpleButton_query1Month.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query1Month.TabIndex = 26;
@@ -182,6 +188,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query1Week.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query1Week.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query1Week.Location = new System.Drawing.Point(3, 199);
+            this.simpleButton_query1Week.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query1Week.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query1Week.Name = "simpleButton_query1Week";
             this.simpleButton_query1Week.Size = new System.Drawing.Size(144, 32);
             this.simpleButton_query1Week.TabIndex = 25;
@@ -196,7 +204,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_query.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_query.AppearancePressed.Options.UseFont = true;
             this.simpleButton_query.Location = new System.Drawing.Point(3, 136);
-            this.simpleButton_query.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Style3D;
+            this.simpleButton_query.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_query.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_query.Name = "simpleButton_query";
             this.simpleButton_query.Size = new System.Drawing.Size(292, 60);
             this.simpleButton_query.TabIndex = 24;
@@ -211,6 +220,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_endTimeModify.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_endTimeModify.AppearancePressed.Options.UseFont = true;
             this.simpleButton_endTimeModify.Location = new System.Drawing.Point(210, 101);
+            this.simpleButton_endTimeModify.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_endTimeModify.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_endTimeModify.Name = "simpleButton_endTimeModify";
             this.simpleButton_endTimeModify.Size = new System.Drawing.Size(85, 32);
             this.simpleButton_endTimeModify.TabIndex = 23;
@@ -261,6 +272,8 @@ namespace CheckWeighterInterface.DataAnalysis
             this.simpleButton_startTimeModify.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_startTimeModify.AppearancePressed.Options.UseFont = true;
             this.simpleButton_startTimeModify.Location = new System.Drawing.Point(210, 33);
+            this.simpleButton_startTimeModify.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_startTimeModify.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_startTimeModify.Name = "simpleButton_startTimeModify";
             this.simpleButton_startTimeModify.Size = new System.Drawing.Size(85, 32);
             this.simpleButton_startTimeModify.TabIndex = 20;
@@ -311,9 +324,9 @@ namespace CheckWeighterInterface.DataAnalysis
             this.Controls.Add(this.chartControl_line);
             this.Name = "TimeDomainAnalysis";
             this.Size = new System.Drawing.Size(1024, 617);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_line)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).EndInit();
             this.panelControl_weightList.ResumeLayout(false);

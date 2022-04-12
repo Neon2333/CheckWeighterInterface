@@ -14,7 +14,7 @@ namespace CheckWeighterInterface.SystemManagement
 {
     public partial class CalibrationCorrection : DevExpress.XtraEditors.XtraUserControl
     {
-        private int[] selectRowCurrentGridControl = { 0 };      //记录GridControl被选中的行的index
+        //private int[] selectRowCurrentGridControl = { 0 };      //记录GridControl被选中的行的index
         
         private CommonControl.NumberKeyboard numberKeyboard1;
         
@@ -195,7 +195,7 @@ namespace CheckWeighterInterface.SystemManagement
             setButtonEnableSpinValueCompareSectionCount(true);
         }
 
-        //spinEdit值和实际段数是否相等时的按钮使能逻辑
+        //spinEdit.Value修改时，判断spinEdit值和实际段数是否相等的按钮使能逻辑
         private void setButtonEnableSpinValueCompareSectionCount(bool spinValueEqualSectionCount)
         {
             if (!spinValueEqualSectionCount)
@@ -261,8 +261,9 @@ namespace CheckWeighterInterface.SystemManagement
         //小键盘Enter响应
         private void numberKeyboard1_NumberKeyboardEnterClicked(object sender, EventArgs e)
         {
-            int selIndexTemp = selectRowCurrentGridControl[0];
-            if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
+            //int selIndexTemp = selectRowCurrentGridControl[0];
+            int selIndexTemp = this.tileView1.FocusedRowHandle;
+            if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;
                 clearChartLineCalibrationGradient();
@@ -276,15 +277,15 @@ namespace CheckWeighterInterface.SystemManagement
             }
         }
 
-        private void gridControl_calibrationDataList_Click(object sender, EventArgs e)
-        {
-            if (((DataTable)this.gridControl_calibrationDataList.DataSource).Rows.Count > 0)
-                selectRowCurrentGridControl = this.tileView1.GetSelectedRows();  //手动记录被按下按钮
-            if (selectRowCurrentGridControl.Length > 1)
-            {
-                MessageBox.Show("当前选中超过一行");
-            }
-        }
+        //private void gridControl_calibrationDataList_Click(object sender, EventArgs e)
+        //{
+        //    if (((DataTable)this.gridControl_calibrationDataList.DataSource).Rows.Count > 0)
+        //        selectRowCurrentGridControl = this.tileView1.GetSelectedRows();  //手动记录被按下按钮
+        //    if (selectRowCurrentGridControl.Length > 1)
+        //    {
+        //        MessageBox.Show("当前选中超过一行");
+        //    }
+        //}
 
         //标定
         private void simpleButton_doCalibration_Click(object sender, EventArgs e)
