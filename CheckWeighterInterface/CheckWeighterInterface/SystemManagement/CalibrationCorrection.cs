@@ -44,16 +44,6 @@ namespace CheckWeighterInterface.SystemManagement
                 dtCalibrationDataSensorValAndWeight.Columns.Add("sensorValue", typeof(double));      //传感器值为Int还是double？
                 dtCalibrationDataSensorValAndWeight.Columns.Add("calibrationWeight", typeof(double));
             }
-            //DataRow dr1 = dtCalibrationDataSensorValAndWeight.NewRow();
-            //dr1["NO"] = 1;
-            //dr1["sensorValue"] = Double.NaN;
-            //dr1["calibrationWeight"] = Double.NaN;
-            //dtCalibrationDataSensorValAndWeight.Rows.Add(dr1);
-            //DataRow dr2 = dtCalibrationDataSensorValAndWeight.NewRow();
-            //dr2["NO"] = 2;
-            //dr2["sensorValue"] = Double.NaN;
-            //dr2["calibrationWeight"] = Double.NaN;
-            //dtCalibrationDataSensorValAndWeight.Rows.Add(dr2);
             string[] cols = { "NO", "sensorValue", "calibrationWeight" };
             object[] paras1 = { 1, Double.NaN, Double.NaN };
             object[] paras2 = { 2, Double.NaN, Double.NaN };
@@ -71,13 +61,14 @@ namespace CheckWeighterInterface.SystemManagement
             //Global.calibrationDataGradient = new double[1];
             if (Global.dtCalibrationGradient.Columns.Count == 0)
             {
-                Global.dtCalibrationGradient.Columns.Add("NO", typeof(Int16));
+                Global.dtCalibrationGradient.Columns.Add("NO", typeof(String));
                 Global.dtCalibrationGradient.Columns.Add("gradient", typeof(double));      //传感器值为Int还是double？
             }
-            //DataRow drK = Global.dtCalibrationGradient.NewRow();
-            //drK["NO"] = 1;
-            //drK["gradient"] = Double.NaN;
-            //Global.dtCalibrationGradient.Rows.Add(drK);
+
+            DataRow drK = Global.dtCalibrationGradient.NewRow();
+            drK["NO"] = "1-2";
+            drK["gradient"] = Double.NaN;
+            Global.dtCalibrationGradient.Rows.Add(drK);
             this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
         }
 
@@ -103,7 +94,7 @@ namespace CheckWeighterInterface.SystemManagement
             clearGridCalibrationGradient();
 
             dtCalibrationDataSensorValAndWeight.Rows.Clear();
-            Global.dtCalibrationGradient.Rows.Clear();
+            //Global.dtCalibrationGradient.Rows.Clear();
 
             //端点数=段数+1
             for(int i = 0; i < countSection + 1; i++)
@@ -119,7 +110,7 @@ namespace CheckWeighterInterface.SystemManagement
             for(int i = 0; i < countSection; i++)
             {
                 DataRow dr = Global.dtCalibrationGradient.NewRow();
-                dr["NO"] = i + 1;
+                dr["NO"] = (i + 1).ToString() + "-" + (i + 2).ToString();
                 dr["gradient"] = Double.NaN;
                 Global.dtCalibrationGradient.Rows.Add(dr);
             }
@@ -266,13 +257,13 @@ namespace CheckWeighterInterface.SystemManagement
             if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;
-                clearChartLineCalibrationGradient();
+                //clearChartLineCalibrationGradient();
                 clearGridCalibrationGradient();
             }
             else if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
-                clearChartLineCalibrationGradient();
+                //clearChartLineCalibrationGradient();
                 clearGridCalibrationGradient();
             }
         }
@@ -306,6 +297,19 @@ namespace CheckWeighterInterface.SystemManagement
             refreshChartLineCalibrationGradient();
             refreshGridCalibrationGradient();
         }
+
+        //将3个datatable中内容写入MySQL
+        private void simpleButton_saveCalibrationData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //丢弃datatable在数据
+        private void simpleButton_cancelCalibrationData_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         //标定点折线图不显示
         private void clearChartLineCalibrationGradient()
@@ -355,7 +359,8 @@ namespace CheckWeighterInterface.SystemManagement
         //斜率列表不显示
         private void clearGridCalibrationGradient()
         {
-            this.gridControl_calibrationGradient.DataSource = null;
+            //this.gridControl_calibrationGradient.DataSource = null;
+            Global.dtCalibrationGradient.Rows.Clear();
         }
 
         private void refreshGridCalibrationGradient()
@@ -365,5 +370,8 @@ namespace CheckWeighterInterface.SystemManagement
 
 
 
+
+
+        
     }
 }
