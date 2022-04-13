@@ -131,6 +131,22 @@ namespace CheckWeighterInterface
             return flag;
         }
 
+        //修改DataTable某行值
+        public static bool dtRowModify(ref DataTable dt, int rowIndex, string[] cols, object[] vals)
+        {
+            bool flag = true;
+            if (cols.Length != vals.Length || (dt.Rows.Count) < rowIndex)
+            {
+                flag = false;
+            }
+
+            for(int i = 0; i < cols.Length; i++)
+            {
+                dt.Rows[rowIndex][cols[i]] = vals[i];
+            }
+            return flag;
+        }
+
         /******************************************************各个页面可能会被其他页面用到的变量***************************************************************************/
 
         //StatusMonitor
@@ -150,6 +166,7 @@ namespace CheckWeighterInterface
         //CalibrationCorrection
         //public static double[] calibrationDataGradient;    
         public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");      //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
+        public static double curSensorValue = 0.0D;                                                  //记录下位机上传的实时传感器值
 
         //AlgorithmConfig
 
