@@ -62,6 +62,8 @@ namespace CheckWeighterInterface.SystemManagement
             this.simpleButton_changeSensorValue = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton_doCalibration = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl_left = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton_cancelCalibrationData = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton_saveCalibrationData = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl_calibrationMode1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton_changeCalibrationWeight = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton_confirmCountSection = new DevExpress.XtraEditors.SimpleButton();
@@ -80,8 +82,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_calibrationWeight = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_sensorValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_weightList = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton_saveCalibrationData = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton_cancelCalibrationData = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeCalibrationMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_left)).BeginInit();
             this.panelControl_left.SuspendLayout();
@@ -208,6 +208,36 @@ namespace CheckWeighterInterface.SystemManagement
             this.panelControl_left.Name = "panelControl_left";
             this.panelControl_left.Size = new System.Drawing.Size(298, 611);
             this.panelControl_left.TabIndex = 67;
+            // 
+            // simpleButton_cancelCalibrationData
+            // 
+            this.simpleButton_cancelCalibrationData.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_cancelCalibrationData.Appearance.Options.UseFont = true;
+            this.simpleButton_cancelCalibrationData.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_cancelCalibrationData.AppearancePressed.Options.UseFont = true;
+            this.simpleButton_cancelCalibrationData.Location = new System.Drawing.Point(5, 512);
+            this.simpleButton_cancelCalibrationData.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_cancelCalibrationData.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.simpleButton_cancelCalibrationData.Name = "simpleButton_cancelCalibrationData";
+            this.simpleButton_cancelCalibrationData.Size = new System.Drawing.Size(288, 71);
+            this.simpleButton_cancelCalibrationData.TabIndex = 74;
+            this.simpleButton_cancelCalibrationData.Text = "丢弃标定数据";
+            this.simpleButton_cancelCalibrationData.Click += new System.EventHandler(this.simpleButton_cancelCalibrationData_Click);
+            // 
+            // simpleButton_saveCalibrationData
+            // 
+            this.simpleButton_saveCalibrationData.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_saveCalibrationData.Appearance.Options.UseFont = true;
+            this.simpleButton_saveCalibrationData.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_saveCalibrationData.AppearancePressed.Options.UseFont = true;
+            this.simpleButton_saveCalibrationData.Location = new System.Drawing.Point(5, 435);
+            this.simpleButton_saveCalibrationData.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_saveCalibrationData.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.simpleButton_saveCalibrationData.Name = "simpleButton_saveCalibrationData";
+            this.simpleButton_saveCalibrationData.Size = new System.Drawing.Size(288, 71);
+            this.simpleButton_saveCalibrationData.TabIndex = 73;
+            this.simpleButton_saveCalibrationData.Text = "保存标定数据";
+            this.simpleButton_saveCalibrationData.Click += new System.EventHandler(this.simpleButton_saveCalibrationData_Click);
             // 
             // labelControl_calibrationMode1
             // 
@@ -679,36 +709,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_weightList.Size = new System.Drawing.Size(708, 50);
             this.labelControl_weightList.TabIndex = 67;
             this.labelControl_weightList.Text = "标定数据列表";
-            // 
-            // simpleButton_saveCalibrationData
-            // 
-            this.simpleButton_saveCalibrationData.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
-            this.simpleButton_saveCalibrationData.Appearance.Options.UseFont = true;
-            this.simpleButton_saveCalibrationData.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold);
-            this.simpleButton_saveCalibrationData.AppearancePressed.Options.UseFont = true;
-            this.simpleButton_saveCalibrationData.Location = new System.Drawing.Point(5, 435);
-            this.simpleButton_saveCalibrationData.LookAndFeel.SkinName = "Seven Classic";
-            this.simpleButton_saveCalibrationData.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.simpleButton_saveCalibrationData.Name = "simpleButton_saveCalibrationData";
-            this.simpleButton_saveCalibrationData.Size = new System.Drawing.Size(288, 71);
-            this.simpleButton_saveCalibrationData.TabIndex = 73;
-            this.simpleButton_saveCalibrationData.Text = "保存标定数据";
-            this.simpleButton_saveCalibrationData.Click += new System.EventHandler(this.simpleButton_saveCalibrationData_Click);
-            // 
-            // simpleButton_cancelCalibrationData
-            // 
-            this.simpleButton_cancelCalibrationData.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
-            this.simpleButton_cancelCalibrationData.Appearance.Options.UseFont = true;
-            this.simpleButton_cancelCalibrationData.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold);
-            this.simpleButton_cancelCalibrationData.AppearancePressed.Options.UseFont = true;
-            this.simpleButton_cancelCalibrationData.Location = new System.Drawing.Point(5, 512);
-            this.simpleButton_cancelCalibrationData.LookAndFeel.SkinName = "Seven Classic";
-            this.simpleButton_cancelCalibrationData.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.simpleButton_cancelCalibrationData.Name = "simpleButton_cancelCalibrationData";
-            this.simpleButton_cancelCalibrationData.Size = new System.Drawing.Size(288, 71);
-            this.simpleButton_cancelCalibrationData.TabIndex = 74;
-            this.simpleButton_cancelCalibrationData.Text = "丢弃标定数据";
-            this.simpleButton_cancelCalibrationData.Click += new System.EventHandler(this.simpleButton_cancelCalibrationData_Click_1);
             // 
             // CalibrationCorrection
             // 

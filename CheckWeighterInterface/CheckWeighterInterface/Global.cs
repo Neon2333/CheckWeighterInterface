@@ -13,7 +13,7 @@ namespace CheckWeighterInterface
     class Global
     {
         /******************************************************系统设置*********************************************************************/
-        public static MySQL.MySQLHelper mysqlHelper1 = new MySQL.MySQLHelper("localhost", "check_weighter_data_analysis", "root", "ei41");
+        public static MySQL.MySQLHelper mysqlHelper1 = new MySQL.MySQLHelper("localhost", "checkweighter_interface", "root", "ei41");
 
 
 
@@ -166,7 +166,7 @@ namespace CheckWeighterInterface
         //CalibrationCorrection
         //public static double[] calibrationDataGradient;    
         public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");      //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
-        public static double curSensorValue = 0.0D;                                                  //记录下位机上传的实时传感器值
+        public static double curSensorValue = 0.0D;                                                  //记录下位机上传的1个实时传感器值
 
         //AlgorithmConfig
 
