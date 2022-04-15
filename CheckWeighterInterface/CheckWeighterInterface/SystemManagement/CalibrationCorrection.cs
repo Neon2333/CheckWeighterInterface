@@ -21,10 +21,6 @@ namespace CheckWeighterInterface.SystemManagement
         private enum CalibrationMode { singleSectionCalibration = 0, multiSectionCalibration};         
         private CalibrationMode curCalibrationMode = CalibrationMode.singleSectionCalibration;      //当前模式
 
-        //上次关闭时是否被标定过
-        private enum HasBeenCalibrated { HasNotBeenCalibrated = 0, hasBeenSingleCalibrated, hasBeenMultiCalibrated, hasBeenBothCalibrated};
-        private HasBeenCalibrated hasBeenCalibrated;                //记录之前是否被标定过
-        private int countSectionBeenMultiCalibrated;                //记录之前被标定的段数
 
         //当前标定段数
         private int curCalibrationSectionCount = 1;    
@@ -34,6 +30,14 @@ namespace CheckWeighterInterface.SystemManagement
         //数字小键盘当前修改的是哪个参数     
         private enum ModifySensorValueOrCalibrationWeight { curModifySensorValue = 0, curModifyCalibrationWeight};     
         private ModifySensorValueOrCalibrationWeight curModifyValueType;
+
+        //记录当前标定数据是否经过了修改
+        private bool isCalibrationDataModified = false;     //后续可考虑以bit对每行的变量进行追踪
+
+        //上次关闭时是否被标定过
+        private enum HasBeenCalibrated { HasNotBeenCalibrated = 0, hasBeenSingleCalibrated, hasBeenMultiCalibrated, hasBeenBothCalibrated};
+        private HasBeenCalibrated hasBeenCalibrated;                //记录之前是否被标定过
+        private int countSectionBeenMultiCalibrated;                //记录之前被标定的段数
 
         DataTable dtCalibrationModeAndCountSectionQueryMySQL = new DataTable("calibrationModeAndCountSectionQueryMySQL");   //记录上次标定模式、段数、是否被标定过
         DataTable dtSingleModeCalibrationDataQueryMySQL = new DataTable("singleModeCalibrationDataQueryMySQL");     //记录从MySQL中读取的单段模式标定数据
@@ -53,7 +57,7 @@ namespace CheckWeighterInterface.SystemManagement
         private void initCalibrationCorrection()
         {
             initDt();
-            queryHasBeenCalibratedAndDataGradient();
+            queryHasBeenCalibratedAndDataGradient(true);
 
             this.gridControl_calibrationDataList.DataSource = dtCalibrationDataSensorValAndWeight;
             ChartLineSettings();
@@ -88,11 +92,12 @@ namespace CheckWeighterInterface.SystemManagement
             {
                 dtSingleModeCalibrationDataQueryMySQL.Columns.Add("NO", typeof(Int16));
                 dtSingleModeCalibrationDataQueryMySQL.Columns.Add("sensorValue", typeof(double));
-                dtSingleModeCalibrationDataQueryMySQL.Columns.Add("weight", typeof(double));
+                dtSingleModeCalibrationDataQueryMySQL.Columns.Add("calibrationWeight", typeof(double));
             }
 
             if (dtSingleModeGradientQueryMySQL.Columns.Count == 0)
             {
+                dtSingleModeGradientQueryMySQL.Columns.Add("NO", typeof(Int16));
                 dtSingleModeGradientQueryMySQL.Columns.Add("section", typeof(String));
                 dtSingleModeGradientQueryMySQL.Columns.Add("gradient", typeof(double));
             }
@@ -101,11 +106,12 @@ namespace CheckWeighterInterface.SystemManagement
             {
                 dtMultiModeCalibrationDatQueryMySQL.Columns.Add("NO", typeof(Int16));
                 dtMultiModeCalibrationDatQueryMySQL.Columns.Add("sensorValue", typeof(double));
-                dtMultiModeCalibrationDatQueryMySQL.Columns.Add("weight", typeof(double));
+                dtMultiModeCalibrationDatQueryMySQL.Columns.Add("calibrationWeight", typeof(double));
             }
 
             if (dtMultiModeGradientQueryMySQL.Columns.Count == 0)
             {
+                dtMultiModeGradientQueryMySQL.Columns.Add("NO", typeof(Int16));
                 dtMultiModeGradientQueryMySQL.Columns.Add("section", typeof(String));
                 dtMultiModeGradientQueryMySQL.Columns.Add("gradient", typeof(double));
             }
@@ -125,8 +131,8 @@ namespace CheckWeighterInterface.SystemManagement
             ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisYScrolling = true;
         }
 
-        //从MySQL中查询是否被标定过、标定数据、斜率等数据并写入3个dt
-        private void queryHasBeenCalibratedAndDataGradient()
+        //从MySQL中查询是否被标定过、标定数据、斜率等数据到3个dt
+        private void queryHasBeenCalibratedAndDataGradient(bool ifInit)
         {
             //从MySQL读取模式、段数、是否被标定过
             string cmdQueryCalibrationMode = "SELECT * FROM mode_count_section;";
@@ -135,45 +141,51 @@ namespace CheckWeighterInterface.SystemManagement
             hasBeenCalibrated = (HasBeenCalibrated)Convert.ToInt32(dtCalibrationModeAndCountSectionQueryMySQL.Rows[0]["hasBeenCalibrated"]);
             countSectionBeenMultiCalibrated = Convert.ToInt32(dtCalibrationModeAndCountSectionQueryMySQL.Rows[0]["countSection"]);
 
-            if(hasBeenCalibrated == HasBeenCalibrated.hasBeenMultiCalibrated)   //只有多段已标定时显示多段，其他情况均显示单段
+            //初始化时的查询，由hasBeenCalibrated决定当前显示模式。单段模式有3种情况，多段模式只有1种情况
+            //不是初始化而是切换时查询，由curCalibrationMode决定，2种模式各有4种情况
+            if (ifInit)
             {
-                curCalibrationMode = CalibrationMode.multiSectionCalibration;
+                curCalibrationSectionCount = countSectionBeenMultiCalibrated;
+
+                if (hasBeenCalibrated == HasBeenCalibrated.hasBeenMultiCalibrated)   //只有多段已标定时显示多段，其他情况均显示单段
+                {
+                    curCalibrationMode = CalibrationMode.multiSectionCalibration;
+                    this.toggleSwitch_changeCalibrationMode.IsOn = true;
+                }
             }
 
-
             //从MySQL读取标定数据
-            string cmdQuerySingleCalibrationData = "SELECT * FROM single_mode_calibration_data;";
+            string cmdQuerySingleCalibrationData = "SELECT * FROM single_mode_sensor_value_weight;";
 
-            string cmdQuerySingleModeGradient = "SELECT * FROM single_mode_calibration_data;";
+            string cmdQuerySingleModeGradient = "SELECT * FROM single_mode_gradient;";
 
-            string cmdQueryMultiCalibrationData = "SELECT * FROM multi_mode_calibration_data;";
+            string cmdQueryMultiCalibrationData = "SELECT * FROM multi_mode_sensor_value_weight;";
 
-            string cmdQueryMultiModeGradient = "SELECT * FROM multi_mode_calibration_data;";
+            string cmdQueryMultiModeGradient = "SELECT * FROM multi_mode_gradient;";
 
             string[] colsDtCalibrationDataSensorValAndWeight = { "NO", "sensorValue", "calibrationWeight" };
             string[] colsDtCalibrationGradient = { "NO", "gradient" };
             if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
             {
-                //初始化为单段模式
-                switchCalibrationMode(CalibrationMode.singleSectionCalibration, 1);
-
                 if (hasBeenCalibrated == HasBeenCalibrated.HasNotBeenCalibrated)
                 {
-                    object[] paras1 = { 1, Double.NaN, Double.NaN };
-                    object[] paras2 = { 2, Double.NaN, Double.NaN };
-                    //Global.calibrationDataGradient[i] = delta1 / delta2;
-                    Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, paras1);
-                    Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, paras2);
+                    //object[] paras1 = { 1, Double.NaN, Double.NaN };
+                    //object[] paras2 = { 2, Double.NaN, Double.NaN };
+                    ////Global.calibrationDataGradient[i] = delta1 / delta2;
+                    //Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, paras1);
+                    //Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, paras2);
 
-                    object[] parasDtCalibrationGradient1 = { "1-2", Double.NaN };
-                    Global.dtRowAdd(ref Global.dtCalibrationGradient, 2, colsDtCalibrationGradient, parasDtCalibrationGradient1);
+                    //object[] parasDtCalibrationGradient1 = { "1-2", Double.NaN };
+                    //Global.dtRowAdd(ref Global.dtCalibrationGradient, 2, colsDtCalibrationGradient, parasDtCalibrationGradient1);
+                    
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
                 }
                 else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenSingleCalibrated)
                 {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+
                     Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleCalibrationData, ref dtSingleModeCalibrationDataQueryMySQL);
                     Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleModeGradient, ref dtSingleModeGradientQueryMySQL);
-
-                    allocateCapacityCalibrationData(1);
 
                     for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
@@ -184,40 +196,55 @@ namespace CheckWeighterInterface.SystemManagement
 
                     for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["NO"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
                         Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
                     }
 
+                    refreshChartLineCalibrationGradient();
+                }
+                else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenMultiCalibrated)
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+                }
+                else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenBothCalibrated)
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+
+                    Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleCalibrationData, ref dtSingleModeCalibrationDataQueryMySQL);
+                    Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleModeGradient, ref dtSingleModeGradientQueryMySQL);
+
+                    for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
+
+                    for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+
+                    refreshChartLineCalibrationGradient();
                 }
             }
             else if (curCalibrationMode == CalibrationMode.multiSectionCalibration)
             {
-                //初始化为多段模式
-                switchCalibrationMode(CalibrationMode.multiSectionCalibration, countSectionBeenMultiCalibrated);
-
                 if (hasBeenCalibrated == HasBeenCalibrated.HasNotBeenCalibrated)
                 {
-                    object[] parasDtCalibrationDataSensorValAndWeight1 = { 1, Double.NaN, Double.NaN };
-                    object[] parasDtCalibrationDataSensorValAndWeight2 = { 2, Double.NaN, Double.NaN };
-                    object[] parasDtCalibrationDataSensorValAndWeight3 = { 3, Double.NaN, Double.NaN };
-
-                    //Global.calibrationDataGradient[i] = delta1 / delta2;
-                    Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, parasDtCalibrationDataSensorValAndWeight1);
-                    Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, parasDtCalibrationDataSensorValAndWeight2);
-                    Global.dtRowAdd(ref dtCalibrationDataSensorValAndWeight, 3, colsDtCalibrationDataSensorValAndWeight, parasDtCalibrationDataSensorValAndWeight3);
-
-                    object[] parasDtCalibrationGradient1 = { 1, "1-2", Double.NaN };
-                    object[] parasDtCalibrationGradient2 = { 2, "2-3", Double.NaN };
-
-                    Global.dtRowAdd(ref Global.dtCalibrationGradient, 2, colsDtCalibrationGradient, parasDtCalibrationGradient1);
-                    Global.dtRowAdd(ref Global.dtCalibrationGradient, 2, colsDtCalibrationGradient, parasDtCalibrationGradient2);
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+                }
+                else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenSingleCalibrated)
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
                 }
                 else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenMultiCalibrated)
                 {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+
                     Global.mysqlHelper1._queryTableMySQL(cmdQueryMultiCalibrationData, ref dtMultiModeCalibrationDatQueryMySQL);
                     Global.mysqlHelper1._queryTableMySQL(cmdQueryMultiModeGradient, ref dtMultiModeGradientQueryMySQL);
-
-                    allocateCapacityCalibrationData(countSectionBeenMultiCalibrated);
 
                     for (int i = 0; i < dtMultiModeCalibrationDatQueryMySQL.Rows.Count; i++)
                     {
@@ -228,11 +255,36 @@ namespace CheckWeighterInterface.SystemManagement
 
                     for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["NO"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
                         Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
                     }
 
+                    refreshChartLineCalibrationGradient();
+
                 }
+                else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenBothCalibrated)
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+
+                    Global.mysqlHelper1._queryTableMySQL(cmdQueryMultiCalibrationData, ref dtMultiModeCalibrationDatQueryMySQL);
+                    Global.mysqlHelper1._queryTableMySQL(cmdQueryMultiModeGradient, ref dtMultiModeGradientQueryMySQL);
+
+                    for (int i = 0; i < dtMultiModeCalibrationDatQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
+
+                    for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+
+                    refreshChartLineCalibrationGradient();
+                }
+
             }
         }
 
@@ -242,45 +294,50 @@ namespace CheckWeighterInterface.SystemManagement
             if(mode == CalibrationMode.singleSectionCalibration)
             {
                 //单段模式
-                this.labelControl_calibrationMode2.Text = "单段模式";
+                this.labelControl_changeCalibrationMode.Text = "单段模式";
                 curCalibrationMode = CalibrationMode.singleSectionCalibration;
                 curCalibrationSectionCount = 1;
-                this.spinEdit_countSection.Properties.MinValue = 1;
                 this.spinEdit_countSection.Value = 1;
+                this.spinEdit_countSection.Enabled = false;
+                this.spinEdit_countSection.Properties.MinValue = 1;
             }
             else if(mode == CalibrationMode.multiSectionCalibration)
             {
                 //多段模式
-                this.labelControl_calibrationMode2.Text = "多段模式";
+                this.labelControl_changeCalibrationMode.Text = "多段模式";
                 curCalibrationMode = CalibrationMode.multiSectionCalibration;
                 curCalibrationSectionCount = countSection;
-                this.spinEdit_countSection.Properties.MinValue = 2;
+                this.spinEdit_countSection.Value = countSection;
                 if (countSection < 2)
                     return;
-                this.spinEdit_countSection.Value = countSection;
+                this.spinEdit_countSection.Properties.MinValue = 2;
+                this.spinEdit_countSection.Enabled = true;
             }
 
-            saveHasBeenCalibrated();
 
-            this.spinEdit_countSection.Enabled = false;
-            
-            allocateCapacityCalibrationData(curCalibrationSectionCount);       //段数修改，清空datatable重新分配空间
+            //saveHasBeenCalibrated();
 
             setButtonEnableSpinValueCompareSectionCount(true);
+
+            queryHasBeenCalibratedAndDataGradient(false);
+
         }
 
         //修改模式
-        private void toggleSwitch_changeCalibrationMode_Toggled(object sender, EventArgs e)
+        private void labelControl_calibrationMode2_Click(object sender, EventArgs e)
         {
-            if (this.toggleSwitch_changeCalibrationMode.IsOn == false)
+            curCalibrationMode = curCalibrationMode == CalibrationMode.singleSectionCalibration ? CalibrationMode.multiSectionCalibration : CalibrationMode.singleSectionCalibration;
+            if(curCalibrationMode == CalibrationMode.singleSectionCalibration)
             {
                 //单段模式
+                this.labelControl_changeCalibrationMode.Text = "单段模式";
                 switchCalibrationMode(CalibrationMode.singleSectionCalibration, 1);
             }
             else
             {
                 //多段模式
-                switchCalibrationMode(CalibrationMode.multiSectionCalibration, 2);
+                this.labelControl_changeCalibrationMode.Text = "多段模式";
+                switchCalibrationMode(CalibrationMode.multiSectionCalibration, curCalibrationSectionCount);
             }
         }
 
@@ -329,6 +386,9 @@ namespace CheckWeighterInterface.SystemManagement
                 dr["gradient"] = Double.NaN;
                 Global.dtCalibrationGradient.Rows.Add(dr);
             }
+
+            isCalibrationDataModified = false;
+            setButtonEnableWhenSensorValueOrWeightModified();
         }
 
         //计算斜率
@@ -350,7 +410,8 @@ namespace CheckWeighterInterface.SystemManagement
             refreshChartLineCalibrationGradient();
         }
 
-        //spinEdit.Value修改时，判断spinEdit值和实际段数是否相等的按钮使能逻辑
+        //spinEdit.Value修改段数时的按钮使能设置
+        //判断spinEdit值和实际段数是否相等的按钮使能逻辑
         private void setButtonEnableSpinValueCompareSectionCount(bool spinValueEqualSectionCount)
         {
             if (!spinValueEqualSectionCount)
@@ -359,6 +420,8 @@ namespace CheckWeighterInterface.SystemManagement
                 this.simpleButton_changeSensorValue.Enabled = false;
                 this.simpleButton_changeCalibrationWeight.Enabled = false;
                 this.simpleButton_doCalibration.Enabled = false;
+                this.simpleButton_saveCalibrationData.Enabled = false;
+                this.simpleButton_cancelCalibrationData.Enabled = false;
             }
             else
             {
@@ -366,8 +429,29 @@ namespace CheckWeighterInterface.SystemManagement
                 this.simpleButton_changeSensorValue.Enabled = true;
                 this.simpleButton_changeCalibrationWeight.Enabled = true;
                 this.simpleButton_doCalibration.Enabled = true;
+                this.simpleButton_saveCalibrationData.Enabled = true;
+                this.simpleButton_cancelCalibrationData.Enabled = true;
             }
         }
+
+        //修改标定点时的按钮使能设置
+        private void setButtonEnableWhenSensorValueOrWeightModified()
+        {
+            if (isCalibrationDataModified)
+            {
+                simpleButton_doCalibration.Enabled = true;
+                simpleButton_saveCalibrationData.Enabled = true;
+                simpleButton_cancelCalibrationData.Enabled = true;
+            }
+            else
+            {
+                simpleButton_doCalibration.Enabled = false;
+                simpleButton_saveCalibrationData.Enabled = false;
+                simpleButton_cancelCalibrationData.Enabled = false;
+            }
+        }
+
+
 
         //标定点折线图不显示
         private void clearChartLineCalibrationGradient()
@@ -438,7 +522,14 @@ namespace CheckWeighterInterface.SystemManagement
         private void simpleButton_confirmCountSection_Click(object sender, EventArgs e)
         {
             curCalibrationSectionCount = Convert.ToInt32(this.spinEdit_countSection.Value);
-            allocateCapacityCalibrationData(curCalibrationSectionCount);
+            if(curCalibrationSectionCount == countSectionBeenMultiCalibrated)
+            {
+                queryHasBeenCalibratedAndDataGradient(false);
+            }
+            else
+            {
+                allocateCapacityCalibrationData(curCalibrationSectionCount);
+            }
 
             setButtonEnableSpinValueCompareSectionCount(true);
         }
@@ -497,12 +588,16 @@ namespace CheckWeighterInterface.SystemManagement
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;    //从小键盘获取值作为传感器值进行修改
                 calcGradient();
+                isCalibrationDataModified = true;
             }
             else if(curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
             {
                 dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
                 calcGradient();
+                isCalibrationDataModified = true;
             }
+
+            setButtonEnableWhenSensorValueOrWeightModified();
         }
 
         //标定。从下位机获取1个传感器值，将其存入dt，并计算斜率
@@ -511,6 +606,8 @@ namespace CheckWeighterInterface.SystemManagement
             int selIndexTemp = this.tileView1.FocusedRowHandle;
             dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = Global.curSensorValue;
             calcGradient();
+
+            isCalibrationDataModified = false;      
         }
 
         //将3个datatable中内容写入MySQL，修改hasBeenCalibrated标志
@@ -527,23 +624,33 @@ namespace CheckWeighterInterface.SystemManagement
 
             string cmdInsertSensorValueAndWeight = String.Empty;
             string cmdInsertCalibrationGradient = String.Empty;
+            string cmdClearSensorValueAndWeight = String.Empty;
+            string cmdClearCalibrationGradient = String.Empty;
             int NO = 0;
             string sensor_value = String.Empty;
             string calibrationWeight = String.Empty;
             string section = String.Empty;
             string gradient = String.Empty;
+            bool flagSaveSucceed = true;
 
             if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
             {
                 //保存单段数据
-                cmdInsertSensorValueAndWeight = "INSERT INTO single_mode_sensor_value_weight (`NO`, `sensor_value`, `calibrationWeight`) VALUES (1, " + dtCalibrationDataSensorValAndWeight.Rows[0]["sensorValue"].ToString() + ", " + dtCalibrationDataSensorValAndWeight.Rows[0]["calibrationWeight"].ToString() + ");";
+                cmdClearSensorValueAndWeight = "TRUNCATE TABLE single_mode_sensor_value_weight;";
+                Global.mysqlHelper1._deleteMySQL(cmdClearSensorValueAndWeight);
+
+                cmdInsertSensorValueAndWeight = "INSERT INTO single_mode_sensor_value_weight (`NO`, `sensorValue`, `calibrationWeight`) VALUES (1, " + dtCalibrationDataSensorValAndWeight.Rows[0]["sensorValue"].ToString() + ", " + dtCalibrationDataSensorValAndWeight.Rows[0]["calibrationWeight"].ToString() + ");";
                 Global.mysqlHelper1._insertMySQL(cmdInsertSensorValueAndWeight);
 
-                cmdInsertSensorValueAndWeight = "INSERT INTO single_mode_sensor_value_weight (`NO`, `sensor_value`, `calibrationWeight`) VALUES (2, " + dtCalibrationDataSensorValAndWeight.Rows[0]["sensorValue"].ToString() + ", " + dtCalibrationDataSensorValAndWeight.Rows[0]["calibrationWeight"].ToString() + ");";
+                cmdInsertSensorValueAndWeight = "INSERT INTO single_mode_sensor_value_weight (`NO`, `sensorValue`, `calibrationWeight`) VALUES (2, " + dtCalibrationDataSensorValAndWeight.Rows[1]["sensorValue"].ToString() + ", " + dtCalibrationDataSensorValAndWeight.Rows[1]["calibrationWeight"].ToString() + ");";
                 Global.mysqlHelper1._insertMySQL(cmdInsertSensorValueAndWeight);
+
+
+                cmdClearSensorValueAndWeight = "TRUNCATE TABLE single_mode_gradient;";
+                Global.mysqlHelper1._deleteMySQL(cmdClearSensorValueAndWeight);
 
                 cmdInsertCalibrationGradient =  "INSERT INTO single_mode_gradient (`NO`,  `section`, `gradient`) VALUES (1, '1-2', " + Global.dtCalibrationGradient.Rows[0]["gradient"].ToString() + ");";
-                Global.mysqlHelper1._insertMySQL(cmdInsertCalibrationGradient);
+                flagSaveSucceed = Global.mysqlHelper1._insertMySQL(cmdInsertCalibrationGradient);
 
                 switch (hasBeenCalibrated)
                 {
@@ -558,18 +665,31 @@ namespace CheckWeighterInterface.SystemManagement
                     case HasBeenCalibrated.hasBeenBothCalibrated:
                         break;
                 }
+
+                if (flagSaveSucceed)
+                {
+                    MessageBox.Show("保存单段数据成功");
+                    isCalibrationDataModified = false;
+                }
+                else
+                {
+                    MessageBox.Show("保存单段数据失败");
+                }
+                
             }
             else
             {
                 //保存多段数据
+                cmdClearSensorValueAndWeight = "TRUNCATE TABLE multi_mode_sensor_value_weight;";
+                Global.mysqlHelper1._deleteMySQL(cmdClearSensorValueAndWeight);
+
                 for (int i = 0; i < dtCalibrationDataSensorValAndWeight.Rows.Count; i++)
                 {
                     NO = i + 1;
                     sensor_value = dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"].ToString();
                     calibrationWeight = dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"].ToString();
-                    cmdInsertSensorValueAndWeight = "INSERT INTO single_mode_sensor_value_weight (`NO`, `sensor_value`, `calibrationWeight`) VALUES (" + NO.ToString() + ", " + sensor_value + ", " + calibrationWeight + ");";
-                    Global.mysqlHelper1._insertMySQL(cmdInsertSensorValueAndWeight);
-
+                    cmdInsertSensorValueAndWeight = "INSERT INTO multi_mode_sensor_value_weight (`NO`, `sensorValue`, `calibrationWeight`) VALUES (" + NO.ToString() + ", " + sensor_value + ", " + calibrationWeight + ");";
+                    flagSaveSucceed = flagSaveSucceed && Global.mysqlHelper1._insertMySQL(cmdInsertSensorValueAndWeight);
 
                     switch (hasBeenCalibrated)
                     {
@@ -587,28 +707,132 @@ namespace CheckWeighterInterface.SystemManagement
 
                 }
 
+
+                cmdClearSensorValueAndWeight = "TRUNCATE TABLE multi_mode_gradient;";
+                Global.mysqlHelper1._deleteMySQL(cmdClearSensorValueAndWeight);
+
                 for (int i = 0;i< Global.dtCalibrationGradient.Rows.Count; i++)
                 {
                     NO = i + 1;
                     section = NO.ToString() + "-" + (NO + 1).ToString();
                     gradient = Global.dtCalibrationGradient.Rows[i]["gradient"].ToString();
                     cmdInsertCalibrationGradient = "INSERT INTO multi_mode_gradient (`NO`,  `section`, `gradient`) VALUES (" + NO.ToString() + ", '" + section + "', " + gradient + ");"; 
-                    Global.mysqlHelper1._insertMySQL(cmdInsertCalibrationGradient);
+                    flagSaveSucceed = flagSaveSucceed && Global.mysqlHelper1._insertMySQL(cmdInsertCalibrationGradient);
 
+                }
+
+                if (flagSaveSucceed)
+                {
+                    MessageBox.Show("保存多段数据成功");
+                    isCalibrationDataModified = false;
+                }
+                else
+                {
+                    MessageBox.Show("保存多段数据失败");
                 }
             }
 
             saveHasBeenCalibrated();    //保存模式
+
+            setButtonEnableWhenSensorValueOrWeightModified();
         }
 
         //丢弃datatable在数据
         private void simpleButton_cancelCalibrationData_Click(object sender, EventArgs e)
         {
+            if(hasBeenCalibrated == HasBeenCalibrated.HasNotBeenCalibrated)
+            {
+                if(curCalibrationMode == CalibrationMode.singleSectionCalibration)
+                {
+                    allocateCapacityCalibrationData(1);
+                }
+                else
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+                }
+            }
+            else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenSingleCalibrated)
+            {
+                if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
+                {
+                    for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
 
+                    for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+                }
+                else
+                {
+                    allocateCapacityCalibrationData(curCalibrationSectionCount);
+                }
+            }
+            else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenMultiCalibrated)
+            {
+                if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
+                {
+                    allocateCapacityCalibrationData(1);
+                }
+                else
+                {
+                    for (int i = 0; i < dtMultiModeCalibrationDatQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
+
+                    for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+                }
+            }
+            else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenBothCalibrated)
+            {
+                if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
+                {
+                    for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
+
+                    for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < dtMultiModeCalibrationDatQueryMySQL.Rows.Count; i++)
+                    {
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["NO"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["sensorValue"];
+                        dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDatQueryMySQL.Rows[i]["calibrationWeight"];
+                    }
+
+                    for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
+                    {
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                    }
+                }
+            }
+
+            isCalibrationDataModified = false;
+            setButtonEnableWhenSensorValueOrWeightModified();
+            MessageBox.Show("数据已丢弃");
         }
-
-
-        
 
         
     }

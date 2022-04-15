@@ -57,7 +57,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileViewColumn_NO = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_sensorValue = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn_calibrationWeight = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.toggleSwitch_changeCalibrationMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.simpleButton_changeSensorValue = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton_doCalibration = new DevExpress.XtraEditors.SimpleButton();
@@ -68,7 +67,7 @@ namespace CheckWeighterInterface.SystemManagement
             this.simpleButton_changeCalibrationWeight = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton_confirmCountSection = new DevExpress.XtraEditors.SimpleButton();
             this.spinEdit_countSection = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl_calibrationMode2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl_changeCalibrationMode = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_countSection = new DevExpress.XtraEditors.LabelControl();
             this.panelControl_right = new DevExpress.XtraEditors.PanelControl();
             this.gridControl_calibrationGradient = new DevExpress.XtraGrid.GridControl();
@@ -82,7 +81,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_calibrationWeight = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_sensorValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_weightList = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeCalibrationMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_left)).BeginInit();
             this.panelControl_left.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_countSection.Properties)).BeginInit();
@@ -138,24 +136,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileViewColumn_calibrationWeight.Visible = true;
             this.tileViewColumn_calibrationWeight.VisibleIndex = 2;
             // 
-            // toggleSwitch_changeCalibrationMode
-            // 
-            this.toggleSwitch_changeCalibrationMode.Location = new System.Drawing.Point(94, 40);
-            this.toggleSwitch_changeCalibrationMode.Name = "toggleSwitch_changeCalibrationMode";
-            this.toggleSwitch_changeCalibrationMode.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toggleSwitch_changeCalibrationMode.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.toggleSwitch_changeCalibrationMode.Properties.Appearance.Options.UseFont = true;
-            this.toggleSwitch_changeCalibrationMode.Properties.Appearance.Options.UseForeColor = true;
-            this.toggleSwitch_changeCalibrationMode.Properties.AutoHeight = false;
-            this.toggleSwitch_changeCalibrationMode.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
-            this.toggleSwitch_changeCalibrationMode.Properties.LookAndFeel.SkinName = "Seven Classic";
-            this.toggleSwitch_changeCalibrationMode.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.toggleSwitch_changeCalibrationMode.Properties.OffText = "单段标定";
-            this.toggleSwitch_changeCalibrationMode.Properties.OnText = "多段标定";
-            this.toggleSwitch_changeCalibrationMode.Size = new System.Drawing.Size(113, 46);
-            this.toggleSwitch_changeCalibrationMode.TabIndex = 59;
-            this.toggleSwitch_changeCalibrationMode.Toggled += new System.EventHandler(this.toggleSwitch_changeCalibrationMode_Toggled);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -195,12 +175,11 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             this.panelControl_left.Controls.Add(this.simpleButton_cancelCalibrationData);
             this.panelControl_left.Controls.Add(this.simpleButton_saveCalibrationData);
-            this.panelControl_left.Controls.Add(this.toggleSwitch_changeCalibrationMode);
             this.panelControl_left.Controls.Add(this.labelControl_calibrationMode1);
             this.panelControl_left.Controls.Add(this.simpleButton_changeCalibrationWeight);
             this.panelControl_left.Controls.Add(this.simpleButton_confirmCountSection);
             this.panelControl_left.Controls.Add(this.spinEdit_countSection);
-            this.panelControl_left.Controls.Add(this.labelControl_calibrationMode2);
+            this.panelControl_left.Controls.Add(this.labelControl_changeCalibrationMode);
             this.panelControl_left.Controls.Add(this.labelControl_countSection);
             this.panelControl_left.Controls.Add(this.simpleButton_doCalibration);
             this.panelControl_left.Controls.Add(this.simpleButton_changeSensorValue);
@@ -325,24 +304,32 @@ namespace CheckWeighterInterface.SystemManagement
             this.spinEdit_countSection.TabIndex = 69;
             this.spinEdit_countSection.ValueChanged += new System.EventHandler(this.spinEdit_countCalibrationSection_ValueChanged);
             // 
-            // labelControl_calibrationMode2
+            // labelControl_changeCalibrationMode
             // 
-            this.labelControl_calibrationMode2.Appearance.BackColor = System.Drawing.Color.White;
-            this.labelControl_calibrationMode2.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
-            this.labelControl_calibrationMode2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
-            this.labelControl_calibrationMode2.Appearance.Options.UseBackColor = true;
-            this.labelControl_calibrationMode2.Appearance.Options.UseFont = true;
-            this.labelControl_calibrationMode2.Appearance.Options.UseForeColor = true;
-            this.labelControl_calibrationMode2.Appearance.Options.UseTextOptions = true;
-            this.labelControl_calibrationMode2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl_calibrationMode2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_calibrationMode2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_calibrationMode2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl_calibrationMode2.Location = new System.Drawing.Point(137, 5);
-            this.labelControl_calibrationMode2.Name = "labelControl_calibrationMode2";
-            this.labelControl_calibrationMode2.Size = new System.Drawing.Size(155, 49);
-            this.labelControl_calibrationMode2.TabIndex = 68;
-            this.labelControl_calibrationMode2.Text = "单段标定";
+            this.labelControl_changeCalibrationMode.Appearance.BackColor = System.Drawing.Color.White;
+            this.labelControl_changeCalibrationMode.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
+            this.labelControl_changeCalibrationMode.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.labelControl_changeCalibrationMode.Appearance.Options.UseBackColor = true;
+            this.labelControl_changeCalibrationMode.Appearance.Options.UseFont = true;
+            this.labelControl_changeCalibrationMode.Appearance.Options.UseForeColor = true;
+            this.labelControl_changeCalibrationMode.Appearance.Options.UseTextOptions = true;
+            this.labelControl_changeCalibrationMode.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl_changeCalibrationMode.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl_changeCalibrationMode.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelControl_changeCalibrationMode.AppearancePressed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.labelControl_changeCalibrationMode.AppearancePressed.Options.UseFont = true;
+            this.labelControl_changeCalibrationMode.AppearancePressed.Options.UseForeColor = true;
+            this.labelControl_changeCalibrationMode.AppearancePressed.Options.UseTextOptions = true;
+            this.labelControl_changeCalibrationMode.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.labelControl_changeCalibrationMode.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.labelControl_changeCalibrationMode.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl_changeCalibrationMode.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.labelControl_changeCalibrationMode.Location = new System.Drawing.Point(137, 5);
+            this.labelControl_changeCalibrationMode.Name = "labelControl_changeCalibrationMode";
+            this.labelControl_changeCalibrationMode.Size = new System.Drawing.Size(155, 49);
+            this.labelControl_changeCalibrationMode.TabIndex = 68;
+            this.labelControl_changeCalibrationMode.Text = "单段标定";
+            this.labelControl_changeCalibrationMode.Click += new System.EventHandler(this.labelControl_calibrationMode2_Click);
             // 
             // labelControl_countSection
             // 
@@ -384,7 +371,7 @@ namespace CheckWeighterInterface.SystemManagement
             this.gridControl_calibrationGradient.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_calibrationGradient.MainView = this.tileView2;
             this.gridControl_calibrationGradient.Name = "gridControl_calibrationGradient";
-            this.gridControl_calibrationGradient.Size = new System.Drawing.Size(152, 253);
+            this.gridControl_calibrationGradient.Size = new System.Drawing.Size(152, 255);
             this.gridControl_calibrationGradient.TabIndex = 75;
             this.gridControl_calibrationGradient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView2});
@@ -530,7 +517,7 @@ namespace CheckWeighterInterface.SystemManagement
             series2.View = lineSeriesView2;
             this.chartControl_calibrationGradient.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
-            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(550, 283);
+            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(550, 285);
             this.chartControl_calibrationGradient.TabIndex = 72;
             chartTitle2.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle2.Text = "标定点示意图";
@@ -718,7 +705,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.Controls.Add(this.panelControl_left);
             this.Name = "CalibrationCorrection";
             this.Size = new System.Drawing.Size(1024, 617);
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeCalibrationMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_left)).EndInit();
             this.panelControl_left.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_countSection.Properties)).EndInit();
@@ -737,8 +723,6 @@ namespace CheckWeighterInterface.SystemManagement
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_changeCalibrationMode;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraEditors.SimpleButton simpleButton_changeSensorValue;
         private DevExpress.XtraEditors.SimpleButton simpleButton_doCalibration;
@@ -748,7 +732,7 @@ namespace CheckWeighterInterface.SystemManagement
         private DevExpress.XtraEditors.LabelControl labelControl_calibrationWeight;
         private DevExpress.XtraEditors.LabelControl labelControl_sensorValue;
         private DevExpress.XtraEditors.LabelControl labelControl_countSection;
-        private DevExpress.XtraEditors.LabelControl labelControl_calibrationMode2;
+        private DevExpress.XtraEditors.LabelControl labelControl_changeCalibrationMode;
         private DevExpress.XtraEditors.SpinEdit spinEdit_countSection;
         private DevExpress.XtraEditors.SimpleButton simpleButton_confirmCountSection;
         private DevExpress.XtraEditors.SimpleButton simpleButton_changeCalibrationWeight;

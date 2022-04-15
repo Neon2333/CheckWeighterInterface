@@ -30,10 +30,10 @@ namespace CheckWeighterInterface.SystemTest
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SplineSeriesView splineSeriesView1 = new DevExpress.XtraCharts.SplineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SplineSeriesView splineSeriesView3 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
             this.chartControl_weighterSensorRealTimeData = new DevExpress.XtraCharts.ChartControl();
             this.labelControl_peakValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_valleyValue = new DevExpress.XtraEditors.LabelControl();
@@ -69,9 +69,9 @@ namespace CheckWeighterInterface.SystemTest
             this.separatorControl_left = new DevExpress.XtraEditors.SeparatorControl();
             this.timer_getDataOnceFromSensor = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_weighterSensorRealTimeData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).BeginInit();
             this.panelControl_weightList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_setXMinVal.Properties)).BeginInit();
@@ -92,59 +92,59 @@ namespace CheckWeighterInterface.SystemTest
             // 
             // chartControl_weighterSensorRealTimeData
             // 
-            xyDiagram1.AxisX.GridLines.Visible = true;
-            xyDiagram1.AxisX.Interlaced = true;
-            xyDiagram1.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram1.AxisX.Title.Text = "传感器检测次数";
-            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisX.VisualRange.Auto = false;
-            xyDiagram1.AxisX.VisualRange.AutoSideMargins = false;
-            xyDiagram1.AxisX.VisualRange.EndSideMargin = 7D;
-            xyDiagram1.AxisX.VisualRange.MaxValueSerializable = "9";
-            xyDiagram1.AxisX.VisualRange.MinValueSerializable = "0";
-            xyDiagram1.AxisX.VisualRange.StartSideMargin = 0D;
-            xyDiagram1.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
-            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
-            xyDiagram1.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram1.AxisY.MinorCount = 4;
-            xyDiagram1.AxisY.Title.Text = "传感器实时数据 KG";
-            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisualRange.Auto = false;
-            xyDiagram1.AxisY.VisualRange.AutoSideMargins = false;
-            xyDiagram1.AxisY.VisualRange.EndSideMargin = 0D;
-            xyDiagram1.AxisY.VisualRange.MaxValueSerializable = "20";
-            xyDiagram1.AxisY.VisualRange.MinValueSerializable = "0";
-            xyDiagram1.AxisY.VisualRange.StartSideMargin = 0D;
-            xyDiagram1.AxisY.WholeRange.Auto = false;
-            xyDiagram1.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram1.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram1.AxisY.WholeRange.MaxValueSerializable = "20";
-            xyDiagram1.AxisY.WholeRange.MinValueSerializable = "0";
-            xyDiagram1.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram1.EnableAxisXScrolling = true;
-            xyDiagram1.EnableAxisXZooming = true;
-            xyDiagram1.EnableAxisYScrolling = true;
-            xyDiagram1.EnableAxisYZooming = true;
-            this.chartControl_weighterSensorRealTimeData.Diagram = xyDiagram1;
+            xyDiagram3.AxisX.GridLines.Visible = true;
+            xyDiagram3.AxisX.Interlaced = true;
+            xyDiagram3.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram3.AxisX.Title.Text = "传感器检测次数";
+            xyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisX.VisualRange.Auto = false;
+            xyDiagram3.AxisX.VisualRange.AutoSideMargins = false;
+            xyDiagram3.AxisX.VisualRange.EndSideMargin = 7D;
+            xyDiagram3.AxisX.VisualRange.MaxValueSerializable = "9";
+            xyDiagram3.AxisX.VisualRange.MinValueSerializable = "0";
+            xyDiagram3.AxisX.VisualRange.StartSideMargin = 0D;
+            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram3.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram3.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram3.AxisY.MinorCount = 4;
+            xyDiagram3.AxisY.Title.Text = "传感器实时数据 KG";
+            xyDiagram3.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram3.AxisY.VisualRange.Auto = false;
+            xyDiagram3.AxisY.VisualRange.AutoSideMargins = false;
+            xyDiagram3.AxisY.VisualRange.EndSideMargin = 0D;
+            xyDiagram3.AxisY.VisualRange.MaxValueSerializable = "20";
+            xyDiagram3.AxisY.VisualRange.MinValueSerializable = "0";
+            xyDiagram3.AxisY.VisualRange.StartSideMargin = 0D;
+            xyDiagram3.AxisY.WholeRange.Auto = false;
+            xyDiagram3.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram3.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram3.AxisY.WholeRange.MaxValueSerializable = "20";
+            xyDiagram3.AxisY.WholeRange.MinValueSerializable = "0";
+            xyDiagram3.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram3.EnableAxisXScrolling = true;
+            xyDiagram3.EnableAxisXZooming = true;
+            xyDiagram3.EnableAxisYScrolling = true;
+            xyDiagram3.EnableAxisYZooming = true;
+            this.chartControl_weighterSensorRealTimeData.Diagram = xyDiagram3;
             this.chartControl_weighterSensorRealTimeData.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_weighterSensorRealTimeData.Legend.Name = "Default Legend";
             this.chartControl_weighterSensorRealTimeData.Location = new System.Drawing.Point(276, 3);
             this.chartControl_weighterSensorRealTimeData.Name = "chartControl_weighterSensorRealTimeData";
-            series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
-            series1.Name = "实时数据";
-            splineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            series1.View = splineSeriesView1;
+            series3.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
+            series3.Name = "实时数据";
+            splineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            series3.View = splineSeriesView3;
             this.chartControl_weighterSensorRealTimeData.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1};
+        series3};
             this.chartControl_weighterSensorRealTimeData.Size = new System.Drawing.Size(746, 611);
             this.chartControl_weighterSensorRealTimeData.TabIndex = 4;
-            chartTitle1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle1.Text = "检重传感器实时数据";
+            chartTitle3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle3.Text = "检重传感器实时数据";
             this.chartControl_weighterSensorRealTimeData.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle1});
+            chartTitle3});
             // 
             // labelControl_peakValue
             // 
@@ -188,7 +188,9 @@ namespace CheckWeighterInterface.SystemTest
             // labelControl_peakValueVal
             // 
             this.labelControl_peakValueVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_peakValueVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_peakValueVal.Appearance.Options.UseFont = true;
+            this.labelControl_peakValueVal.Appearance.Options.UseForeColor = true;
             this.labelControl_peakValueVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_peakValueVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_peakValueVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -201,7 +203,9 @@ namespace CheckWeighterInterface.SystemTest
             // labelControl_valleyValueVal
             // 
             this.labelControl_valleyValueVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_valleyValueVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_valleyValueVal.Appearance.Options.UseFont = true;
+            this.labelControl_valleyValueVal.Appearance.Options.UseForeColor = true;
             this.labelControl_valleyValueVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_valleyValueVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_valleyValueVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -214,7 +218,9 @@ namespace CheckWeighterInterface.SystemTest
             // labelControl_averageValueVal
             // 
             this.labelControl_averageValueVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_averageValueVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_averageValueVal.Appearance.Options.UseFont = true;
+            this.labelControl_averageValueVal.Appearance.Options.UseForeColor = true;
             this.labelControl_averageValueVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_averageValueVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_averageValueVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -666,9 +672,9 @@ namespace CheckWeighterInterface.SystemTest
             this.Controls.Add(this.chartControl_weighterSensorRealTimeData);
             this.Name = "RealTimeCurve";
             this.Size = new System.Drawing.Size(1024, 617);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_weighterSensorRealTimeData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).EndInit();
             this.panelControl_weightList.ResumeLayout(false);

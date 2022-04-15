@@ -30,18 +30,18 @@ namespace CheckWeighterInterface.StatusMonitor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.PointSeriesView pointSeriesView2 = new DevExpress.XtraCharts.PointSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle4 = new DevExpress.XtraCharts.ChartTitle();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel2 = new DevExpress.XtraCharts.PieSeriesLabel();
-            DevExpress.XtraCharts.PieSeriesView pieSeriesView2 = new DevExpress.XtraCharts.PieSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle5 = new DevExpress.XtraCharts.ChartTitle();
-            DevExpress.XtraCharts.XYDiagram xyDiagram4 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle6 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram5 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PointSeriesView pointSeriesView3 = new DevExpress.XtraCharts.PointSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle7 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel3 = new DevExpress.XtraCharts.PieSeriesLabel();
+            DevExpress.XtraCharts.PieSeriesView pieSeriesView3 = new DevExpress.XtraCharts.PieSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle8 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram6 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series9 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle9 = new DevExpress.XtraCharts.ChartTitle();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl_KG4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_KG3 = new DevExpress.XtraEditors.LabelControl();
@@ -80,21 +80,21 @@ namespace CheckWeighterInterface.StatusMonitor
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_point)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_pie)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_line)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -175,7 +175,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_minWeightInHistory
             // 
             this.labelControl_minWeightInHistory.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F);
+            this.labelControl_minWeightInHistory.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_minWeightInHistory.Appearance.Options.UseFont = true;
+            this.labelControl_minWeightInHistory.Appearance.Options.UseForeColor = true;
             this.labelControl_minWeightInHistory.Appearance.Options.UseTextOptions = true;
             this.labelControl_minWeightInHistory.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_minWeightInHistory.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -188,7 +190,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_maxWeightInHistory
             // 
             this.labelControl_maxWeightInHistory.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F);
+            this.labelControl_maxWeightInHistory.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_maxWeightInHistory.Appearance.Options.UseFont = true;
+            this.labelControl_maxWeightInHistory.Appearance.Options.UseForeColor = true;
             this.labelControl_maxWeightInHistory.Appearance.Options.UseTextOptions = true;
             this.labelControl_maxWeightInHistory.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_maxWeightInHistory.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -201,7 +205,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_underWeightCountVal
             // 
             this.labelControl_underWeightCountVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F);
+            this.labelControl_underWeightCountVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_underWeightCountVal.Appearance.Options.UseFont = true;
+            this.labelControl_underWeightCountVal.Appearance.Options.UseForeColor = true;
             this.labelControl_underWeightCountVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_underWeightCountVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_underWeightCountVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -215,7 +221,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_overWeightCountVal
             // 
             this.labelControl_overWeightCountVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F);
+            this.labelControl_overWeightCountVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_overWeightCountVal.Appearance.Options.UseFont = true;
+            this.labelControl_overWeightCountVal.Appearance.Options.UseForeColor = true;
             this.labelControl_overWeightCountVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_overWeightCountVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_overWeightCountVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -229,7 +237,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_detectionCountVal
             // 
             this.labelControl_detectionCountVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_detectionCountVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_detectionCountVal.Appearance.Options.UseFont = true;
+            this.labelControl_detectionCountVal.Appearance.Options.UseForeColor = true;
             this.labelControl_detectionCountVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_detectionCountVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_detectionCountVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -243,7 +253,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_lastUnderWeightVal
             // 
             this.labelControl_lastUnderWeightVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_lastUnderWeightVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_lastUnderWeightVal.Appearance.Options.UseFont = true;
+            this.labelControl_lastUnderWeightVal.Appearance.Options.UseForeColor = true;
             this.labelControl_lastUnderWeightVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_lastUnderWeightVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_lastUnderWeightVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -256,7 +268,9 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_lastOverWeightVal
             // 
             this.labelControl_lastOverWeightVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_lastOverWeightVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_lastOverWeightVal.Appearance.Options.UseFont = true;
+            this.labelControl_lastOverWeightVal.Appearance.Options.UseForeColor = true;
             this.labelControl_lastOverWeightVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_lastOverWeightVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_lastOverWeightVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -269,13 +283,16 @@ namespace CheckWeighterInterface.StatusMonitor
             // labelControl_brandVal
             // 
             this.labelControl_brandVal.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl_brandVal.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(196)))));
             this.labelControl_brandVal.Appearance.Options.UseFont = true;
+            this.labelControl_brandVal.Appearance.Options.UseForeColor = true;
             this.labelControl_brandVal.Appearance.Options.UseTextOptions = true;
             this.labelControl_brandVal.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.labelControl_brandVal.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_brandVal.Location = new System.Drawing.Point(185, 15);
+            this.labelControl_brandVal.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl_brandVal.Location = new System.Drawing.Point(153, 15);
             this.labelControl_brandVal.Name = "labelControl_brandVal";
-            this.labelControl_brandVal.Size = new System.Drawing.Size(0, 28);
+            this.labelControl_brandVal.Size = new System.Drawing.Size(65, 28);
             this.labelControl_brandVal.TabIndex = 10;
             // 
             // labelControl_minWeight
@@ -421,27 +438,27 @@ namespace CheckWeighterInterface.StatusMonitor
             // 
             // chartControl_point
             // 
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram3.AxisX.WholeRange.EndSideMargin = 1D;
-            xyDiagram3.AxisX.WholeRange.StartSideMargin = 1D;
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl_point.Diagram = xyDiagram3;
+            xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram5.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram5.AxisX.WholeRange.EndSideMargin = 1D;
+            xyDiagram5.AxisX.WholeRange.StartSideMargin = 1D;
+            xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl_point.Diagram = xyDiagram5;
             this.chartControl_point.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_point.Legend.Name = "Default Legend";
             this.chartControl_point.Location = new System.Drawing.Point(5, 5);
             this.chartControl_point.Name = "chartControl_point";
-            series4.Name = "重量分布";
-            pointSeriesView2.PointMarkerOptions.Size = 2;
-            series4.View = pointSeriesView2;
+            series7.Name = "重量分布";
+            pointSeriesView3.PointMarkerOptions.Size = 2;
+            series7.View = pointSeriesView3;
             this.chartControl_point.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series4};
+        series7};
             this.chartControl_point.Size = new System.Drawing.Size(385, 289);
             this.chartControl_point.TabIndex = 0;
-            chartTitle4.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle4.Text = "重量区间分布图";
+            chartTitle7.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle7.Text = "重量区间分布图";
             this.chartControl_point.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle4});
+            chartTitle7});
             this.chartControl_point.DoubleClick += new System.EventHandler(this.chartControl_point_DoubleClick);
             // 
             // panelControl2
@@ -467,25 +484,25 @@ namespace CheckWeighterInterface.StatusMonitor
             this.chartControl_pie.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl_pie.Location = new System.Drawing.Point(5, 5);
             this.chartControl_pie.Name = "chartControl_pie";
-            series5.CrosshairHighlightPoints = DevExpress.Utils.DefaultBoolean.True;
-            series5.CrosshairLabelVisibility = DevExpress.Utils.DefaultBoolean.True;
-            pieSeriesLabel2.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            pieSeriesLabel2.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pieSeriesLabel2.LineLength = 15;
-            pieSeriesLabel2.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.TwoColumns;
-            series5.Label = pieSeriesLabel2;
-            series5.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series5.LegendName = "Default Legend";
-            series5.Name = "series_proportion";
-            series5.View = pieSeriesView2;
+            series8.CrosshairHighlightPoints = DevExpress.Utils.DefaultBoolean.True;
+            series8.CrosshairLabelVisibility = DevExpress.Utils.DefaultBoolean.True;
+            pieSeriesLabel3.Border.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            pieSeriesLabel3.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            pieSeriesLabel3.LineLength = 15;
+            pieSeriesLabel3.Position = DevExpress.XtraCharts.PieSeriesLabelPosition.TwoColumns;
+            series8.Label = pieSeriesLabel3;
+            series8.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series8.LegendName = "Default Legend";
+            series8.Name = "series_proportion";
+            series8.View = pieSeriesView3;
             this.chartControl_pie.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series5};
+        series8};
             this.chartControl_pie.Size = new System.Drawing.Size(329, 289);
             this.chartControl_pie.TabIndex = 0;
-            chartTitle5.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle5.Text = "检测结果分布图";
+            chartTitle8.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle8.Text = "检测结果分布图";
             this.chartControl_pie.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle5});
+            chartTitle8});
             this.chartControl_pie.DoubleClick += new System.EventHandler(this.chartControl_pie_DoubleClick);
             // 
             // panelControl1
@@ -520,58 +537,58 @@ namespace CheckWeighterInterface.StatusMonitor
             // 
             // chartControl_line
             // 
-            xyDiagram4.AxisX.GridLines.Visible = true;
-            xyDiagram4.AxisX.Interlaced = true;
-            xyDiagram4.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram4.AxisX.Title.Text = "称重数量";
-            xyDiagram4.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram4.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram4.AxisX.VisualRange.Auto = false;
-            xyDiagram4.AxisX.VisualRange.AutoSideMargins = false;
-            xyDiagram4.AxisX.VisualRange.EndSideMargin = 0.1D;
-            xyDiagram4.AxisX.VisualRange.MaxValueSerializable = "200";
-            xyDiagram4.AxisX.VisualRange.MinValueSerializable = "0";
-            xyDiagram4.AxisX.VisualRange.StartSideMargin = 0.1D;
-            xyDiagram4.AxisX.WholeRange.Auto = false;
-            xyDiagram4.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram4.AxisX.WholeRange.EndSideMargin = 0.1D;
-            xyDiagram4.AxisX.WholeRange.MaxValueSerializable = "200";
-            xyDiagram4.AxisX.WholeRange.MinValueSerializable = "0";
-            xyDiagram4.AxisX.WholeRange.StartSideMargin = 0.1D;
-            xyDiagram4.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram4.AxisY.MinorCount = 3;
-            xyDiagram4.AxisY.Title.Text = "当前重量 KG";
-            xyDiagram4.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram4.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram4.AxisY.WholeRange.Auto = false;
-            xyDiagram4.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram4.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram4.AxisY.WholeRange.MaxValueSerializable = "15";
-            xyDiagram4.AxisY.WholeRange.MinValueSerializable = "5";
-            xyDiagram4.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram4.EnableAxisXScrolling = true;
-            xyDiagram4.EnableAxisXZooming = true;
-            xyDiagram4.EnableAxisYScrolling = true;
-            xyDiagram4.EnableAxisYZooming = true;
-            this.chartControl_line.Diagram = xyDiagram4;
+            xyDiagram6.AxisX.GridLines.Visible = true;
+            xyDiagram6.AxisX.Interlaced = true;
+            xyDiagram6.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram6.AxisX.Title.Text = "称重数量";
+            xyDiagram6.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram6.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram6.AxisX.VisualRange.Auto = false;
+            xyDiagram6.AxisX.VisualRange.AutoSideMargins = false;
+            xyDiagram6.AxisX.VisualRange.EndSideMargin = 0.1D;
+            xyDiagram6.AxisX.VisualRange.MaxValueSerializable = "200";
+            xyDiagram6.AxisX.VisualRange.MinValueSerializable = "0";
+            xyDiagram6.AxisX.VisualRange.StartSideMargin = 0.1D;
+            xyDiagram6.AxisX.WholeRange.Auto = false;
+            xyDiagram6.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram6.AxisX.WholeRange.EndSideMargin = 0.1D;
+            xyDiagram6.AxisX.WholeRange.MaxValueSerializable = "200";
+            xyDiagram6.AxisX.WholeRange.MinValueSerializable = "0";
+            xyDiagram6.AxisX.WholeRange.StartSideMargin = 0.1D;
+            xyDiagram6.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram6.AxisY.MinorCount = 3;
+            xyDiagram6.AxisY.Title.Text = "当前重量 KG";
+            xyDiagram6.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram6.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram6.AxisY.WholeRange.Auto = false;
+            xyDiagram6.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram6.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram6.AxisY.WholeRange.MaxValueSerializable = "15";
+            xyDiagram6.AxisY.WholeRange.MinValueSerializable = "5";
+            xyDiagram6.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram6.EnableAxisXScrolling = true;
+            xyDiagram6.EnableAxisXZooming = true;
+            xyDiagram6.EnableAxisYScrolling = true;
+            xyDiagram6.EnableAxisYZooming = true;
+            this.chartControl_line.Diagram = xyDiagram6;
             this.chartControl_line.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_line.Legend.Name = "Default Legend";
             this.chartControl_line.Location = new System.Drawing.Point(5, 5);
             this.chartControl_line.Name = "chartControl_line";
-            series6.Name = "当前重量";
-            lineSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            lineSeriesView2.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
-            lineSeriesView2.LineMarkerOptions.Size = 5;
-            lineSeriesView2.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series6.View = lineSeriesView2;
+            series9.Name = "当前重量";
+            lineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            lineSeriesView3.LineMarkerOptions.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
+            lineSeriesView3.LineMarkerOptions.Size = 5;
+            lineSeriesView3.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series9.View = lineSeriesView3;
             this.chartControl_line.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series6};
+        series9};
             this.chartControl_line.Size = new System.Drawing.Size(730, 288);
             this.chartControl_line.TabIndex = 2;
-            chartTitle6.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle6.Text = "重量变化曲线图";
+            chartTitle9.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle9.Text = "重量变化曲线图";
             this.chartControl_line.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle6});
+            chartTitle9});
             this.chartControl_line.DoubleClick += new System.EventHandler(this.chartControl_line_DoubleClick);
             // 
             // timer_detectOnce
@@ -595,22 +612,22 @@ namespace CheckWeighterInterface.StatusMonitor
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pointSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pointSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_point)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_pie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_line)).EndInit();
             this.ResumeLayout(false);
 
