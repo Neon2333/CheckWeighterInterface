@@ -164,9 +164,13 @@ namespace CheckWeighterInterface
         public static double sensorRealTimeDataAvg;                                             //传感器实时数据平均值
 
         //CalibrationCorrection
-        //public static double[] calibrationDataGradient;    
-        public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");      //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
-        public static double curSensorValue = 0.0D;                                                  //记录下位机上传的1个实时传感器值
+        //public static double[] calibrationDataGradient;
+        //当前显示的标定段数
+        public static int curCalibrationSectionCount = 1;
+        //当前显示的各端点传感器值和重量
+        public static DataTable dtCalibrationDataSensorValAndWeight = new DataTable("calibrationData"); //标定端点数据表
+        public static DataTable dtCalibrationGradient = new DataTable("dtCalibrationGradient");         //标定数据列表：各段斜率，用于根据传感器值计算重量。标定即计算斜率。
+        public static double curSensorValue = 0.0D;                                                     //记录下位机上传的1个实时传感器值
 
         //AlgorithmConfig
 
