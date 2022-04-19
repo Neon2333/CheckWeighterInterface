@@ -81,7 +81,8 @@ namespace CheckWeighterInterface.SystemManagement
             //Global.calibrationDataGradient = new double[1];
             if (Global.dtCalibrationGradient.Columns.Count == 0)
             {
-                Global.dtCalibrationGradient.Columns.Add("NO", typeof(String));
+                Global.dtCalibrationGradient.Columns.Add("NO", typeof(Int16));
+                Global.dtCalibrationGradient.Columns.Add("section", typeof(String));
                 Global.dtCalibrationGradient.Columns.Add("gradient", typeof(double));      //传感器值为Int还是double？
             }
 
@@ -185,7 +186,7 @@ namespace CheckWeighterInterface.SystemManagement
                 }
                 else if (hasBeenCalibrated == HasBeenCalibrated.hasBeenSingleCalibrated)
                 {
-                    Global.curCalibrationSectionCount = countSectionBeenMultiCalibrated;
+                    Global.curCalibrationSectionCount = 1;
                     switchCalibrationMode(curCalibrationMode, Global.curCalibrationSectionCount);
 
                     allocateCapacityCalibrationData(Global.curCalibrationSectionCount);
@@ -193,17 +194,18 @@ namespace CheckWeighterInterface.SystemManagement
                     Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleCalibrationData, ref dtSingleModeCalibrationDataQueryMySQL);
                     Global.mysqlHelper1._queryTableMySQL(cmdQuerySingleModeGradient, ref dtSingleModeGradientQueryMySQL);
 
-                    for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
+                    for(int i=0;i< dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
 
                     for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtSingleModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
 
                     refreshChartLineCalibrationGradient();
@@ -217,7 +219,7 @@ namespace CheckWeighterInterface.SystemManagement
                 }
                 else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenBothCalibrated)
                 {
-                    Global.curCalibrationSectionCount = countSectionBeenMultiCalibrated;
+                    Global.curCalibrationSectionCount = 1;
                     switchCalibrationMode(curCalibrationMode, Global.curCalibrationSectionCount);
 
                     allocateCapacityCalibrationData(Global.curCalibrationSectionCount);
@@ -227,15 +229,16 @@ namespace CheckWeighterInterface.SystemManagement
 
                     for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
 
                     for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtSingleModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
 
                     refreshChartLineCalibrationGradient();
@@ -269,15 +272,16 @@ namespace CheckWeighterInterface.SystemManagement
 
                     for (int i = 0; i < dtMultiModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
 
                     for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtMultiModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
 
                     refreshChartLineCalibrationGradient();
@@ -295,15 +299,16 @@ namespace CheckWeighterInterface.SystemManagement
 
                     for (int i = 0; i < dtMultiModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
 
                     for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtMultiModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
 
                     refreshChartLineCalibrationGradient();
@@ -322,8 +327,8 @@ namespace CheckWeighterInterface.SystemManagement
                 //curCalibrationMode = CalibrationMode.singleSectionCalibration;
                 //Global.curCalibrationSectionCount = countSection;
                 this.spinEdit_countSection.Value = countSection;
-                this.spinEdit_countSection.Enabled = false;
                 this.spinEdit_countSection.Properties.MinValue = 1;
+                this.spinEdit_countSection.Enabled = false;
             }
             else if(mode == CalibrationMode.multiSectionCalibration)
             {
@@ -387,7 +392,8 @@ namespace CheckWeighterInterface.SystemManagement
             for(int i = 0; i < countSection; i++)
             {
                 DataRow dr = Global.dtCalibrationGradient.NewRow();
-                dr["NO"] = (i + 1).ToString() + "-" + (i + 2).ToString();
+                dr["NO"] = i + 1;
+                dr["section"] = (i + 1).ToString() + "-" + (i + 2).ToString();
                 dr["gradient"] = Double.NaN;
                 Global.dtCalibrationGradient.Rows.Add(dr);
             }
@@ -408,7 +414,8 @@ namespace CheckWeighterInterface.SystemManagement
                 delta1 = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i + 1]["calibrationWeight"]) - Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
                 delta2 = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i + 1]["sensorValue"]) - Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
                 DataRow dr = Global.dtCalibrationGradient.NewRow();
-                dr["NO"] = (i + 1).ToString() + "-" + (i + 2).ToString();
+                dr["NO"] = i + 1;
+                dr["section"] = (i + 1).ToString() + "-" + (i + 2).ToString();
                 dr["gradient"] = delta1 / delta2;
                 Global.dtCalibrationGradient.Rows.Add(dr);
             }
@@ -493,7 +500,6 @@ namespace CheckWeighterInterface.SystemManagement
                     calibrationWeightMax = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
                 }
             }
-
 
             double deltaX = sensorValueMax - sensorValueMin;
             double deltaY = calibrationWeightMax - calibrationWeightMin;
@@ -667,6 +673,8 @@ namespace CheckWeighterInterface.SystemManagement
 
                 if (flagSaveSucceed)
                 {
+                    isCalibrated = false;
+
                     MessageBox.Show("保存单段数据成功");
                     //isCalibrationDataModified = false;
 
@@ -726,6 +734,8 @@ namespace CheckWeighterInterface.SystemManagement
 
                 if (flagSaveSucceed)
                 {
+                    isCalibrated = false;
+
                     MessageBox.Show("保存多段数据成功");
                     //isCalibrationDataModified = false;
                     countSectionBeenMultiCalibrated = Global.curCalibrationSectionCount;
@@ -759,11 +769,11 @@ namespace CheckWeighterInterface.SystemManagement
                 }
             }
 
-            saveHasBeenCalibrated();    
+            saveHasBeenCalibrated();
+
+            isCalibrationDataModified = false;
 
             setButtonEnableWhenSensorValueOrWeightModified();
-
-            isCalibrated = false;
         }
 
         //丢弃已修改的数据，已MySQL暂存表数据还原
@@ -784,18 +794,30 @@ namespace CheckWeighterInterface.SystemManagement
             {
                 if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
                 {
-                    for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
+                    this.gridControl_calibrationDataList.BeginUpdate();
+
+                    for(int i=0;i< dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
+
+                    this.gridControl_calibrationDataList.DataSource = Global.dtCalibrationDataSensorValAndWeight;   //若不重新给DataSource赋值，则grid仍显示dt变化之前的值（绑定时拷贝了一个副本？副本未变？）
+                    this.gridControl_calibrationDataList.EndUpdate();
+
+
+                    this.gridControl_calibrationGradient.BeginUpdate();
 
                     for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtSingleModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
+
+                    this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
+                    this.gridControl_calibrationGradient.EndUpdate();
                 }
                 else
                 {
@@ -810,51 +832,86 @@ namespace CheckWeighterInterface.SystemManagement
                 }
                 else
                 {
+                    this.gridControl_calibrationDataList.BeginUpdate();
+
                     for (int i = 0; i < dtMultiModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
+
+                    this.gridControl_calibrationDataList.DataSource = Global.dtCalibrationDataSensorValAndWeight;
+                    this.gridControl_calibrationDataList.EndUpdate();
+
+
+                    this.gridControl_calibrationGradient.BeginUpdate();
 
                     for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtMultiModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
+                    this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
+                    this.gridControl_calibrationGradient.EndUpdate();
                 }
             }
             else if(hasBeenCalibrated == HasBeenCalibrated.hasBeenBothCalibrated)
             {
                 if (curCalibrationMode == CalibrationMode.singleSectionCalibration)
                 {
+                    this.gridControl_calibrationDataList.BeginUpdate();
+
                     for (int i = 0; i < dtSingleModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtSingleModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
+
+                    this.gridControl_calibrationDataList.DataSource = Global.dtCalibrationDataSensorValAndWeight;
+                    this.gridControl_calibrationDataList.EndUpdate();
+
+
+                    this.gridControl_calibrationGradient.BeginUpdate();
 
                     for (int i = 0; i < dtSingleModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtSingleModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtSingleModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtSingleModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtSingleModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
+
+                    this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
+                    this.gridControl_calibrationGradient.EndUpdate();
                 }
                 else
                 {
+                    this.gridControl_calibrationDataList.BeginUpdate();
+
                     for (int i = 0; i < dtMultiModeCalibrationDataQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"];
-                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"];
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["sensorValue"]);
+                        Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"] = Convert.ToDouble(dtMultiModeCalibrationDataQueryMySQL.Rows[i]["calibrationWeight"]);
                     }
+
+                    this.gridControl_calibrationDataList.DataSource = Global.dtCalibrationDataSensorValAndWeight;
+                    this.gridControl_calibrationDataList.EndUpdate();
+
+
+                    this.gridControl_calibrationGradient.BeginUpdate();
 
                     for (int i = 0; i < dtMultiModeGradientQueryMySQL.Rows.Count; i++)
                     {
-                        Global.dtCalibrationGradient.Rows[i]["NO"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"];
-                        Global.dtCalibrationGradient.Rows[i]["gradient"] = dtMultiModeGradientQueryMySQL.Rows[i]["gradient"];
+                        Global.dtCalibrationGradient.Rows[i]["NO"] = Convert.ToInt16(dtMultiModeGradientQueryMySQL.Rows[i]["NO"]);
+                        Global.dtCalibrationGradient.Rows[i]["section"] = dtMultiModeGradientQueryMySQL.Rows[i]["section"].ToString();
+                        Global.dtCalibrationGradient.Rows[i]["gradient"] = Convert.ToDouble(dtMultiModeGradientQueryMySQL.Rows[i]["gradient"]);
                     }
+
+                    this.gridControl_calibrationGradient.DataSource = Global.dtCalibrationGradient;
+                    this.gridControl_calibrationGradient.EndUpdate();
                 }
             }
 

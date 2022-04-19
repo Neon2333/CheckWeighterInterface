@@ -188,7 +188,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_dot.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_dot.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_dot.Name = "simpleButton_dot";
-            this.simpleButton_dot.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_dot.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_dot.TabIndex = 38;
             this.simpleButton_dot.Text = ".";
             this.simpleButton_dot.Click += new System.EventHandler(this.simpleButton_dot_Click);
@@ -369,7 +369,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num0.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num0.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num0.Name = "simpleButton_num0";
-            this.simpleButton_num0.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num0.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num0.TabIndex = 33;
             this.simpleButton_num0.Text = "0";
             this.simpleButton_num0.Click += new System.EventHandler(this.simpleButton_num0_Click);
@@ -747,7 +747,7 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_title.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_title.Location = new System.Drawing.Point(13, 8);
             this.labelControl_title.Name = "labelControl_title";
-            this.labelControl_title.Size = new System.Drawing.Size(327, 20);
+            this.labelControl_title.Size = new System.Drawing.Size(229, 20);
             this.labelControl_title.TabIndex = 21;
             this.labelControl_title.Text = "更改阈值";
             // 
