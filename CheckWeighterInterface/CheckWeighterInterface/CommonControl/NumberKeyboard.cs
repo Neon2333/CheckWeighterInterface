@@ -545,6 +545,5 @@ namespace CheckWeighterInterface.CommonControl
                 simpleButton_esc_Click(sender, new EventArgs());    //点击Enter后，若输入合法，键盘自动隐藏
             }
         }
-
     }
 }

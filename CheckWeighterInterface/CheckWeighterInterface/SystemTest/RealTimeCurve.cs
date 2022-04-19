@@ -299,7 +299,6 @@ namespace CheckWeighterInterface.SystemTest
             this.numberKeyboard1.Appearance.Options.UseBackColor = true;
             this.numberKeyboard1.Location = new System.Drawing.Point(276, 3);
             this.numberKeyboard1.Name = "numberKeyboard1";
-            this.numberKeyboard1.Size = new System.Drawing.Size(350, 600);
             this.numberKeyboard1.TabIndex = 28;
             this.numberKeyboard1.title = title;
             this.numberKeyboard1.outOfRangeType = CommonControl.NumberKeyboard.OutOfRangeType.minMaxIllegal;    //设定输入值取最值非法

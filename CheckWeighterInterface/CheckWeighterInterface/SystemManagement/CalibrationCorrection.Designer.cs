@@ -366,12 +366,12 @@ namespace CheckWeighterInterface.SystemManagement
             // 
             // gridControl_calibrationGradient
             // 
-            this.gridControl_calibrationGradient.Location = new System.Drawing.Point(559, 353);
+            this.gridControl_calibrationGradient.Location = new System.Drawing.Point(516, 353);
             this.gridControl_calibrationGradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.gridControl_calibrationGradient.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl_calibrationGradient.MainView = this.tileView2;
             this.gridControl_calibrationGradient.Name = "gridControl_calibrationGradient";
-            this.gridControl_calibrationGradient.Size = new System.Drawing.Size(152, 255);
+            this.gridControl_calibrationGradient.Size = new System.Drawing.Size(195, 255);
             this.gridControl_calibrationGradient.TabIndex = 75;
             this.gridControl_calibrationGradient.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView2});
@@ -453,11 +453,11 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_gradient.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_gradient.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_gradient.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_gradient.Location = new System.Drawing.Point(623, 323);
+            this.labelControl_gradient.Location = new System.Drawing.Point(597, 323);
             this.labelControl_gradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.labelControl_gradient.LookAndFeel.UseDefaultLookAndFeel = false;
             this.labelControl_gradient.Name = "labelControl_gradient";
-            this.labelControl_gradient.Size = new System.Drawing.Size(88, 30);
+            this.labelControl_gradient.Size = new System.Drawing.Size(114, 30);
             this.labelControl_gradient.TabIndex = 74;
             this.labelControl_gradient.Text = "斜率";
             // 
@@ -473,11 +473,11 @@ namespace CheckWeighterInterface.SystemManagement
             this.labelControl_NOGradient.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_NOGradient.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_NOGradient.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_NOGradient.Location = new System.Drawing.Point(559, 323);
+            this.labelControl_NOGradient.Location = new System.Drawing.Point(516, 323);
             this.labelControl_NOGradient.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.labelControl_NOGradient.LookAndFeel.UseDefaultLookAndFeel = false;
             this.labelControl_NOGradient.Name = "labelControl_NOGradient";
-            this.labelControl_NOGradient.Size = new System.Drawing.Size(63, 30);
+            this.labelControl_NOGradient.Size = new System.Drawing.Size(80, 30);
             this.labelControl_NOGradient.TabIndex = 73;
             this.labelControl_NOGradient.Text = "序号";
             // 
@@ -517,7 +517,7 @@ namespace CheckWeighterInterface.SystemManagement
             series2.View = lineSeriesView2;
             this.chartControl_calibrationGradient.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series2};
-            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(550, 285);
+            this.chartControl_calibrationGradient.Size = new System.Drawing.Size(507, 285);
             this.chartControl_calibrationGradient.TabIndex = 72;
             chartTitle2.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle2.Text = "标定点示意图";
@@ -566,10 +566,16 @@ namespace CheckWeighterInterface.SystemManagement
             this.tileView1.Appearance.ItemFocused.Options.UseBorderColor = true;
             this.tileView1.Appearance.ItemFocused.Options.UseFont = true;
             this.tileView1.Appearance.ItemFocused.Options.UseForeColor = true;
+            this.tileView1.Appearance.ItemFocused.Options.UseTextOptions = true;
+            this.tileView1.Appearance.ItemFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tileView1.Appearance.ItemFocused.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.tileView1.Appearance.ItemNormal.BackColor = System.Drawing.Color.Gray;
             this.tileView1.Appearance.ItemNormal.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tileView1.Appearance.ItemNormal.Options.UseBackColor = true;
             this.tileView1.Appearance.ItemNormal.Options.UseFont = true;
+            this.tileView1.Appearance.ItemNormal.Options.UseTextOptions = true;
+            this.tileView1.Appearance.ItemNormal.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tileView1.Appearance.ItemNormal.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.tileView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.UltraFlat;
             this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.tileViewColumn_NO,

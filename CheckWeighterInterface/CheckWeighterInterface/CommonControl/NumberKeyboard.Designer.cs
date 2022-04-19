@@ -84,7 +84,7 @@ namespace CheckWeighterInterface.CommonControl
             this.panelControl_numKeyboard.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.panelControl_numKeyboard.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl_numKeyboard.Name = "panelControl_numKeyboard";
-            this.panelControl_numKeyboard.Size = new System.Drawing.Size(350, 600);
+            this.panelControl_numKeyboard.Size = new System.Drawing.Size(250, 455);
             this.panelControl_numKeyboard.TabIndex = 0;
             // 
             // labelControl_max
@@ -98,9 +98,9 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_max.Appearance.Options.UseTextOptions = true;
             this.labelControl_max.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_max.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_max.Location = new System.Drawing.Point(10, 568);
+            this.labelControl_max.Location = new System.Drawing.Point(6, 427);
             this.labelControl_max.Name = "labelControl_max";
-            this.labelControl_max.Size = new System.Drawing.Size(327, 20);
+            this.labelControl_max.Size = new System.Drawing.Size(236, 20);
             this.labelControl_max.TabIndex = 41;
             this.labelControl_max.Text = "最大值：";
             // 
@@ -115,9 +115,9 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_min.Appearance.Options.UseTextOptions = true;
             this.labelControl_min.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_min.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_min.Location = new System.Drawing.Point(10, 533);
+            this.labelControl_min.Location = new System.Drawing.Point(6, 401);
             this.labelControl_min.Name = "labelControl_min";
-            this.labelControl_min.Size = new System.Drawing.Size(327, 20);
+            this.labelControl_min.Size = new System.Drawing.Size(235, 20);
             this.labelControl_min.TabIndex = 40;
             this.labelControl_min.Text = "最小值：";
             // 
@@ -148,11 +148,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_plusMinus.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_plusMinus.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_plusMinus.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_plusMinus.Location = new System.Drawing.Point(180, 443);
+            this.simpleButton_plusMinus.Location = new System.Drawing.Point(130, 345);
             this.simpleButton_plusMinus.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_plusMinus.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_plusMinus.Name = "simpleButton_plusMinus";
-            this.simpleButton_plusMinus.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_plusMinus.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_plusMinus.TabIndex = 39;
             this.simpleButton_plusMinus.Text = "+/-";
             this.simpleButton_plusMinus.Click += new System.EventHandler(this.simpleButton_plusMinus_Click);
@@ -184,7 +184,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_dot.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_dot.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_dot.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_dot.Location = new System.Drawing.Point(95, 443);
+            this.simpleButton_dot.Location = new System.Drawing.Point(70, 345);
             this.simpleButton_dot.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_dot.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_dot.Name = "simpleButton_dot";
@@ -220,11 +220,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num3.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num3.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num3.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num3.Location = new System.Drawing.Point(180, 363);
+            this.simpleButton_num3.Location = new System.Drawing.Point(130, 285);
             this.simpleButton_num3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num3.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num3.Name = "simpleButton_num3";
-            this.simpleButton_num3.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num3.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num3.TabIndex = 37;
             this.simpleButton_num3.Text = "3";
             this.simpleButton_num3.Click += new System.EventHandler(this.simpleButton_num3_Click);
@@ -256,11 +256,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num2.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num2.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num2.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num2.Location = new System.Drawing.Point(95, 363);
+            this.simpleButton_num2.Location = new System.Drawing.Point(70, 285);
             this.simpleButton_num2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num2.Name = "simpleButton_num2";
-            this.simpleButton_num2.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num2.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num2.TabIndex = 36;
             this.simpleButton_num2.Text = "2";
             this.simpleButton_num2.Click += new System.EventHandler(this.simpleButton_num2_Click);
@@ -292,11 +292,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num6.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num6.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num6.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num6.Location = new System.Drawing.Point(180, 283);
+            this.simpleButton_num6.Location = new System.Drawing.Point(130, 225);
             this.simpleButton_num6.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num6.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num6.Name = "simpleButton_num6";
-            this.simpleButton_num6.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num6.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num6.TabIndex = 35;
             this.simpleButton_num6.Text = "6";
             this.simpleButton_num6.Click += new System.EventHandler(this.simpleButton_num6_Click);
@@ -328,11 +328,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num5.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num5.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num5.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num5.Location = new System.Drawing.Point(95, 283);
+            this.simpleButton_num5.Location = new System.Drawing.Point(70, 225);
             this.simpleButton_num5.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num5.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num5.Name = "simpleButton_num5";
-            this.simpleButton_num5.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num5.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num5.TabIndex = 34;
             this.simpleButton_num5.Text = "5";
             this.simpleButton_num5.Click += new System.EventHandler(this.simpleButton_num5_Click);
@@ -364,7 +364,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num0.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num0.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num0.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num0.Location = new System.Drawing.Point(10, 443);
+            this.simpleButton_num0.Location = new System.Drawing.Point(10, 345);
             this.simpleButton_num0.LookAndFeel.SkinName = "Office 2019 Dark Gray";
             this.simpleButton_num0.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num0.LookAndFeel.UseDefaultLookAndFeel = false;
@@ -401,11 +401,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num1.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num1.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num1.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num1.Location = new System.Drawing.Point(10, 363);
+            this.simpleButton_num1.Location = new System.Drawing.Point(10, 285);
             this.simpleButton_num1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num1.Name = "simpleButton_num1";
-            this.simpleButton_num1.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num1.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num1.TabIndex = 32;
             this.simpleButton_num1.Text = "1";
             this.simpleButton_num1.Click += new System.EventHandler(this.simpleButton_num1_Click);
@@ -437,11 +437,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num4.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num4.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num4.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num4.Location = new System.Drawing.Point(10, 283);
+            this.simpleButton_num4.Location = new System.Drawing.Point(10, 225);
             this.simpleButton_num4.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num4.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num4.Name = "simpleButton_num4";
-            this.simpleButton_num4.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num4.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num4.TabIndex = 31;
             this.simpleButton_num4.Text = "4";
             this.simpleButton_num4.Click += new System.EventHandler(this.simpleButton_num4_Click);
@@ -450,13 +450,13 @@ namespace CheckWeighterInterface.CommonControl
             // 
             this.simpleButton_enter.AllowFocus = false;
             this.simpleButton_enter.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.simpleButton_enter.Appearance.Font = new System.Drawing.Font("微软雅黑", 18F);
+            this.simpleButton_enter.Appearance.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.simpleButton_enter.Appearance.ForeColor = System.Drawing.Color.White;
             this.simpleButton_enter.Appearance.Options.UseBackColor = true;
             this.simpleButton_enter.Appearance.Options.UseFont = true;
             this.simpleButton_enter.Appearance.Options.UseForeColor = true;
             this.simpleButton_enter.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.simpleButton_enter.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 21F);
+            this.simpleButton_enter.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.simpleButton_enter.AppearanceHovered.ForeColor = System.Drawing.Color.Black;
             this.simpleButton_enter.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton_enter.AppearanceHovered.Options.UseFont = true;
@@ -465,7 +465,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_enter.AppearanceHovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_enter.AppearanceHovered.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleButton_enter.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(215)))));
-            this.simpleButton_enter.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 21F);
+            this.simpleButton_enter.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 13F);
             this.simpleButton_enter.AppearancePressed.ForeColor = System.Drawing.Color.White;
             this.simpleButton_enter.AppearancePressed.Options.UseBackColor = true;
             this.simpleButton_enter.AppearancePressed.Options.UseFont = true;
@@ -473,11 +473,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_enter.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_enter.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_enter.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_enter.Location = new System.Drawing.Point(265, 203);
+            this.simpleButton_enter.Location = new System.Drawing.Point(190, 165);
             this.simpleButton_enter.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_enter.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_enter.Name = "simpleButton_enter";
-            this.simpleButton_enter.Size = new System.Drawing.Size(70, 310);
+            this.simpleButton_enter.Size = new System.Drawing.Size(50, 230);
             this.simpleButton_enter.TabIndex = 30;
             this.simpleButton_enter.Text = "Enter";
             this.simpleButton_enter.Click += new System.EventHandler(this.simpleButton_enter_Click);
@@ -509,11 +509,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num9.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num9.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num9.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num9.Location = new System.Drawing.Point(180, 203);
+            this.simpleButton_num9.Location = new System.Drawing.Point(130, 165);
             this.simpleButton_num9.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num9.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num9.Name = "simpleButton_num9";
-            this.simpleButton_num9.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num9.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num9.TabIndex = 29;
             this.simpleButton_num9.Text = "9";
             this.simpleButton_num9.Click += new System.EventHandler(this.simpleButton_num9_Click);
@@ -545,11 +545,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num8.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num8.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num8.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num8.Location = new System.Drawing.Point(95, 203);
+            this.simpleButton_num8.Location = new System.Drawing.Point(70, 165);
             this.simpleButton_num8.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num8.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num8.Name = "simpleButton_num8";
-            this.simpleButton_num8.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num8.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num8.TabIndex = 28;
             this.simpleButton_num8.Text = "8";
             this.simpleButton_num8.Click += new System.EventHandler(this.simpleButton_num8_Click);
@@ -581,11 +581,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_num7.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_num7.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_num7.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_num7.Location = new System.Drawing.Point(10, 203);
+            this.simpleButton_num7.Location = new System.Drawing.Point(10, 165);
             this.simpleButton_num7.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_num7.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_num7.Name = "simpleButton_num7";
-            this.simpleButton_num7.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_num7.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_num7.TabIndex = 27;
             this.simpleButton_num7.Text = "7";
             this.simpleButton_num7.Click += new System.EventHandler(this.simpleButton_num7_Click);
@@ -594,13 +594,13 @@ namespace CheckWeighterInterface.CommonControl
             // 
             this.simpleButton_backspace.AllowFocus = false;
             this.simpleButton_backspace.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.simpleButton_backspace.Appearance.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.simpleButton_backspace.Appearance.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.simpleButton_backspace.Appearance.ForeColor = System.Drawing.Color.White;
             this.simpleButton_backspace.Appearance.Options.UseBackColor = true;
             this.simpleButton_backspace.Appearance.Options.UseFont = true;
             this.simpleButton_backspace.Appearance.Options.UseForeColor = true;
             this.simpleButton_backspace.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.simpleButton_backspace.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_backspace.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.simpleButton_backspace.AppearanceHovered.ForeColor = System.Drawing.Color.Black;
             this.simpleButton_backspace.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton_backspace.AppearanceHovered.Options.UseFont = true;
@@ -609,7 +609,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_backspace.AppearanceHovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_backspace.AppearanceHovered.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleButton_backspace.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(215)))));
-            this.simpleButton_backspace.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_backspace.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F);
             this.simpleButton_backspace.AppearancePressed.ForeColor = System.Drawing.Color.White;
             this.simpleButton_backspace.AppearancePressed.Options.UseBackColor = true;
             this.simpleButton_backspace.AppearancePressed.Options.UseFont = true;
@@ -617,11 +617,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_backspace.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_backspace.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_backspace.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_backspace.Location = new System.Drawing.Point(180, 123);
+            this.simpleButton_backspace.Location = new System.Drawing.Point(130, 105);
             this.simpleButton_backspace.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_backspace.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_backspace.Name = "simpleButton_backspace";
-            this.simpleButton_backspace.Size = new System.Drawing.Size(155, 70);
+            this.simpleButton_backspace.Size = new System.Drawing.Size(110, 50);
             this.simpleButton_backspace.TabIndex = 26;
             this.simpleButton_backspace.Text = "Backspace";
             this.simpleButton_backspace.Click += new System.EventHandler(this.simpleButton_backspace_Click);
@@ -630,13 +630,13 @@ namespace CheckWeighterInterface.CommonControl
             // 
             this.simpleButton_clr.AllowFocus = false;
             this.simpleButton_clr.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.simpleButton_clr.Appearance.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton_clr.Appearance.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton_clr.Appearance.ForeColor = System.Drawing.Color.White;
             this.simpleButton_clr.Appearance.Options.UseBackColor = true;
             this.simpleButton_clr.Appearance.Options.UseFont = true;
             this.simpleButton_clr.Appearance.Options.UseForeColor = true;
             this.simpleButton_clr.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.simpleButton_clr.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_clr.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.simpleButton_clr.AppearanceHovered.ForeColor = System.Drawing.Color.Black;
             this.simpleButton_clr.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton_clr.AppearanceHovered.Options.UseFont = true;
@@ -645,7 +645,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_clr.AppearanceHovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_clr.AppearanceHovered.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleButton_clr.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(215)))));
-            this.simpleButton_clr.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_clr.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.simpleButton_clr.AppearancePressed.ForeColor = System.Drawing.Color.White;
             this.simpleButton_clr.AppearancePressed.Options.UseBackColor = true;
             this.simpleButton_clr.AppearancePressed.Options.UseFont = true;
@@ -653,11 +653,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_clr.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_clr.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_clr.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_clr.Location = new System.Drawing.Point(95, 123);
+            this.simpleButton_clr.Location = new System.Drawing.Point(70, 105);
             this.simpleButton_clr.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_clr.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_clr.Name = "simpleButton_clr";
-            this.simpleButton_clr.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_clr.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_clr.TabIndex = 25;
             this.simpleButton_clr.Text = "Clr";
             this.simpleButton_clr.Click += new System.EventHandler(this.simpleButton_clr_Click);
@@ -666,13 +666,13 @@ namespace CheckWeighterInterface.CommonControl
             // 
             this.simpleButton_esc.AllowFocus = false;
             this.simpleButton_esc.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.simpleButton_esc.Appearance.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.simpleButton_esc.Appearance.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.simpleButton_esc.Appearance.ForeColor = System.Drawing.Color.White;
             this.simpleButton_esc.Appearance.Options.UseBackColor = true;
             this.simpleButton_esc.Appearance.Options.UseFont = true;
             this.simpleButton_esc.Appearance.Options.UseForeColor = true;
             this.simpleButton_esc.AppearanceHovered.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(229)))), ((int)(((byte)(229)))));
-            this.simpleButton_esc.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_esc.AppearanceHovered.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.simpleButton_esc.AppearanceHovered.ForeColor = System.Drawing.Color.Black;
             this.simpleButton_esc.AppearanceHovered.Options.UseBackColor = true;
             this.simpleButton_esc.AppearanceHovered.Options.UseFont = true;
@@ -681,7 +681,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_esc.AppearanceHovered.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_esc.AppearanceHovered.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleButton_esc.AppearancePressed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(118)))), ((int)(((byte)(215)))));
-            this.simpleButton_esc.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 21.75F);
+            this.simpleButton_esc.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 18F);
             this.simpleButton_esc.AppearancePressed.ForeColor = System.Drawing.Color.White;
             this.simpleButton_esc.AppearancePressed.Options.UseBackColor = true;
             this.simpleButton_esc.AppearancePressed.Options.UseFont = true;
@@ -689,11 +689,11 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_esc.AppearancePressed.Options.UseTextOptions = true;
             this.simpleButton_esc.AppearancePressed.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.simpleButton_esc.AppearancePressed.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.simpleButton_esc.Location = new System.Drawing.Point(10, 123);
+            this.simpleButton_esc.Location = new System.Drawing.Point(10, 105);
             this.simpleButton_esc.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.simpleButton_esc.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_esc.Name = "simpleButton_esc";
-            this.simpleButton_esc.Size = new System.Drawing.Size(70, 70);
+            this.simpleButton_esc.Size = new System.Drawing.Size(50, 50);
             this.simpleButton_esc.TabIndex = 24;
             this.simpleButton_esc.Text = "ESC";
             this.simpleButton_esc.Click += new System.EventHandler(this.simpleButton_esc_Click);
@@ -710,9 +710,9 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_outOfRange.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_outOfRange.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_outOfRange.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl_outOfRange.Location = new System.Drawing.Point(10, 93);
+            this.labelControl_outOfRange.Location = new System.Drawing.Point(10, 80);
             this.labelControl_outOfRange.Name = "labelControl_outOfRange";
-            this.labelControl_outOfRange.Size = new System.Drawing.Size(330, 20);
+            this.labelControl_outOfRange.Size = new System.Drawing.Size(232, 20);
             this.labelControl_outOfRange.TabIndex = 23;
             this.labelControl_outOfRange.Text = "超出范围";
             this.labelControl_outOfRange.Visible = false;
@@ -720,7 +720,7 @@ namespace CheckWeighterInterface.CommonControl
             // labelControl_display
             // 
             this.labelControl_display.Appearance.BackColor = System.Drawing.Color.Black;
-            this.labelControl_display.Appearance.Font = new System.Drawing.Font("微软雅黑", 25F);
+            this.labelControl_display.Appearance.Font = new System.Drawing.Font("微软雅黑", 20F);
             this.labelControl_display.Appearance.ForeColor = System.Drawing.Color.White;
             this.labelControl_display.Appearance.Options.UseBackColor = true;
             this.labelControl_display.Appearance.Options.UseFont = true;
@@ -730,7 +730,7 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_display.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_display.Location = new System.Drawing.Point(10, 38);
             this.labelControl_display.Name = "labelControl_display";
-            this.labelControl_display.Size = new System.Drawing.Size(330, 45);
+            this.labelControl_display.Size = new System.Drawing.Size(232, 37);
             this.labelControl_display.TabIndex = 22;
             this.labelControl_display.Text = "0.0";
             // 
@@ -747,7 +747,7 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_title.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_title.Location = new System.Drawing.Point(13, 8);
             this.labelControl_title.Name = "labelControl_title";
-            this.labelControl_title.Size = new System.Drawing.Size(229, 20);
+            this.labelControl_title.Size = new System.Drawing.Size(227, 20);
             this.labelControl_title.TabIndex = 21;
             this.labelControl_title.Text = "更改阈值";
             // 
@@ -759,7 +759,7 @@ namespace CheckWeighterInterface.CommonControl
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelControl_numKeyboard);
             this.Name = "NumberKeyboard";
-            this.Size = new System.Drawing.Size(350, 600);
+            this.Size = new System.Drawing.Size(250, 455);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_numKeyboard)).EndInit();
             this.panelControl_numKeyboard.ResumeLayout(false);
             this.ResumeLayout(false);
