@@ -107,7 +107,7 @@ namespace CheckWeighterInterface.SystemManagement
             // labelControl_brandName_val
             // 
             this.labelControl_brandName_val.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl_brandName_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.labelControl_brandName_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_brandName_val.Appearance.Options.UseFont = true;
             this.labelControl_brandName_val.Appearance.Options.UseForeColor = true;
             this.labelControl_brandName_val.Appearance.Options.UseTextOptions = true;
@@ -122,7 +122,7 @@ namespace CheckWeighterInterface.SystemManagement
             // labelControl_standardWeight_val
             // 
             this.labelControl_standardWeight_val.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl_standardWeight_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.labelControl_standardWeight_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_standardWeight_val.Appearance.Options.UseFont = true;
             this.labelControl_standardWeight_val.Appearance.Options.UseForeColor = true;
             this.labelControl_standardWeight_val.Appearance.Options.UseTextOptions = true;
@@ -137,7 +137,7 @@ namespace CheckWeighterInterface.SystemManagement
             // labelControl_weightLowerLimit_val
             // 
             this.labelControl_weightLowerLimit_val.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl_weightLowerLimit_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.labelControl_weightLowerLimit_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_weightLowerLimit_val.Appearance.Options.UseFont = true;
             this.labelControl_weightLowerLimit_val.Appearance.Options.UseForeColor = true;
             this.labelControl_weightLowerLimit_val.Appearance.Options.UseTextOptions = true;
@@ -152,7 +152,7 @@ namespace CheckWeighterInterface.SystemManagement
             // labelControl_weightUpperLimit_val
             // 
             this.labelControl_weightUpperLimit_val.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelControl_weightUpperLimit_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(49)))), ((int)(((byte)(68)))));
+            this.labelControl_weightUpperLimit_val.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             this.labelControl_weightUpperLimit_val.Appearance.Options.UseFont = true;
             this.labelControl_weightUpperLimit_val.Appearance.Options.UseForeColor = true;
             this.labelControl_weightUpperLimit_val.Appearance.Options.UseTextOptions = true;
