@@ -30,10 +30,10 @@ namespace CheckWeighterInterface.SystemTest
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram3 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SplineSeriesView splineSeriesView3 = new DevExpress.XtraCharts.SplineSeriesView();
-            DevExpress.XtraCharts.ChartTitle chartTitle3 = new DevExpress.XtraCharts.ChartTitle();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SplineSeriesView splineSeriesView1 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             this.chartControl_weighterSensorRealTimeData = new DevExpress.XtraCharts.ChartControl();
             this.labelControl_peakValue = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_valleyValue = new DevExpress.XtraEditors.LabelControl();
@@ -45,9 +45,9 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_KG2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_KG3 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl_weightList = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton_changeMode = new DevExpress.XtraEditors.SimpleButton();
             this.spinEdit_setXMinVal = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl_changeMode = new DevExpress.XtraEditors.LabelControl();
-            this.toggleSwitch_changeMode = new DevExpress.XtraEditors.ToggleSwitch();
             this.simpleButton_modifyAxisRange = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl_yWholeRangeZoom = new DevExpress.XtraEditors.LabelControl();
             this.labelControl_xWholeRangeZoom = new DevExpress.XtraEditors.LabelControl();
@@ -69,13 +69,12 @@ namespace CheckWeighterInterface.SystemTest
             this.separatorControl_left = new DevExpress.XtraEditors.SeparatorControl();
             this.timer_getDataOnceFromSensor = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_weighterSensorRealTimeData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).BeginInit();
             this.panelControl_weightList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_setXMinVal.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl_yWholeRangeZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl_yWholeRangeZoom.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_setYMaxVal.Properties)).BeginInit();
@@ -92,59 +91,59 @@ namespace CheckWeighterInterface.SystemTest
             // 
             // chartControl_weighterSensorRealTimeData
             // 
-            xyDiagram3.AxisX.GridLines.Visible = true;
-            xyDiagram3.AxisX.Interlaced = true;
-            xyDiagram3.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            xyDiagram3.AxisX.Title.Text = "传感器检测次数";
-            xyDiagram3.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram3.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisX.VisualRange.Auto = false;
-            xyDiagram3.AxisX.VisualRange.AutoSideMargins = false;
-            xyDiagram3.AxisX.VisualRange.EndSideMargin = 7D;
-            xyDiagram3.AxisX.VisualRange.MaxValueSerializable = "9";
-            xyDiagram3.AxisX.VisualRange.MinValueSerializable = "0";
-            xyDiagram3.AxisX.VisualRange.StartSideMargin = 0D;
-            xyDiagram3.AxisX.WholeRange.AutoSideMargins = false;
-            xyDiagram3.AxisX.WholeRange.EndSideMargin = 0D;
-            xyDiagram3.AxisX.WholeRange.StartSideMargin = 0D;
-            xyDiagram3.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            xyDiagram3.AxisY.MinorCount = 4;
-            xyDiagram3.AxisY.Title.Text = "传感器实时数据 KG";
-            xyDiagram3.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram3.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram3.AxisY.VisualRange.Auto = false;
-            xyDiagram3.AxisY.VisualRange.AutoSideMargins = false;
-            xyDiagram3.AxisY.VisualRange.EndSideMargin = 0D;
-            xyDiagram3.AxisY.VisualRange.MaxValueSerializable = "20";
-            xyDiagram3.AxisY.VisualRange.MinValueSerializable = "0";
-            xyDiagram3.AxisY.VisualRange.StartSideMargin = 0D;
-            xyDiagram3.AxisY.WholeRange.Auto = false;
-            xyDiagram3.AxisY.WholeRange.AutoSideMargins = false;
-            xyDiagram3.AxisY.WholeRange.EndSideMargin = 0D;
-            xyDiagram3.AxisY.WholeRange.MaxValueSerializable = "20";
-            xyDiagram3.AxisY.WholeRange.MinValueSerializable = "0";
-            xyDiagram3.AxisY.WholeRange.StartSideMargin = 0D;
-            xyDiagram3.EnableAxisXScrolling = true;
-            xyDiagram3.EnableAxisXZooming = true;
-            xyDiagram3.EnableAxisYScrolling = true;
-            xyDiagram3.EnableAxisYZooming = true;
-            this.chartControl_weighterSensorRealTimeData.Diagram = xyDiagram3;
+            xyDiagram1.AxisX.GridLines.Visible = true;
+            xyDiagram1.AxisX.Interlaced = true;
+            xyDiagram1.AxisX.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisX.Title.Text = "传感器检测次数";
+            xyDiagram1.AxisX.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisX.VisualRange.Auto = false;
+            xyDiagram1.AxisX.VisualRange.AutoSideMargins = false;
+            xyDiagram1.AxisX.VisualRange.EndSideMargin = 7D;
+            xyDiagram1.AxisX.VisualRange.MaxValueSerializable = "9";
+            xyDiagram1.AxisX.VisualRange.MinValueSerializable = "0";
+            xyDiagram1.AxisX.VisualRange.StartSideMargin = 0D;
+            xyDiagram1.AxisX.WholeRange.AutoSideMargins = false;
+            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.Label.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            xyDiagram1.AxisY.MinorCount = 4;
+            xyDiagram1.AxisY.Title.Text = "传感器实时数据 KG";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisualRange.Auto = false;
+            xyDiagram1.AxisY.VisualRange.AutoSideMargins = false;
+            xyDiagram1.AxisY.VisualRange.EndSideMargin = 0D;
+            xyDiagram1.AxisY.VisualRange.MaxValueSerializable = "20";
+            xyDiagram1.AxisY.VisualRange.MinValueSerializable = "0";
+            xyDiagram1.AxisY.VisualRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.WholeRange.Auto = false;
+            xyDiagram1.AxisY.WholeRange.AutoSideMargins = false;
+            xyDiagram1.AxisY.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisY.WholeRange.MaxValueSerializable = "20";
+            xyDiagram1.AxisY.WholeRange.MinValueSerializable = "0";
+            xyDiagram1.AxisY.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.EnableAxisXScrolling = true;
+            xyDiagram1.EnableAxisXZooming = true;
+            xyDiagram1.EnableAxisYScrolling = true;
+            xyDiagram1.EnableAxisYZooming = true;
+            this.chartControl_weighterSensorRealTimeData.Diagram = xyDiagram1;
             this.chartControl_weighterSensorRealTimeData.Legend.Font = new System.Drawing.Font("微软雅黑", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chartControl_weighterSensorRealTimeData.Legend.Name = "Default Legend";
             this.chartControl_weighterSensorRealTimeData.Location = new System.Drawing.Point(276, 3);
             this.chartControl_weighterSensorRealTimeData.Name = "chartControl_weighterSensorRealTimeData";
-            series3.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
-            series3.Name = "实时数据";
-            splineSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            series3.View = splineSeriesView3;
+            series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Numerical;
+            series1.Name = "实时数据";
+            splineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            series1.View = splineSeriesView1;
             this.chartControl_weighterSensorRealTimeData.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series3};
+        series1};
             this.chartControl_weighterSensorRealTimeData.Size = new System.Drawing.Size(746, 611);
             this.chartControl_weighterSensorRealTimeData.TabIndex = 4;
-            chartTitle3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle3.Text = "检重传感器实时数据";
+            chartTitle1.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle1.Text = "检重传感器实时数据";
             this.chartControl_weighterSensorRealTimeData.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
-            chartTitle3});
+            chartTitle1});
             // 
             // labelControl_peakValue
             // 
@@ -262,9 +261,9 @@ namespace CheckWeighterInterface.SystemTest
             // 
             // panelControl_weightList
             // 
+            this.panelControl_weightList.Controls.Add(this.simpleButton_changeMode);
             this.panelControl_weightList.Controls.Add(this.spinEdit_setXMinVal);
             this.panelControl_weightList.Controls.Add(this.labelControl_changeMode);
-            this.panelControl_weightList.Controls.Add(this.toggleSwitch_changeMode);
             this.panelControl_weightList.Controls.Add(this.simpleButton_modifyAxisRange);
             this.panelControl_weightList.Controls.Add(this.labelControl_yWholeRangeZoom);
             this.panelControl_weightList.Controls.Add(this.labelControl_xWholeRangeZoom);
@@ -298,6 +297,23 @@ namespace CheckWeighterInterface.SystemTest
             this.panelControl_weightList.Size = new System.Drawing.Size(266, 611);
             this.panelControl_weightList.TabIndex = 25;
             // 
+            // simpleButton_changeMode
+            // 
+            this.simpleButton_changeMode.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_changeMode.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(152)))), ((int)(((byte)(83)))));
+            this.simpleButton_changeMode.Appearance.Options.UseFont = true;
+            this.simpleButton_changeMode.Appearance.Options.UseForeColor = true;
+            this.simpleButton_changeMode.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.simpleButton_changeMode.AppearancePressed.Options.UseFont = true;
+            this.simpleButton_changeMode.Location = new System.Drawing.Point(5, 157);
+            this.simpleButton_changeMode.LookAndFeel.SkinName = "Seven Classic";
+            this.simpleButton_changeMode.LookAndFeel.UseDefaultLookAndFeel = false;
+            this.simpleButton_changeMode.Name = "simpleButton_changeMode";
+            this.simpleButton_changeMode.Size = new System.Drawing.Size(256, 66);
+            this.simpleButton_changeMode.TabIndex = 60;
+            this.simpleButton_changeMode.Text = "自动模式";
+            this.simpleButton_changeMode.Click += new System.EventHandler(this.simpleButton_changeMode_Click);
+            // 
             // spinEdit_setXMinVal
             // 
             this.spinEdit_setXMinVal.EditValue = new decimal(new int[] {
@@ -305,7 +321,8 @@ namespace CheckWeighterInterface.SystemTest
             0,
             0,
             0});
-            this.spinEdit_setXMinVal.Location = new System.Drawing.Point(5, 229);
+            this.spinEdit_setXMinVal.Enabled = false;
+            this.spinEdit_setXMinVal.Location = new System.Drawing.Point(5, 250);
             this.spinEdit_setXMinVal.Name = "spinEdit_setXMinVal";
             this.spinEdit_setXMinVal.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.spinEdit_setXMinVal.Properties.Appearance.Options.UseFont = true;
@@ -317,7 +334,7 @@ namespace CheckWeighterInterface.SystemTest
             this.spinEdit_setXMinVal.Properties.Mask.EditMask = "T";
             this.spinEdit_setXMinVal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
             this.spinEdit_setXMinVal.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.spinEdit_setXMinVal.Size = new System.Drawing.Size(126, 29);
+            this.spinEdit_setXMinVal.Size = new System.Drawing.Size(126, 25);
             this.spinEdit_setXMinVal.TabIndex = 37;
             this.spinEdit_setXMinVal.ValueChanged += new System.EventHandler(this.spinEdit_setXMinVal_ValueChanged);
             this.spinEdit_setXMinVal.DoubleClick += new System.EventHandler(this.spinEdit_setXMinVal_DoubleClick);
@@ -335,31 +352,14 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_changeMode.TabIndex = 59;
             this.labelControl_changeMode.Text = "曲线显示模式切换：";
             // 
-            // toggleSwitch_changeMode
-            // 
-            this.toggleSwitch_changeMode.Location = new System.Drawing.Point(74, 157);
-            this.toggleSwitch_changeMode.Name = "toggleSwitch_changeMode";
-            this.toggleSwitch_changeMode.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toggleSwitch_changeMode.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(98)))), ((int)(((byte)(255)))));
-            this.toggleSwitch_changeMode.Properties.Appearance.Options.UseFont = true;
-            this.toggleSwitch_changeMode.Properties.Appearance.Options.UseForeColor = true;
-            this.toggleSwitch_changeMode.Properties.AutoHeight = false;
-            this.toggleSwitch_changeMode.Properties.LookAndFeel.SkinName = "Seven Classic";
-            this.toggleSwitch_changeMode.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
-            this.toggleSwitch_changeMode.Properties.OffText = "自动";
-            this.toggleSwitch_changeMode.Properties.OnText = "手动";
-            this.toggleSwitch_changeMode.Size = new System.Drawing.Size(126, 49);
-            this.toggleSwitch_changeMode.TabIndex = 58;
-            this.toggleSwitch_changeMode.Toggled += new System.EventHandler(this.toggleSwitch_changeMode_Toggled);
-            // 
             // simpleButton_modifyAxisRange
             // 
-            this.simpleButton_modifyAxisRange.Appearance.Font = new System.Drawing.Font("微软雅黑", 12.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.simpleButton_modifyAxisRange.Appearance.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_modifyAxisRange.Appearance.Options.UseFont = true;
-            this.simpleButton_modifyAxisRange.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold);
+            this.simpleButton_modifyAxisRange.AppearancePressed.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.simpleButton_modifyAxisRange.AppearancePressed.Options.UseFont = true;
             this.simpleButton_modifyAxisRange.Enabled = false;
-            this.simpleButton_modifyAxisRange.Location = new System.Drawing.Point(5, 324);
+            this.simpleButton_modifyAxisRange.Location = new System.Drawing.Point(5, 335);
             this.simpleButton_modifyAxisRange.LookAndFeel.SkinName = "Seven Classic";
             this.simpleButton_modifyAxisRange.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_modifyAxisRange.Name = "simpleButton_modifyAxisRange";
@@ -379,7 +379,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_yWholeRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_yWholeRangeZoom.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_yWholeRangeZoom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl_yWholeRangeZoom.Location = new System.Drawing.Point(74, 421);
+            this.labelControl_yWholeRangeZoom.Location = new System.Drawing.Point(74, 431);
             this.labelControl_yWholeRangeZoom.Name = "labelControl_yWholeRangeZoom";
             this.labelControl_yWholeRangeZoom.Size = new System.Drawing.Size(45, 19);
             this.labelControl_yWholeRangeZoom.TabIndex = 57;
@@ -396,7 +396,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_xWholeRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_xWholeRangeZoom.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_xWholeRangeZoom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl_xWholeRangeZoom.Location = new System.Drawing.Point(17, 421);
+            this.labelControl_xWholeRangeZoom.Location = new System.Drawing.Point(17, 431);
             this.labelControl_xWholeRangeZoom.Name = "labelControl_xWholeRangeZoom";
             this.labelControl_xWholeRangeZoom.Size = new System.Drawing.Size(45, 19);
             this.labelControl_xWholeRangeZoom.TabIndex = 56;
@@ -406,7 +406,7 @@ namespace CheckWeighterInterface.SystemTest
             // 
             this.zoomTrackBarControl_yWholeRangeZoom.EditValue = 50;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
-            this.zoomTrackBarControl_yWholeRangeZoom.Location = new System.Drawing.Point(74, 446);
+            this.zoomTrackBarControl_yWholeRangeZoom.Location = new System.Drawing.Point(74, 456);
             this.zoomTrackBarControl_yWholeRangeZoom.Name = "zoomTrackBarControl_yWholeRangeZoom";
             this.zoomTrackBarControl_yWholeRangeZoom.Properties.AutoSize = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -414,7 +414,7 @@ namespace CheckWeighterInterface.SystemTest
             this.zoomTrackBarControl_yWholeRangeZoom.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Properties.Maximum = 100;
             this.zoomTrackBarControl_yWholeRangeZoom.Properties.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.zoomTrackBarControl_yWholeRangeZoom.Size = new System.Drawing.Size(45, 160);
+            this.zoomTrackBarControl_yWholeRangeZoom.Size = new System.Drawing.Size(45, 150);
             this.zoomTrackBarControl_yWholeRangeZoom.TabIndex = 55;
             this.zoomTrackBarControl_yWholeRangeZoom.Value = 50;
             this.zoomTrackBarControl_yWholeRangeZoom.ValueChanged += new System.EventHandler(this.zoomTrackBarControl_yWholeRangeZoom_ValueChanged);
@@ -426,7 +426,8 @@ namespace CheckWeighterInterface.SystemTest
             0,
             0,
             0});
-            this.spinEdit_setYMaxVal.Location = new System.Drawing.Point(135, 289);
+            this.spinEdit_setYMaxVal.Enabled = false;
+            this.spinEdit_setYMaxVal.Location = new System.Drawing.Point(135, 305);
             this.spinEdit_setYMaxVal.Name = "spinEdit_setYMaxVal";
             this.spinEdit_setYMaxVal.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spinEdit_setYMaxVal.Properties.Appearance.Options.UseFont = true;
@@ -436,7 +437,7 @@ namespace CheckWeighterInterface.SystemTest
             this.spinEdit_setYMaxVal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinEdit_setYMaxVal.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.spinEdit_setYMaxVal.Size = new System.Drawing.Size(126, 29);
+            this.spinEdit_setYMaxVal.Size = new System.Drawing.Size(126, 25);
             this.spinEdit_setYMaxVal.TabIndex = 54;
             this.spinEdit_setYMaxVal.ValueChanged += new System.EventHandler(this.spinEdit_setYMaxVal_ValueChanged);
             this.spinEdit_setYMaxVal.DoubleClick += new System.EventHandler(this.spinEdit_setYMaxVal_DoubleClick);
@@ -448,7 +449,8 @@ namespace CheckWeighterInterface.SystemTest
             0,
             0,
             0});
-            this.spinEdit_setYMinVal.Location = new System.Drawing.Point(5, 289);
+            this.spinEdit_setYMinVal.Enabled = false;
+            this.spinEdit_setYMinVal.Location = new System.Drawing.Point(5, 305);
             this.spinEdit_setYMinVal.Name = "spinEdit_setYMinVal";
             this.spinEdit_setYMinVal.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spinEdit_setYMinVal.Properties.Appearance.Options.UseFont = true;
@@ -458,7 +460,7 @@ namespace CheckWeighterInterface.SystemTest
             this.spinEdit_setYMinVal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinEdit_setYMinVal.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.spinEdit_setYMinVal.Size = new System.Drawing.Size(126, 29);
+            this.spinEdit_setYMinVal.Size = new System.Drawing.Size(126, 25);
             this.spinEdit_setYMinVal.TabIndex = 53;
             this.spinEdit_setYMinVal.ValueChanged += new System.EventHandler(this.spinEdit_setYMinVal_ValueChanged);
             this.spinEdit_setYMinVal.DoubleClick += new System.EventHandler(this.spinEdit_setYMinVal_DoubleClick);
@@ -470,7 +472,8 @@ namespace CheckWeighterInterface.SystemTest
             0,
             0,
             0});
-            this.spinEdit_setXMaxVal.Location = new System.Drawing.Point(135, 229);
+            this.spinEdit_setXMaxVal.Enabled = false;
+            this.spinEdit_setXMaxVal.Location = new System.Drawing.Point(135, 250);
             this.spinEdit_setXMaxVal.Name = "spinEdit_setXMaxVal";
             this.spinEdit_setXMaxVal.Properties.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spinEdit_setXMaxVal.Properties.Appearance.Options.UseFont = true;
@@ -480,7 +483,7 @@ namespace CheckWeighterInterface.SystemTest
             this.spinEdit_setXMaxVal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.spinEdit_setXMaxVal.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.spinEdit_setXMaxVal.Size = new System.Drawing.Size(126, 29);
+            this.spinEdit_setXMaxVal.Size = new System.Drawing.Size(126, 25);
             this.spinEdit_setXMaxVal.TabIndex = 49;
             this.spinEdit_setXMaxVal.ValueChanged += new System.EventHandler(this.spinEdit_setXMaxVal_ValueChanged);
             this.spinEdit_setXMaxVal.DoubleClick += new System.EventHandler(this.spinEdit_setXMaxVal_DoubleClick);
@@ -489,7 +492,7 @@ namespace CheckWeighterInterface.SystemTest
             // 
             this.zoomTrackBarControl_xWholeRangeZoom.EditValue = 50;
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
-            this.zoomTrackBarControl_xWholeRangeZoom.Location = new System.Drawing.Point(17, 446);
+            this.zoomTrackBarControl_xWholeRangeZoom.Location = new System.Drawing.Point(17, 456);
             this.zoomTrackBarControl_xWholeRangeZoom.Name = "zoomTrackBarControl_xWholeRangeZoom";
             this.zoomTrackBarControl_xWholeRangeZoom.Properties.AutoSize = false;
             this.zoomTrackBarControl_xWholeRangeZoom.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -498,7 +501,7 @@ namespace CheckWeighterInterface.SystemTest
             this.zoomTrackBarControl_xWholeRangeZoom.Properties.Maximum = 100;
             this.zoomTrackBarControl_xWholeRangeZoom.Properties.Middle = 50;
             this.zoomTrackBarControl_xWholeRangeZoom.Properties.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.zoomTrackBarControl_xWholeRangeZoom.Size = new System.Drawing.Size(45, 160);
+            this.zoomTrackBarControl_xWholeRangeZoom.Size = new System.Drawing.Size(45, 150);
             this.zoomTrackBarControl_xWholeRangeZoom.TabIndex = 46;
             this.zoomTrackBarControl_xWholeRangeZoom.Value = 50;
             this.zoomTrackBarControl_xWholeRangeZoom.ValueChanged += new System.EventHandler(this.zoomTrackBarControl_xWholeRange_ValueChanged);
@@ -514,7 +517,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_yVisualRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_yVisualRangeZoom.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_yVisualRangeZoom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl_yVisualRangeZoom.Location = new System.Drawing.Point(204, 421);
+            this.labelControl_yVisualRangeZoom.Location = new System.Drawing.Point(204, 431);
             this.labelControl_yVisualRangeZoom.Name = "labelControl_yVisualRangeZoom";
             this.labelControl_yVisualRangeZoom.Size = new System.Drawing.Size(45, 19);
             this.labelControl_yVisualRangeZoom.TabIndex = 43;
@@ -527,7 +530,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setVisualRangeZoom.Appearance.Options.UseTextOptions = true;
             this.labelControl_setVisualRangeZoom.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setVisualRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setVisualRangeZoom.Location = new System.Drawing.Point(135, 396);
+            this.labelControl_setVisualRangeZoom.Location = new System.Drawing.Point(135, 406);
             this.labelControl_setVisualRangeZoom.Name = "labelControl_setVisualRangeZoom";
             this.labelControl_setVisualRangeZoom.Size = new System.Drawing.Size(98, 19);
             this.labelControl_setVisualRangeZoom.TabIndex = 42;
@@ -544,7 +547,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_xVisualRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl_xVisualRangeZoom.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl_xVisualRangeZoom.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.labelControl_xVisualRangeZoom.Location = new System.Drawing.Point(147, 421);
+            this.labelControl_xVisualRangeZoom.Location = new System.Drawing.Point(147, 431);
             this.labelControl_xVisualRangeZoom.Name = "labelControl_xVisualRangeZoom";
             this.labelControl_xVisualRangeZoom.Size = new System.Drawing.Size(45, 19);
             this.labelControl_xVisualRangeZoom.TabIndex = 41;
@@ -557,7 +560,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setWholeRangeZoom.Appearance.Options.UseTextOptions = true;
             this.labelControl_setWholeRangeZoom.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setWholeRangeZoom.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setWholeRangeZoom.Location = new System.Drawing.Point(5, 396);
+            this.labelControl_setWholeRangeZoom.Location = new System.Drawing.Point(5, 406);
             this.labelControl_setWholeRangeZoom.Name = "labelControl_setWholeRangeZoom";
             this.labelControl_setWholeRangeZoom.Size = new System.Drawing.Size(98, 19);
             this.labelControl_setWholeRangeZoom.TabIndex = 40;
@@ -567,7 +570,7 @@ namespace CheckWeighterInterface.SystemTest
             // 
             this.zoomTrackBarControl_yVisualRangeZoom.EditValue = 1;
             this.zoomTrackBarControl_yVisualRangeZoom.Enabled = false;
-            this.zoomTrackBarControl_yVisualRangeZoom.Location = new System.Drawing.Point(204, 446);
+            this.zoomTrackBarControl_yVisualRangeZoom.Location = new System.Drawing.Point(204, 456);
             this.zoomTrackBarControl_yVisualRangeZoom.Name = "zoomTrackBarControl_yVisualRangeZoom";
             this.zoomTrackBarControl_yVisualRangeZoom.Properties.AutoSize = false;
             this.zoomTrackBarControl_yVisualRangeZoom.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -575,7 +578,7 @@ namespace CheckWeighterInterface.SystemTest
             this.zoomTrackBarControl_yVisualRangeZoom.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.zoomTrackBarControl_yVisualRangeZoom.Properties.Maximum = 100;
             this.zoomTrackBarControl_yVisualRangeZoom.Properties.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.zoomTrackBarControl_yVisualRangeZoom.Size = new System.Drawing.Size(45, 160);
+            this.zoomTrackBarControl_yVisualRangeZoom.Size = new System.Drawing.Size(45, 150);
             this.zoomTrackBarControl_yVisualRangeZoom.TabIndex = 32;
             this.zoomTrackBarControl_yVisualRangeZoom.Value = 1;
             this.zoomTrackBarControl_yVisualRangeZoom.ValueChanged += new System.EventHandler(this.zoomTrackBarControl_yVisualRange_ValueChanged);
@@ -584,7 +587,7 @@ namespace CheckWeighterInterface.SystemTest
             // 
             this.zoomTrackBarControl_xVisualRangeZoom.EditValue = 1;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
-            this.zoomTrackBarControl_xVisualRangeZoom.Location = new System.Drawing.Point(147, 446);
+            this.zoomTrackBarControl_xVisualRangeZoom.Location = new System.Drawing.Point(147, 456);
             this.zoomTrackBarControl_xVisualRangeZoom.Name = "zoomTrackBarControl_xVisualRangeZoom";
             this.zoomTrackBarControl_xVisualRangeZoom.Properties.AutoSize = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
@@ -592,7 +595,7 @@ namespace CheckWeighterInterface.SystemTest
             this.zoomTrackBarControl_xVisualRangeZoom.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Properties.Maximum = 100;
             this.zoomTrackBarControl_xVisualRangeZoom.Properties.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.zoomTrackBarControl_xVisualRangeZoom.Size = new System.Drawing.Size(45, 160);
+            this.zoomTrackBarControl_xVisualRangeZoom.Size = new System.Drawing.Size(45, 150);
             this.zoomTrackBarControl_xVisualRangeZoom.TabIndex = 33;
             this.zoomTrackBarControl_xVisualRangeZoom.Value = 1;
             this.zoomTrackBarControl_xVisualRangeZoom.ValueChanged += new System.EventHandler(this.zoomTrackBarControl_xVisualRange_ValueChanged);
@@ -604,7 +607,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setYMax.Appearance.Options.UseTextOptions = true;
             this.labelControl_setYMax.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setYMax.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setYMax.Location = new System.Drawing.Point(135, 264);
+            this.labelControl_setYMax.Location = new System.Drawing.Point(135, 280);
             this.labelControl_setYMax.Name = "labelControl_setYMax";
             this.labelControl_setYMax.Size = new System.Drawing.Size(84, 19);
             this.labelControl_setYMax.TabIndex = 36;
@@ -617,7 +620,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setYMin.Appearance.Options.UseTextOptions = true;
             this.labelControl_setYMin.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setYMin.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setYMin.Location = new System.Drawing.Point(5, 264);
+            this.labelControl_setYMin.Location = new System.Drawing.Point(5, 280);
             this.labelControl_setYMin.Name = "labelControl_setYMin";
             this.labelControl_setYMin.Size = new System.Drawing.Size(84, 19);
             this.labelControl_setYMin.TabIndex = 35;
@@ -630,7 +633,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setXMax.Appearance.Options.UseTextOptions = true;
             this.labelControl_setXMax.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setXMax.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setXMax.Location = new System.Drawing.Point(135, 204);
+            this.labelControl_setXMax.Location = new System.Drawing.Point(135, 224);
             this.labelControl_setXMax.Name = "labelControl_setXMax";
             this.labelControl_setXMax.Size = new System.Drawing.Size(84, 19);
             this.labelControl_setXMax.TabIndex = 31;
@@ -643,7 +646,7 @@ namespace CheckWeighterInterface.SystemTest
             this.labelControl_setXMin.Appearance.Options.UseTextOptions = true;
             this.labelControl_setXMin.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl_setXMin.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.labelControl_setXMin.Location = new System.Drawing.Point(5, 204);
+            this.labelControl_setXMin.Location = new System.Drawing.Point(5, 224);
             this.labelControl_setXMin.Name = "labelControl_setXMin";
             this.labelControl_setXMin.Size = new System.Drawing.Size(84, 19);
             this.labelControl_setXMin.TabIndex = 30;
@@ -672,15 +675,14 @@ namespace CheckWeighterInterface.SystemTest
             this.Controls.Add(this.chartControl_weighterSensorRealTimeData);
             this.Name = "RealTimeCurve";
             this.Size = new System.Drawing.Size(1024, 617);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(splineSeriesView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(splineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl_weighterSensorRealTimeData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl_weightList)).EndInit();
             this.panelControl_weightList.ResumeLayout(false);
             this.panelControl_weightList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_setXMinVal.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleSwitch_changeMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl_yWholeRangeZoom.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBarControl_yWholeRangeZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEdit_setYMaxVal.Properties)).EndInit();
@@ -730,8 +732,8 @@ namespace CheckWeighterInterface.SystemTest
         private DevExpress.XtraEditors.LabelControl labelControl_setWholeRangeZoom;
         private DevExpress.XtraEditors.ZoomTrackBarControl zoomTrackBarControl_yVisualRangeZoom;
         private DevExpress.XtraEditors.ZoomTrackBarControl zoomTrackBarControl_xVisualRangeZoom;
-        private DevExpress.XtraEditors.ToggleSwitch toggleSwitch_changeMode;
         private DevExpress.XtraEditors.LabelControl labelControl_changeMode;
         private DevExpress.XtraEditors.SpinEdit spinEdit_setXMinVal;
+        private DevExpress.XtraEditors.SimpleButton simpleButton_changeMode;
     }
 }

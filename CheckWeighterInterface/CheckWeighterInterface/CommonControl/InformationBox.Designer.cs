@@ -64,7 +64,7 @@ namespace CheckWeighterInterface.CommonControl
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.DimGray;
             this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(50, 50);
+            this.pictureEdit1.Size = new System.Drawing.Size(50, 39);
             this.pictureEdit1.TabIndex = 34;
             // 
             // labelControl_infoTitle
@@ -83,7 +83,7 @@ namespace CheckWeighterInterface.CommonControl
             this.labelControl_infoTitle.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.labelControl_infoTitle.LookAndFeel.UseDefaultLookAndFeel = false;
             this.labelControl_infoTitle.Name = "labelControl_infoTitle";
-            this.labelControl_infoTitle.Size = new System.Drawing.Size(350, 50);
+            this.labelControl_infoTitle.Size = new System.Drawing.Size(350, 39);
             this.labelControl_infoTitle.TabIndex = 33;
             this.labelControl_infoTitle.Text = "   删除成功！";
             // 
@@ -99,7 +99,7 @@ namespace CheckWeighterInterface.CommonControl
             this.simpleButton_infoOK.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.simpleButton_infoOK.ImageOptions.ImageToTextIndent = 10;
             this.simpleButton_infoOK.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.simpleButton_infoOK.Location = new System.Drawing.Point(102, 90);
+            this.simpleButton_infoOK.Location = new System.Drawing.Point(98, 73);
             this.simpleButton_infoOK.LookAndFeel.SkinName = "DevExpress Dark Style";
             this.simpleButton_infoOK.LookAndFeel.UseDefaultLookAndFeel = false;
             this.simpleButton_infoOK.Name = "simpleButton_infoOK";

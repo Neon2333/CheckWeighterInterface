@@ -18,6 +18,14 @@ namespace CheckWeighterInterface.SystemTest
         private CommonControl.NumberKeyboard numberKeyboard1;
         private CommonControl.InformationBox informationBox1;
 
+        //当前模式
+        private enum RealTimeDataMode { autoMode = 0, manualMode};
+        private RealTimeDataMode curMode = RealTimeDataMode.autoMode;
+
+        //spinEdit值被修改但未点击【修改坐标轴范围】标志
+        //作用：当手动模式被合法显示出来后，切换到自动模式，再切换到手动模式时spinEdit不变、显示上次手动模式的曲线
+        private bool spinEditValueChangeButNotChangeAxisRange = true;
+
         //修改：坐标轴范围WholeRange
         private double xMinWholeRange = 0.0D;
         private double xMaxWholeRange = 0.0D;
@@ -50,6 +58,7 @@ namespace CheckWeighterInterface.SystemTest
 
         private void initRealTimeCurve()
         {
+            //setAutoMode();
             initDataTable();
             bindLineData();
             initVisualRangeZoomArr();
@@ -231,32 +240,64 @@ namespace CheckWeighterInterface.SystemTest
         }
 
         //切换模式
-        private void toggleSwitch_changeMode_Toggled(object sender, EventArgs e)
+        private void simpleButton_changeMode_Click(object sender, EventArgs e)
         {
-            if(!this.toggleSwitch_changeMode.IsOn)
+            curMode = curMode == RealTimeDataMode.autoMode ? RealTimeDataMode.manualMode : RealTimeDataMode.autoMode;
+
+            if (curMode == RealTimeDataMode.autoMode)
             {
-                this.toggleSwitch_changeMode.ForeColor = Color.FromArgb(98, 98, 255);
+                //自动
+                this.simpleButton_changeMode.ForeColor = Color.FromArgb(107, 183, 109);
+                this.simpleButton_changeMode.Text = "自动模式";
                 this.simpleButton_modifyAxisRange.Enabled = false;
+
+                this.spinEdit_setXMinVal.Enabled = false;
+                this.spinEdit_setXMaxVal.Enabled = false;
+                this.spinEdit_setYMinVal.Enabled = false;
+                this.spinEdit_setYMaxVal.Enabled = false;
+
                 setAutoMode();
             }
             else
             {
-                this.toggleSwitch_changeMode.ForeColor = Color.FromArgb(23, 156, 255);
-                if (setManualMode())
+                //手动
+                this.simpleButton_changeMode.ForeColor = Color.FromArgb(23, 156, 255);
+                this.simpleButton_changeMode.Text = "手动模式";
+                //if (setManualMode())
+                //{
+                //    this.simpleButton_modifyAxisRange.Enabled = true;
+                //}
+                //else
+                //{
+                //    this.toggleSwitch_changeMode.IsOn = false;
+                //}
+
+                if (spinEditValueChangeButNotChangeAxisRange)
                 {
                     this.simpleButton_modifyAxisRange.Enabled = true;
                 }
                 else
                 {
-                    this.toggleSwitch_changeMode.IsOn = false;
+                    setManualMode();
                 }
+
+
+                this.spinEdit_setXMinVal.Enabled = true;
+                this.spinEdit_setXMaxVal.Enabled = true;
+                this.spinEdit_setYMinVal.Enabled = true;
+                this.spinEdit_setYMaxVal.Enabled = true;
             }
         }
 
         //手动模式修改参数
         private void simpleButton_modifyAxisRange_Click(object sender, EventArgs e)
         {
-            setManualMode();
+            if (setManualMode())
+            {
+                spinEditValueChangeButNotChangeAxisRange = false;
+                this.simpleButton_modifyAxisRange.Enabled = false;
+                this.simpleButton_changeMode.Enabled = true;
+            }
         }
 
         private void spinEdit_setXMinVal_DoubleClick(object sender, EventArgs e)
@@ -330,6 +371,10 @@ namespace CheckWeighterInterface.SystemTest
 
         private void spinEdit_setXMinVal_ValueChanged(object sender, EventArgs e)
         {
+            spinEditValueChangeButNotChangeAxisRange = true;
+            this.simpleButton_modifyAxisRange.Enabled = true;
+            this.simpleButton_changeMode.Enabled = false;
+
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
@@ -338,6 +383,11 @@ namespace CheckWeighterInterface.SystemTest
 
         private void spinEdit_setXMaxVal_ValueChanged(object sender, EventArgs e)
         {
+            spinEditValueChangeButNotChangeAxisRange = true;
+            this.simpleButton_modifyAxisRange.Enabled = true;
+            this.simpleButton_changeMode.Enabled = false;
+
+
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
@@ -346,6 +396,11 @@ namespace CheckWeighterInterface.SystemTest
 
         private void spinEdit_setYMinVal_ValueChanged(object sender, EventArgs e)
         {
+            spinEditValueChangeButNotChangeAxisRange = true;
+            this.simpleButton_modifyAxisRange.Enabled = true;
+            this.simpleButton_changeMode.Enabled = false;
+
+
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
@@ -354,6 +409,11 @@ namespace CheckWeighterInterface.SystemTest
 
         private void spinEdit_setYMaxVal_ValueChanged(object sender, EventArgs e)
         {
+            spinEditValueChangeButNotChangeAxisRange = true;
+            this.simpleButton_modifyAxisRange.Enabled = true;
+            this.simpleButton_changeMode.Enabled = false;
+
+
             this.zoomTrackBarControl_xWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_yWholeRangeZoom.Enabled = false;
             this.zoomTrackBarControl_xVisualRangeZoom.Enabled = false;
@@ -459,6 +519,5 @@ namespace CheckWeighterInterface.SystemTest
         }
 
         
-
     }
 }
