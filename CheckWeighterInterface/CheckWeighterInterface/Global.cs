@@ -173,6 +173,15 @@ namespace CheckWeighterInterface
         public static double curSensorValue = 0.0D;                                                     //记录下位机上传的1个实时传感器值
 
         //AlgorithmConfig
+        public enum AlgorithmName
+        {
+            amplitudeLimitingFiltering = 0, medianFiltering, digitalAverageFiltering, recursionAverageFiltering,
+            medianAverageFiltering, amplitudeLimitingRecursionAverageFiltering, firstOrderLagFiltering, weightedRecursionAverageFiltering,
+            ditheringFiltering, amplitudeLimitingDitheringFiltering
+        };
+        public static AlgorithmName curAlgorithm = AlgorithmName.amplitudeLimitingFiltering;        //当前系统使用的滤波算法
+
+
 
 
 

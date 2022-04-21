@@ -135,6 +135,57 @@ namespace CheckWeighterInterface.SystemManagement
             ((XYDiagram)(chartControl_calibrationGradient.Diagram)).EnableAxisYScrolling = true;
         }
 
+        //设定横轴范围为[min-0.2*delta,max+0.2*delta]
+        private void setChartLineXYWholeRange(double k)
+        {
+            double xmin, xmax, ymin, ymax;
+
+            int xminIndex = 0;
+            int xmaxIndex = Global.dtCalibrationDataSensorValAndWeight.Rows.Count - 1;
+            for (int i = 0; i < Global.dtCalibrationDataSensorValAndWeight.Rows.Count; i++)
+            {
+                double tempWeight = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i]["sensorValue"]);
+
+                if (tempWeight < Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xminIndex]["sensorValue"]))
+                {
+                    xminIndex = i;
+                }
+                else if (tempWeight > Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xmaxIndex]["sensorValue"]))
+                {
+                    xmaxIndex = i;
+                }
+            }
+            xmin = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xminIndex]["sensorValue"]);
+            xmax = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xmaxIndex]["sensorValue"]);
+
+
+            int yminIndex = 0;
+            int ymaxIndex = Global.dtCalibrationDataSensorValAndWeight.Rows.Count - 1;
+            for (int i = 0; i < Global.dtCalibrationDataSensorValAndWeight.Rows.Count; i++)
+            {
+                double tempWeight = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[i]["calibrationWeight"]);
+
+                if (tempWeight < Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[yminIndex]["calibrationWeight"]))
+                {
+                    yminIndex = i;
+                }
+                else if (tempWeight > Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[ymaxIndex]["calibrationWeight"]))
+                {
+                    ymaxIndex = i;
+                }
+            }
+            ymin = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xminIndex]["calibrationWeight"]);
+            ymax = Convert.ToDouble(Global.dtCalibrationDataSensorValAndWeight.Rows[xmaxIndex]["calibrationWeight"]);
+
+
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisX.WholeRange.SetMinMaxValues(xmin - k * (xmax - xmin), xmax + k * (xmax - xmin));
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisY.WholeRange.SetMinMaxValues(ymin - k*(ymax - ymin), ymax + k*(ymax - ymin));
+
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisX.VisualRange.Auto = true;
+            ((XYDiagram)(chartControl_calibrationGradient.Diagram)).AxisY.VisualRange.Auto = true;
+        }
+
+
         //从MySQL中查询是否被标定过、端点数据、斜率到3个暂存datatable
         private void queryHasBeenCalibratedAndDataGradient(bool isInit)
         {
@@ -420,9 +471,11 @@ namespace CheckWeighterInterface.SystemManagement
                 Global.dtCalibrationGradient.Rows.Add(dr);
             }
 
-            isCalibrationDataModified = false;
-            isCalibrated = true;    //经过了标定
+            isCalibrationDataModified = true;       //数据被修改
+            isCalibrated = true;                    //数据经过了标定
             refreshChartLineCalibrationGradient();
+            setChartLineXYWholeRange(0.2);
+
         }
 
         //spinEdit.Value修改段数时的按钮使能设置
@@ -433,7 +486,7 @@ namespace CheckWeighterInterface.SystemManagement
             {
                 this.simpleButton_confirmCountSection.Enabled = false;
                 this.simpleButton_changeCalibrationWeight.Enabled = true;
-                this.simpleButton_doCalibrationAuto.Enabled = isCalibrationDataModified == false ? false : true;
+                this.simpleButton_doCalibrationAuto.Enabled = true;
                 this.simpleButton_doCalibrationManual.Enabled = true;
             }
             else
@@ -452,16 +505,14 @@ namespace CheckWeighterInterface.SystemManagement
         {
             if (isCalibrationDataModified)
             {
-                this.simpleButton_doCalibrationAuto.Enabled = true;
                 this.simpleButton_cancelDataChange.Enabled = true;
+                this.simpleButton_saveDataChange.Enabled = isCalibrated == true ? true : false;
             }
             else
             {
-                this.simpleButton_doCalibrationAuto.Enabled = false;
-                this.simpleButton_cancelDataChange.Enabled = isCalibrated == false ? false : true;
+                this.simpleButton_cancelDataChange.Enabled = false;
+                this.simpleButton_saveDataChange.Enabled = false;
             }
-
-            this.simpleButton_saveDataChange.Enabled = isCalibrated == false ? false : true;
         }
 
         //标定点折线图不显示
@@ -536,26 +587,6 @@ namespace CheckWeighterInterface.SystemManagement
             this.numberKeyboard1.NumberKeyboardEnterClicked += new CheckWeighterInterface.CommonControl.NumberKeyboard.SimpleButtonEnterClickHanlder(this.numberKeyboard1_NumberKeyboardEnterClicked);
         }
 
-        //小键盘Enter响应
-        private void numberKeyboard1_NumberKeyboardEnterClicked(object sender, EventArgs e)
-        {
-            //int selIndexTemp = selectRowCurrentGridControl[0];
-            int selIndexTemp = this.tileView1.FocusedRowHandle;
-            if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
-            {
-                Global.dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;    //从小键盘获取值作为传感器值进行修改
-                calcGradient();
-                isCalibrationDataModified = true;
-            }
-            else if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
-            {
-                Global.dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
-                isCalibrationDataModified = true;
-            }
-
-            setButtonEnableWhenSensorValueOrWeightModified();
-        }
-
         //修改模式
         private void labelControl_changeCalibrationMode_Click(object sender, EventArgs e)
         {
@@ -616,7 +647,26 @@ namespace CheckWeighterInterface.SystemManagement
                 createNumberKeyboard("输入传感器值", -999999.0D, 999999.0D);
                 this.numberKeyboard1.Visible = true;
             }
+        }
 
+        //小键盘Enter响应
+        private void numberKeyboard1_NumberKeyboardEnterClicked(object sender, EventArgs e)
+        {
+            //int selIndexTemp = selectRowCurrentGridControl[0];
+            int selIndexTemp = this.tileView1.FocusedRowHandle;
+            if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifySensorValue)
+            {
+                Global.dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = this.numberKeyboard1.result;    //从小键盘获取值作为传感器值进行修改
+                calcGradient();
+            }
+            else if (curModifyValueType == ModifySensorValueOrCalibrationWeight.curModifyCalibrationWeight)
+            {
+                Global.dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["calibrationWeight"] = this.numberKeyboard1.result;
+                isCalibrationDataModified = true;       //数据被修改
+                setChartLineXYWholeRange(0.2);
+            }
+
+            setButtonEnableWhenSensorValueOrWeightModified();
         }
 
         //自动标定。从下位机获取1个传感器值，将其存入dt，并计算斜率
@@ -625,7 +675,7 @@ namespace CheckWeighterInterface.SystemManagement
             int selIndexTemp = this.tileView1.FocusedRowHandle;
             Global.dtCalibrationDataSensorValAndWeight.Rows[selIndexTemp]["sensorValue"] = Global.curSensorValue;
             calcGradient();
-
+            setButtonEnableWhenSensorValueOrWeightModified();
         }
 
         //将2个datatable中内容写入MySQL，修改hasBeenCalibrated标志
@@ -675,7 +725,8 @@ namespace CheckWeighterInterface.SystemManagement
                     isCalibrated = false;
 
                     MessageBox.Show("保存单段数据成功");
-                    //isCalibrationDataModified = false;
+                    isCalibrationDataModified = false;
+                    isCalibrated = false;
 
                     string cmdUpdateHasBeenCalibrated = String.Empty;
                     //保存已标定标志
@@ -733,10 +784,10 @@ namespace CheckWeighterInterface.SystemManagement
 
                 if (flagSaveSucceed)
                 {
+                    MessageBox.Show("保存多段数据成功");
+                    isCalibrationDataModified = false;
                     isCalibrated = false;
 
-                    MessageBox.Show("保存多段数据成功");
-                    //isCalibrationDataModified = false;
                     countSectionBeenMultiCalibrated = Global.curCalibrationSectionCount;
 
                     string cmdUpdateHasBeenCalibrated = String.Empty;
@@ -769,8 +820,6 @@ namespace CheckWeighterInterface.SystemManagement
             }
 
             saveHasBeenCalibrated();
-
-            isCalibrationDataModified = false;
 
             setButtonEnableWhenSensorValueOrWeightModified();
         }
@@ -917,9 +966,10 @@ namespace CheckWeighterInterface.SystemManagement
             isCalibrationDataModified = false;
             isCalibrated = false;
             setButtonEnableWhenSensorValueOrWeightModified();
+            setChartLineXYWholeRange(0.2);
             MessageBox.Show("修改已丢弃");
         }
 
-        
+
     }
 }
